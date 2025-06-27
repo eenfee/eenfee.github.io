@@ -9,9 +9,10 @@ description: Personal insights, commentary, and analysis on various topics.
 <p class="page-description">Personal insights, commentary, and analysis on various topics.</p>
 
 <ul>
-  {% for post in site.blog %}
+  {% for post in site.blogs %}
     <li>
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <h3>IT IS ON</h3>
       {{ post.excerpt }}
     </li>
   {% endfor %}

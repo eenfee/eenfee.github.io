@@ -1,0 +1,162 @@
+/* ===== Opinion & Commentary Styles ===== */
+/* Saved as: assets/css/pages_css/opinion.css */
+
+/* Base Container */
+.opinion-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #012046;
+}
+
+/* Header Styles */
+.opinion-container h1 {
+  color: #d32f2f; /* Bold red for opinion pieces */
+  font-size: 10rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.opinion-container h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: #d32f2f;
+  border-radius: 2px;
+}
+
+.page-description {
+  color: #5f6368;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Opinion Post List */
+.opinion-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.opinion-container li {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.opinion-container li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-left-color: #d32f2f;
+}
+
+/* Opinion Post Titles */
+.opinion-container h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.opinion-container h2 a {
+  color: #e60606;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.opinion-container h2 a:hover {
+  color: #d32f2f;
+}
+
+/* Opinion Excerpt */
+.opinion-container .post-excerpt {
+  color: #424242;
+  line-height: 1.7;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* IT IS ON indicator */
+.opinion-container h3 {
+  color: #388e3c;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0.5rem 0;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: #e8f5e9;
+  border-radius: 50px;
+}
+
+/* Metadata (if you add later) */
+.post-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #757575;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .opinion-container {
+    padding: 0 1rem;
+    margin: 2rem auto;
+  }
+  
+  .opinion-container h1 {
+    font-size: 2rem;
+  }
+  
+  .opinion-container li {
+    padding: 1.5rem;
+  }
+  
+  .opinion-container h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .opinion-container h1 {
+    font-size: 1.75rem;
+  }
+  
+  .opinion-container li {
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Animation */
+@keyframes opinionFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.opinion-container li {
+  animation: opinionFadeIn 0.5s ease forwards;
+}
+
+/* Stagger animations */
+.opinion-container li:nth-child(1) { animation-delay: 0.1s; }
+.opinion-container li:nth-child(2) { animation-delay: 0.2s; }
+.opinion-container li:nth-child(3) { animation-delay: 0.3s; }
+.opinion-container li:nth-child(4) { animation-delay: 0.4s; }
