@@ -1,9 +1,18 @@
+/* ============================================== */
+/* MAIN LAYOUT STRUCTURE                          */
+/* ============================================== */
 
+/**
+ * Main content container
+ * - Uses flexbox for modern layout
+ * - Responsive padding and max-width
+ * - Full viewport height minimum
+ */
 .main-content {
   display: flex;
   flex-direction: column;
   background-color: rgb(235, 240, 237);
-  padding: 1rem;
+  padding: 1.5rem;
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
@@ -11,24 +20,294 @@
   box-sizing: border-box;
 }
 
+/* ============================================== */
+/* RESPONSIVE BREAKPOINTS                         */
+/* ============================================== */
+
 /* Tablet (768px and up) */
 @media screen and (min-width: 768px) {
   .main-content {
-    padding: 2rem;
+    padding: 2rem; /* Increased padding for medium screens */
   }
 }
 
 /* Desktop (1024px and up) */
 @media screen and (min-width: 1024px) {
   .main-content {
-    padding: 60px 100px;
-    max-width: 1200px;
+    padding: 60px 100px; /* Larger horizontal padding */
+    max-width: 1200px; /* Maximum content width */
   }
 }
 
 /* Large Desktop (1440px and up) */
 @media screen and (min-width: 1440px) {
   .main-content {
-    padding: 60px 200px;
+    padding: 60px 200px; /* Even larger horizontal padding */
   } 
+}
+
+/* ============================================== */
+/* MARKDOWN BODY - BASE STYLES                    */
+/* ============================================== */
+
+/**
+ * Core typography styles for markdown content
+ * - Font stack with system fonts for performance
+ * - Responsive text sizing
+ * - Good readability defaults
+ */
+.markdown-body {
+  line-height: 1.6; /* Optimal for readability */
+  color: #333; /* Dark gray for better contrast */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  max-width: 100%; /* Prevent horizontal overflow */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* ============================================== */
+/* TYPOGRAPHY ELEMENTS                            */
+/* ============================================== */
+
+/* Heading hierarchy */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Individual heading styles */
+.markdown-body h1 { 
+  font-size: 2em; 
+  border-bottom: 1px solid #eaecef; 
+  padding-bottom: 0.3em; 
+}
+.markdown-body h2 { 
+  font-size: 1.5em; 
+  border-bottom: 1px solid #eaecef; 
+  padding-bottom: 0.3em; 
+}
+.markdown-body h3 { font-size: 1.25em; }
+.markdown-body h4 { font-size: 1em; }
+.markdown-body h5 { font-size: 0.875em; }
+.markdown-body h6 { 
+  font-size: 0.85em; 
+  color: #6a737d; /* Lighter color for least important headings */
+}
+
+/* Text formatting helpers */
+.markdown-body strong { font-weight: 600; }
+.markdown-body em { font-style: italic; }
+.markdown-body del { text-decoration: line-through; }
+.markdown-body ins { text-decoration: underline; }
+.markdown-body mark { 
+  background-color: #fff8c1; 
+  padding: 0.2em; 
+}
+.markdown-body sub { 
+  font-size: 75%; 
+  line-height: 0; 
+  position: relative; 
+  vertical-align: baseline; 
+  bottom: -0.25em; 
+}
+.markdown-body sup { 
+  font-size: 75%; 
+  line-height: 0; 
+  position: relative; 
+  vertical-align: baseline; 
+  top: -0.5em; 
+}
+
+/* ============================================== */
+/* LISTS                                          */
+/* ============================================== */
+
+/* Base list styles */
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em; /* Proper indentation */
+  margin-bottom: 1em; /* Bottom spacing */
+}
+
+/* List items */
+.markdown-body li {
+  margin-bottom: 0.5em; /* Vertical rhythm */
+}
+
+/* Paragraphs within list items */
+.markdown-body li > p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Nested lists */
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Task list items (GitHub style) */
+.markdown-body .task-list-item {
+  list-style-type: none; /* Remove default bullets */
+}
+
+.markdown-body .task-list-item-checkbox {
+  margin-left: -1.5em; /* Align checkboxes properly */
+  margin-right: 0.5em;
+}
+
+/* ============================================== */
+/* BLOCK ELEMENTS                                 */
+/* ============================================== */
+
+/* Blockquotes */
+.markdown-body blockquote {
+  padding: 0 1.5rem;
+  color: #180000;
+  border-left: 0.25em solid #77000079;
+  margin: 0 0 1em 0;
+}
+
+/* Code blocks */
+.markdown-body code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+.markdown-body pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;           /* Enables horizontal scroll if needed */
+  white-space: pre-wrap;      /* Allows code to wrap to the next line */
+  word-break: break-word;     /* Breaks long words if needed */
+  line-height: 1.45;
+  margin-bottom: 1em;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 100%;
+}
+
+/* Horizontal rule */
+.markdown-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 1.5em 0;
+  background-color: #6ca8f78c;
+  border: 0;
+}
+
+/* ============================================== */
+/* MEDIA & LINKS                                  */
+/* ============================================== */
+
+/* Links */
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Images */
+.markdown-body img {
+  max-width: 100%; /* Responsive images */
+  box-sizing: content-box;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+/* ============================================== */
+/* TABLES                                         */
+/* ============================================== */
+
+/**
+ * Responsive tables with clear borders
+ * - Zebra striping for readability
+ * - Scrollable on small devices
+ */
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5em;
+  font-size: 0.9em; /* Slightly smaller text */
+  display: table;
+  overflow-x: auto; /* Horizontal scroll on overflow */
+}
+
+/* Table cells */
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #000000; /* Solid black borders */
+  padding: 0.5em 1em; /* Comfortable spacing */
+}
+
+/* Table headers */
+.markdown-body th {
+  font-weight: 600;
+  background-color: #4e9ff08c; /* Semi-transparent blue */
+}
+
+/* Zebra striping */
+.markdown-body tr:nth-child(even) {
+  background-color: #777777; /* Dark gray for contrast */
+}
+
+/* ============================================== */
+/* SPECIAL ELEMENTS                               */
+/* ============================================== */
+
+/* Definition lists */
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dt {
+  font-weight: 600;
+  margin-top: 1em;
+  padding: 0;
+}
+
+.markdown-body dd {
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+
+/* Footnotes */
+.markdown-body .footnotes {
+  font-size: 0.85em;
+  color: #6a737d;
+  border-top: 1px solid #eaecef;
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.markdown-body .footnote-ref {
+  font-weight: bold;
+}
+
+/* Emoji */
+.markdown-body .emoji {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
 }

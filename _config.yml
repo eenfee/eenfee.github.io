@@ -3,7 +3,7 @@
 title: EENFEE
 description: Website of ENFEE.
 url: "https://eenfee.github.io" # the base hostname & protocol for your site
-baseurl: " "
+baseurl: ""
 
 
 
@@ -84,8 +84,16 @@ plugins:
   - jekyll-sass-converter
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-toc
 
 
+# TOC Settings
+toc:
+ min_level: 1
+ max_level: 3
+ list_class: toc__list
+ sublist_class: toc__sublist
 
 
 # Include files and directories
@@ -121,7 +129,7 @@ compress_html:
 
 
 
-keywords: Rasila, Rasila_Gautam add your own keywords or leave empty
+keywords: Study Abroad, Education, Scholarships, University, International Students, English Proficiency Tests, EPT, Oxford ELLT, Duolingo, PTE, IELTS, UK, Australia, Europe, USA, Canada, New Zealand, France, Germany, Japan, Malta, Dubai/UAE
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 

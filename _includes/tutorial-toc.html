@@ -1,0 +1,57 @@
+{%- if page.toc == true or page.toc %}
+  <nav class="section-nav" aria-label="Table of Contents">
+    <h2 class="toc-title">☰</h2>
+    {% if page.content contains '{:toc}' %}
+      <!-- jekyll-toc will inject the TOC here -->
+    {% else %}
+      {{ content | toc_only }}
+    {% endif %}
+  </nav>
+{%- endif %}
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Find all TOC navs (in case of multiple posts on a page)
+  document.querySelectorAll('.section-nav').forEach(function(nav) {
+    const title = nav.querySelector('.toc-title');
+    // Find the first ul or .toc-list inside nav
+    const tocList = nav.querySelector('.toc-list, ul');
+    if (title && tocList) {
+      // Start collapsed on small screens, expanded on large screens
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+
+      // Toggle on click
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
+});
+</script>

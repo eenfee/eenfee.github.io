@@ -1,0 +1,94 @@
+/* TOC Container */
+.section-nav {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 1px;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+
+/* TOC Title/Button */
+.toc-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(90deg, #0077cc 60%, #005fa3 100%);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  width: fit-content;
+  transition: background 0.2s;
+}
+.toc-title:focus,
+.toc-title:hover {
+  background: linear-gradient(90deg, #005fa3 60%, #0077cc 100%);
+  outline: 1px solid #005fa3;
+  outline-offset: 2px;
+}
+
+/* Hide TOC list by default on all screens */
+.section-nav .toc-list,
+.section-nav ul {
+  display: none;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Show TOC list when expanded */
+.section-nav.expanded .toc-list,
+.section-nav.expanded ul {
+  display: block;
+}
+
+/* TOC links */
+.section-nav li {
+  margin-bottom: 0.5em;
+}
+.section-nav a {
+  color: #0077cc;
+  text-decoration: none;
+  border-bottom: 1px dotted #0077cc;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+.section-nav a:focus,
+.section-nav a:hover {
+  color: #005fa3;
+  border-bottom: 1px solid #005fa3;
+  text-decoration: underline;
+}
+
+/* Responsive: TOC on right for large screens */
+@media (min-width: 900px) {
+  .post-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .post-content {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+  .section-nav {
+    width: 100%;
+    max-width: 220px;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    position: sticky;
+    top: 1rem;
+    align-self: flex-start;
+  }
+}
