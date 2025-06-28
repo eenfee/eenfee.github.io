@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oxford ELLT Digital: Take Your English Test Online - EENFEE</title>
     <link rel="icon" href="/assets/img/cLogo.png">
+
     <link rel="stylesheet" href="/assets/css/main.css">
+  
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   </head>
@@ -596,29 +601,86 @@
     <main class="main-content">
     
       <div class="post-layout">
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
+
+      
+      <ul class="tocbox-list-unique"></ul>
+
+    </div>
+    
+  </nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
+
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
   <article class="post-content">
     <div class="markdown-body">
-  <ul id="markdown-toc">
-  <li><a href="#oxford-ellt-digital--english-level-test-online" id="markdown-toc-oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</a>    <ul>
-      <li><a href="#-trusted-evaluation-by-ecctis" id="markdown-toc--trusted-evaluation-by-ecctis">📊 Trusted Evaluation by Ecctis</a></li>
-      <li><a href="#-test-components" id="markdown-toc--test-components">📝 Test Components</a></li>
-      <li><a href="#️-starting-your-speaking-test" id="markdown-toc-️-starting-your-speaking-test">🗣️ Starting Your Speaking Test</a></li>
-    </ul>
-  </li>
-  <li><a href="#oellt---sample-questions-for-speeaking-part" id="markdown-toc-oellt---sample-questions-for-speeaking-part">OELLT - Sample Questions for Speeaking Part</a>    <ul>
-      <li><a href="#stage-1-introduction" id="markdown-toc-stage-1-introduction">Stage 1: Introduction</a></li>
-      <li><a href="#stage-2-presentation" id="markdown-toc-stage-2-presentation">Stage 2: Presentation</a></li>
-      <li><a href="#presentation-sample-questions" id="markdown-toc-presentation-sample-questions">Presentation: Sample Questions</a>        <ul>
-          <li><a href="#stage-3-essay" id="markdown-toc-stage-3-essay">Stage 3: Essay</a></li>
-          <li><a href="#stage-4-image-description--discussion" id="markdown-toc-stage-4-image-description--discussion">Stage 4: Image Description &amp; Discussion</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
+  <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
 
 <p>The <strong>Oxford ELLT</strong> (English Language Level Test) is a fully online test that allows you to assess your English proficiency from the comfort of your home — with the same security standards as a traditional test center.</p>
 
