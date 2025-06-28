@@ -1,0 +1,18 @@
+---
+layout: page
+title: Blog Abroad Studies
+permalink: /blogs/abroad-studies/
+---
+
+<h2>📚 Abroad Study Featured Blogs 🌍</h2>
+
+<div class="blog-list">
+  {% assign abroad_blogs = site.blogs | where: "category", "abroad-studies" %}
+  {% for post in abroad_blogs %}
+    <div class="blog-card">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.description }}</p>
+      <p><small><em>{{ post.date | date: "%B %d, %Y" }}</em></small></p>
+    </div>
+  {% endfor %}
+</div>
