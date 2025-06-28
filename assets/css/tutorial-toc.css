@@ -2,35 +2,50 @@
 .section-nav {
   background: #f8f9fa;
   border: 1px solid #e0e0e0;
-  border-radius: 1px;
-  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem 1.2rem 1.2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   position: relative;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, border 0.2s;
+  overflow: hidden;
 }
 
 /* TOC Title/Button */
 .toc-title {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin: 0 0 1rem 0;
   cursor: pointer;
   user-select: none;
   background: linear-gradient(90deg, #0077cc 60%, #005fa3 100%);
   color: #fff;
-  padding: 0.5rem 1.2rem;
-  border-radius: 5px;
+  padding: 0.6rem 1.4rem 0.6rem 1.1rem;
+  border-radius: 6px;
   width: fit-content;
-  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+  gap: 0.7em;
+}
+.toc-title::before {
+  content: '\25B6'; /* right-pointing triangle */
+  display: inline-block;
+  font-size: 1.1em;
+  margin-right: 0.5em;
+  transition: transform 0.3s;
+}
+.section-nav.expanded .toc-title::before {
+  transform: rotate(90deg);
 }
 .toc-title:focus,
 .toc-title:hover {
   background: linear-gradient(90deg, #005fa3 60%, #0077cc 100%);
-  outline: 1px solid #005fa3;
+  outline: 2px solid #005fa3;
   outline-offset: 2px;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.13);
 }
 
 /* Hide TOC list by default on all screens */
@@ -40,34 +55,71 @@
   margin: 0;
   padding-left: 0;
   list-style: none;
-  animation: fadeIn 0.3s;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px);}
-  to { opacity: 1; transform: translateY(0);}
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+  overflow: hidden;
 }
 
 /* Show TOC list when expanded */
 .section-nav.expanded .toc-list,
 .section-nav.expanded ul {
   display: block;
+  max-height: 1000px;
+  opacity: 1;
+  animation: fadeIn 0.3s;
+  overflow-y: auto;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
 /* TOC links */
 .section-nav li {
   margin-bottom: 0.5em;
+  margin-left: 0.2em;
+}
+.section-nav li li {
+  margin-left: 1.2em;
+  font-size: 0.97em;
+  border-left: 2px solid #e0e0e0;
+  padding-left: 0.7em;
 }
 .section-nav a {
   color: #0077cc;
   text-decoration: none;
   border-bottom: 1px dotted #0077cc;
-  transition: color 0.2s, border-bottom 0.2s;
+  border-radius: 2px;
+  padding: 1px 2px;
+  transition: color 0.2s, border-bottom 0.2s, background 0.2s;
 }
 .section-nav a:focus,
 .section-nav a:hover {
   color: #005fa3;
   border-bottom: 1px solid #005fa3;
   text-decoration: underline;
+  background: #eaf4fb;
+  outline: 1.5px solid #005fa3;
+}
+
+/* Scrollbar for long TOCs */
+.section-nav.expanded .toc-list,
+.section-nav.expanded ul {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b3d4fc #f8f9fa;
+}
+.section-nav.expanded .toc-list::-webkit-scrollbar,
+.section-nav.expanded ul::-webkit-scrollbar {
+  width: 7px;
+  background: #f8f9fa;
+}
+.section-nav.expanded .toc-list::-webkit-scrollbar-thumb,
+.section-nav.expanded ul::-webkit-scrollbar-thumb {
+  background: #b3d4fc;
+  border-radius: 4px;
 }
 
 /* Responsive: TOC on right for large screens */
@@ -84,7 +136,7 @@
   }
   .section-nav {
     width: 100%;
-    max-width: 220px;
+    max-width: 240px;
     margin-bottom: 0;
     margin-left: 0.5rem;
     position: sticky;
