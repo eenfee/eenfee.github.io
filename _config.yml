@@ -78,6 +78,9 @@ kramdown:
   enable_coderay: false
 
 
+# Site settings
+timezone: "Asia/Kathmandu" # set your timezone, see https://en.wikipedia.org/wiki/List_of
+encoding: UTF-8
 
 
 plugins:
