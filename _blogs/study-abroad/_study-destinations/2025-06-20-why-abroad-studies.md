@@ -57,7 +57,7 @@ Communities are influenced as well. Students returning home often mentor others,
 
 ---
 
-## 🇳🇵 A Rising Nepal, Powered by Global Education
+## A Rising Nepal, Powered by Global Education
 
 In the grander picture, the journey of Nepali students abroad is not just about personal success — it’s about **building a better Nepal**. These students return as doctors, engineers, researchers, educators, and entrepreneurs. Some may stay abroad and support the country through remittances, investments, or by representing Nepal on the global stage.
 
