@@ -5,7 +5,7 @@ description: Website of ENFEE.
 url: "https://eenfee.github.io" # the base hostname & protocol for your site
 baseurl: ""
 
-
+#favicon: "/assets/img/cLogo.png" # the path to your favicon, relative to the root of your site
 
 permalink: /:categories/:title/
 
@@ -106,6 +106,8 @@ include:
   - assets/css
   - assets/css/pages_css
   - _sass
+  - assets/img
+  - assets/images/logo
 
 # Exclude files and directories
 exclude:
@@ -133,8 +135,8 @@ compress_html:
 
 
 keywords: Study Abroad, Education, Scholarships, University, International Students, English Proficiency Tests, EPT, Oxford ELLT, Duolingo, PTE, IELTS, UK, Australia, Europe, USA, Canada, New Zealand, France, Germany, Japan, Malta, Dubai/UAE
-lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+lang: en, np # the language of your site (for example: en, fr, cn, ru, etc.)
+#icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 
 last_updated: false # set to true if you want to display last updated in the footer
