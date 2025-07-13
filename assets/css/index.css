@@ -742,7 +742,11 @@ blockquote::after {
   }
 }
 
-
+.emoji-flag {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  font-size: 1em; /* or adjust as needed */
+  vertical-align: middle; /* optional, for better alignment with text */
+}
 
 
 
