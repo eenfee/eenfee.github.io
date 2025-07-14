@@ -30,39 +30,40 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", updateFooterPosition);
 });
 
-// Replace with your Google Apps Script Web App URLs
-    const educationScriptURL = 'https://script.google.com/macros/s/AKfycbzGiY7-EqZu0cVbAZOEXblAlpc_fusnMeJm06V6t48UlM-EGuroTNa9KvGGbbhGJUHOqA/exec';
-    const environmentScriptURL = 'https://script.google.com/macros/s/AKfycbyB0r4b6EMFoiazGbsHIgd7sD8X2NSdp0Bw8qmVWGI9IMY1XbpDO3vwd_uFhNu8L8YFTg/exec';
+// Replace with your single deployed Google Apps Script Web App URL
+const scriptURL = 'https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_ID/exec';
 
-    // Function to handle form submission
-    function handleFormSubmit(form, scriptURL, messageDivId) {
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const messageDiv = document.getElementById(messageDivId);
-        messageDiv.textContent = 'Submitting...';
-        
-        fetch(scriptURL, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.result === 'success') {
-            messageDiv.textContent = 'Thank you for subscribing!';
-            form.reset();
-          } else {
-            messageDiv.textContent = 'Error: ' + data.error;
-          }
-        })
-        .catch(error => {
-          messageDiv.textContent = 'Error: ' + error.message;
-        });
-      });
-    }
+function handleFormSubmit(form, sheetName, messageDivId) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
 
-    // Attach event listeners to both forms
-    const educationForm = document.forms['education-subscribe'];
-    const environmentForm = document.forms['environment-subscribe'];
-    
-    handleFormSubmit(educationForm, educationScriptURL, 'education-message');
-    handleFormSubmit(environmentForm, environmentScriptURL, 'environment-message');
+    const messageDiv = document.getElementById(messageDivId);
+    messageDiv.textContent = 'Submitting...';
+
+    const formData = new FormData(form);
+    formData.append('sheetName', sheetName); // Pass the sheet name
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.result === 'success') {
+        messageDiv.textContent = 'Thank you for subscribing!';
+        form.reset();
+      } else {
+        messageDiv.textContent = 'Error: ' + data.error;
+      }
+    })
+    .catch(error => {
+      messageDiv.textContent = 'Error: ' + error.message;
+    });
+  });
+}
+
+const educationForm = document.forms['education-subscribe'];
+const environmentForm = document.forms['environment-subscribe'];
+
+handleFormSubmit(educationForm, 'Education', 'education-message');
+handleFormSubmit(environmentForm, 'Environment', 'environment-message');
