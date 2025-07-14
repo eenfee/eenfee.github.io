@@ -659,17 +659,19 @@
       <div class="footer-newsletter">
         <h4 class="footer-subheading">Education Updates</h4>
         <p>Stay informed on study abroad opportunities and tips.</p>
-        <form action="/subscribe/education" method="post">
-          <input type="email" placeholder="Your email for education updates" required>
+        <form name="education-subscribe" class="subscribe-form">
+          <input type="email" name="email" placeholder="Your email for education updates" required>
           <button type="submit" class="cta-button">Subscribe →</button>
+          <div class="message" id="education-message"></div>
         </form>
       </div>
       <div class="footer-newsletter">
         <h4 class="footer-subheading">Environment Updates</h4>
         <p>Receive insights on sustainability and environmental projects.</p>
-        <form action="/subscribe/environment" method="post">
-          <input type="email" placeholder="Your email for environment updates" required>
+        <form name="environment-subscribe" class="subscribe-form">
+          <input type="email" name="email" placeholder="Your email for environment updates" required>
           <button type="submit" class="cta-button">Subscribe →</button>
+          <div class="message" id="environment-message"></div>
         </form>
       </div>
     </div>
