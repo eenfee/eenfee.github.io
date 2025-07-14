@@ -30,40 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", updateFooterPosition);
 });
 
-// Replace with your single deployed Google Apps Script Web App URL
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyQCwshJ-7iRaeMwsLIo_I7Iv6g0rstPrXltbZfWq5CQMWcD1mCP6OICJ75xAphPvybEA/exec';
-
-function handleFormSubmit(form, sheetName, messageDivId) {
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const messageDiv = document.getElementById(messageDivId);
-    messageDiv.textContent = 'Submitting...';
-
-    const formData = new FormData(form);
-    formData.append('sheetName', sheetName); // Pass the sheet name
-
-    fetch(scriptURL, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.result === 'success') {
-        messageDiv.textContent = 'Thank you for subscribing!';
-        form.reset();
-      } else {
-        messageDiv.textContent = 'Error: ' + data.error;
-      }
-    })
-    .catch(error => {
-      messageDiv.textContent = 'Error: ' + error.message;
-    });
-  });
+function showMessage(divId) {
+  const messageDiv = document.getElementById(divId);
+  messageDiv.textContent = "Thank you for subscribing!";
+  setTimeout(() => {
+    messageDiv.textContent = "";
+  }, 5000); // Clear message after 5 seconds
+  return true; // Allow form to submit
 }
-
-const educationForm = document.forms['education-subscribe'];
-const environmentForm = document.forms['environment-subscribe'];
-
-handleFormSubmit(educationForm, 'Education', 'education-message');
-handleFormSubmit(environmentForm, 'Environment', 'environment-message');
