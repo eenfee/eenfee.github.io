@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Replace with your single deployed Google Apps Script Web App URL
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzGiY7-EqZu0cVbAZOEXblAlpc_fusnMeJm06V6t48UlM-EGuroTNa9KvGGbbhGJUHOqA/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyQCwshJ-7iRaeMwsLIo_I7Iv6g0rstPrXltbZfWq5CQMWcD1mCP6OICJ75xAphPvybEA/exec';
 
 function handleFormSubmit(form, sheetName, messageDivId) {
   form.addEventListener('submit', e => {
