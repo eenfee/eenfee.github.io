@@ -687,22 +687,38 @@
       <div class="footer-newsletter">
         <h4 class="footer-subheading">Education Updates</h4>
         <p>Stay informed on study abroad opportunities and tips.</p>
-        <form name="education-subscribe" class="subscribe-form">
+        <form name="education-subscribe"
+              class="subscribe-form"
+              action="https://script.google.com/macros/s/AKfycbyQCwshJ-7iRaeMwsLIo_I7Iv6g0rstPrXltbZfWq5CQMWcD1mCP6OICJ75xAphPvybEA/exec"
+              method="POST"
+              target="hidden_iframe"
+              onsubmit="return showMessage('education-message');">
           <input type="email" name="email" placeholder="Your email for education updates" required>
+          <input type="hidden" name="sheetName" value="Education">
           <button type="submit" class="cta-button">Subscribe →</button>
           <div class="message" id="education-message"></div>
         </form>
       </div>
+
       <div class="footer-newsletter">
         <h4 class="footer-subheading">Environment Updates</h4>
         <p>Receive insights on sustainability and environmental projects.</p>
-        <form name="environment-subscribe" class="subscribe-form">
+        <form name="environment-subscribe"
+              class="subscribe-form"
+              action="https://script.google.com/macros/s/AKfycbyQCwshJ-7iRaeMwsLIo_I7Iv6g0rstPrXltbZfWq5CQMWcD1mCP6OICJ75xAphPvybEA/exec"
+              method="POST"
+              target="hidden_iframe"
+              onsubmit="return showMessage('environment-message');">
           <input type="email" name="email" placeholder="Your email for environment updates" required>
+          <input type="hidden" name="sheetName" value="Environment">
           <button type="submit" class="cta-button">Subscribe →</button>
           <div class="message" id="environment-message"></div>
         </form>
       </div>
     </div>
+
+    <!-- Hidden iframe to avoid page refresh -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
 
     <!-- Legal Aspects -->
     <div class="footer-legal">
