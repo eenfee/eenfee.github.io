@@ -607,77 +607,7 @@
 
     <main class="main-content">
     
-      <div class="post-layout">
-  
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  // TOC expand/collapse logic
-  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
-    const title = nav.querySelector('.tocbox-title-unique');
-    const tocList = nav.querySelector('.tocbox-list-unique');
-    if (title && tocList) {
-      function setInitialState() {
-        if (window.innerWidth >= 900) {
-          nav.classList.add('expanded');
-        } else {
-          nav.classList.remove('expanded');
-        }
-      }
-      setInitialState();
-      window.addEventListener('resize', setInitialState);
-      title.setAttribute('tabindex', '0');
-      title.setAttribute('role', 'button');
-      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-      title.addEventListener('click', function(e) {
-        nav.classList.toggle('expanded');
-        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-      });
-      title.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          nav.classList.toggle('expanded');
-          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-        }
-      });
-    }
-  });
-
-  // Build TOC from headings (h1-h4)
-  var tocNav = document.querySelector('.tocbox-nav-unique');
-  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
-  var content = document.querySelector('.markdown-body, .post-content');
-  if (tocList && content) {
-    var headings = content.querySelectorAll('h1, h2, h3, h4');
-    var lastLevel = 1;
-    var parents = [tocList];
-    headings.forEach(function(heading, idx) {
-      if (!heading.id) {
-        heading.id = 'toc-h-' + idx;
-      }
-      var level = parseInt(heading.tagName[1]);
-      if (level < 1 || level > 4) return;
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.textContent = heading.textContent;
-      a.href = '#' + heading.id;
-      li.appendChild(a);
-      if (level > lastLevel) {
-        var newUl = document.createElement('ul');
-        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
-        parents.push(newUl);
-      } else if (level < lastLevel) {
-        parents.splice(level - lastLevel);
-      }
-      parents[parents.length-1].appendChild(li);
-      lastLevel = level;
-    });
-  }
-});
-</script>
-
-  <article class="post-content">
-    <div class="markdown-body">
-      <div class="sop-form-container">
+          <div class="sop-form-container">
         <h1 class="sop-form-section-title">Student Data Collection Form</h1>
         <form id="sopStudentForm"
               action="https://script.google.com/macros/s/AKfycbz3Y2cyQbJT1_tFkNy91jxoBjhNcAJwGLdvVmpDLMond-v4b7rttYJ6Tr66KeuYhFar/exec" 
@@ -1127,23 +1057,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- Hidden iframe for form submission -->
     <iframe name="sopHiddenIframe" id="sopHiddenIframe" style="display:none;"></iframe>
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-  </article>
-</div>
-
-
 
 
 
