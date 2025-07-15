@@ -1,130 +1,248 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('applicationForm');
-    const formMessage = document.getElementById('form-message');
-    const hiddenIframe = document.getElementById('hidden_iframe');
 
-    // Academic sections
-    const academicSEE = document.getElementById('academicSEE');
-    const academicBachelors = document.getElementById('academicBachelors');
-    const academicMasters = document.getElementById('academicMasters');
-    const studyLevelSelect = document.getElementById('studyLevel');
+        (function() { // IIFE for encapsulation
+            const sopStudyLevelSelect = document.getElementById('sopStudyLevel');
+            const sopAcademicBachelors = document.getElementById('sop-academic-bachelors');
+            const sopAcademicMasters = document.getElementById('sop-academic-masters');
 
-    // Function to show a message after form submission
-    window.showMessage = function() {
-        formMessage.style.display = 'block';
-        formMessage.textContent = 'Your application has been submitted successfully!';
-        formMessage.className = 'form-message success';
-        form.reset(); // Clear the form
-        // Re-hide academic sections after reset
-        academicBachelors.classList.add('hidden');
-        academicMasters.classList.add('hidden');
-        // Re-evaluate financial sections too
-        document.querySelectorAll('[name$="Work Type"]').forEach(select => select.dispatchEvent(new Event('change')));
+            // Function to update academic section visibility based on study level
+            function sopUpdateAcademicVisibility() {
+                const selectedLevel = sopStudyLevelSelect.value;
 
-        // Hide message after a few seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-        return true; // Allows form to submit
-    };
+                // Hide all dynamic academic sections first
+                sopAcademicBachelors.style.display = 'none';
+                sopAcademicMasters.style.display = 'none';
 
-    // Listen for the iframe's load event to confirm submission
-    hiddenIframe.onload = function() {
-        if (form.submitted) { // Check a flag set on form submit
-             showMessage();
-             form.submitted = false; // Reset the flag
-        }
-    };
-
-    form.addEventListener('submit', function() {
-        form.submitted = true; // Set a flag when the form is submitted
-    });
-
-    // Dynamic visibility for Financial Background based on 'Work Details' selection
-    const workDetailSelects = document.querySelectorAll('[name$="Work Type"]');
-
-    workDetailSelects.forEach(select => {
-        select.addEventListener('change', function() {
-            const parentSection = this.closest('.financial-entry');
-            if (!parentSection) return;
-
-            // Hide all detail divs within this financial entry first
-            const detailDivs = parentSection.querySelectorAll('.hidden');
-            detailDivs.forEach(div => div.classList.add('hidden'));
-
-            const selectedValue = this.value;
-            let targetDivId;
-
-            // Assuming a consistent naming convention like FM1 Work Type -> FM1 Business Name etc.
-            // We need to extract the "FMx" part from the name attribute
-            const namePrefixMatch = this.name.match(/^(FM\d+)/);
-            if (!namePrefixMatch) return;
-            const namePrefix = namePrefixMatch[1]; // e.g., "FM1"
-
-            switch (selectedValue) {
-                case 'Business':
-                    targetDivId = namePrefix + 'BusinessDetails';
-                    break;
-                case 'Salary':
-                    targetDivId = namePrefix + 'SalaryDetails';
-                    break;
-                case 'Pension':
-                    targetDivId = namePrefix + 'PensionDetails';
-                    break;
-                case 'Land Lease/House Rent':
-                    targetDivId = namePrefix + 'LandHouseDetails';
-                    break;
-                case 'Foreign Income':
-                    targetDivId = namePrefix + 'ForeignIncomeDetails';
-                    break;
-                default:
-                    // Do nothing if no specific type is selected or type is unknown
-                    return;
+                // Show sections based on selected study level
+                if (selectedLevel === 'bachelors') {
+                    // For Bachelor's, only SEE/SLC and +2 are needed (which are always visible)
+                } else if (selectedLevel === 'masters') {
+                    sopAcademicBachelors.style.display = 'block'; // Masters students also need Bachelor's info
+                } else if (selectedLevel === 'research') {
+                    sopAcademicBachelors.style.display = 'block'; // Research students need Bachelor's and Master's
+                    sopAcademicMasters.style.display = 'block';
+                }
             }
 
-            const targetDiv = parentSection.querySelector(`#${targetDivId}`);
-            if (targetDiv) {
-                targetDiv.classList.remove('hidden');
+            // Add event listener for changes in the study level dropdown
+            sopStudyLevelSelect.addEventListener('change', sopUpdateAcademicVisibility);
+
+            // Initial call to set correct visibility based on default/pre-selected value
+            sopUpdateAcademicVisibility();
+
+            // --- Dynamic "Add More" Functionality ---
+
+            // Function to create a new input group with incremented IDs/names
+            function sopCreateInputGroup(labelText, inputType, namePrefix, placeholder = '') {
+                const div = document.createElement('div');
+                div.className = 'sop-input-group';
+                const label = document.createElement('label');
+                label.textContent = labelText;
+                const input = document.createElement(inputType === 'textarea' ? 'textarea' : 'input');
+                input.type = inputType;
+                input.name = namePrefix + '[]'; // Use array notation for multiple entries
+                input.placeholder = placeholder;
+                if (inputType === 'number') {
+                    input.min = "1900";
+                    input.max = "2100";
+                }
+                div.appendChild(label);
+                div.appendChild(input);
+                return div;
             }
-        });
-        // Trigger change event on load for pre-filled values (if any)
-        select.dispatchEvent(new Event('change'));
-    });
 
-    // Function to toggle academic sections based on study level
-    window.toggleAcademicSections = function() {
-        const selectedLevel = studyLevelSelect.value;
+            // Function to create a new select input group
+            function sopCreateSelectGroup(labelText, namePrefix, options) {
+                const div = document.createElement('div');
+                div.className = 'sop-input-group';
+                const label = document.createElement('label');
+                label.textContent = labelText;
+                const select = document.createElement('select');
+                select.name = namePrefix + '[]';
+                options.forEach(optionText => {
+                    const option = document.createElement('option');
+                    option.value = optionText.toLowerCase().replace(/ /g, '');
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                div.appendChild(label);
+                div.appendChild(select);
+                return div;
+            }
 
-        // Hide all academic sections by default
-        academicSEE.classList.add('hidden');
-        academicBachelors.classList.add('hidden');
-        academicMasters.classList.add('hidden');
+            // Add Work Experience
+            let sopWorkExperienceCount = 1;
+            document.getElementById('sopAddWorkExperience').addEventListener('click', function() {
+                const container = document.getElementById('sop-work-experience-container');
+                const newEntry = document.createElement('div');
+                newEntry.className = 'sop-work-experience-entry border p-4 rounded-md mb-4 bg-white';
+                newEntry.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Work Experience ${sopWorkExperienceCount + 1}</h3>
+                    <div class="sop-grid-cols-2">
+                        ${sopCreateInputGroup('Employer’s Name:', 'text', 'employerName').outerHTML}
+                        ${sopCreateInputGroup('Address:', 'text', 'employerAddress').outerHTML}
+                        ${sopCreateInputGroup('Your Position:', 'text', 'position').outerHTML}
+                        ${sopCreateInputGroup('Joining Date:', 'date', 'joiningDate').outerHTML}
+                        ${sopCreateInputGroup('Resigning Date (if applicable):', 'date', 'resigningDate').outerHTML}
+                        <div class="sop-input-group col-span-full">
+                            <label>Your Duties in brief:</label>
+                            <textarea name="duties[]"></textarea>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newEntry);
+                sopWorkExperienceCount++;
+            });
 
-        // Show sections based on selected level
-        switch (selectedLevel) {
-            case 'Bachelors':
-                academicSEE.classList.remove('hidden');
-                // Only SEE/+2 is shown for Bachelors
-                break;
-            case 'Masters':
-                academicSEE.classList.remove('hidden');
-                academicBachelors.classList.remove('hidden');
-                // SEE/+2 and Bachelors for Masters
-                break;
-            case 'Research':
-            case 'PhD': // Assuming PhD also requires all levels
-                academicSEE.classList.remove('hidden');
-                academicBachelors.classList.remove('hidden');
-                academicMasters.classList.remove('hidden');
-                // All levels for Research/PhD
-                break;
-            default:
-                // If "Select" or an unhandled option, all remain hidden except SEE which is the base
-                academicSEE.classList.remove('hidden'); // Assuming SEE/SLC is always a base requirement
-                break;
-        }
-    };
+            // Add Extra-Curricular Activity
+            let sopExtraCurricularCount = 1;
+            document.getElementById('sopAddExtraCurricular').addEventListener('click', function() {
+                const container = document.getElementById('sop-extra-curricular-container');
+                const newEntry = document.createElement('div');
+                newEntry.className = 'sop-extra-curricular-entry border p-4 rounded-md mb-4 bg-white';
+                newEntry.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Activity ${sopExtraCurricularCount + 1}</h3>
+                    <div class="sop-grid-cols-2">
+                        ${sopCreateSelectGroup('Type:', 'activityType', ['Select Type', 'Internship', 'Training', 'Extracurricular']).outerHTML}
+                        ${sopCreateInputGroup('Duration:', 'text', 'activityDuration', 'e.g., 3 months, Jan-Mar 2023').outerHTML}
+                        ${sopCreateInputGroup('Your Position:', 'text', 'activityPosition', 'e.g., Volunteer, Winner, Participant').outerHTML}
+                        ${sopCreateInputGroup('Organizer:', 'text', 'organizer').outerHTML}
+                        <div class="sop-input-group col-span-full">
+                            <label>Major Activities:</label>
+                            <textarea name="majorActivities[]"></textarea>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newEntry);
+                sopExtraCurricularCount++;
+            });
 
-    // Call on page load to set initial state based on any pre-filled value
-    toggleAcademicSections();
-});
+            // Add Family Member for Financial Background
+            let sopFamilyMemberCount = 1;
+            document.getElementById('sopAddFamilyMember').addEventListener('click', function() {
+                const container = document.getElementById('sop-financial-background-container');
+                const newEntry = document.createElement('div');
+                newEntry.className = 'sop-financial-entry border p-4 rounded-md mb-4 bg-white';
+                newEntry.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Family Member ${sopFamilyMemberCount + 1}</h3>
+                    <div class="sop-grid-cols-2">
+                        ${sopCreateInputGroup('Family Member’s Name:', 'text', 'fmName').outerHTML}
+                        ${sopCreateInputGroup('Their Work Details (brief):', 'text', 'fmWorkDetails', 'e.g., Business Owner, Employee, Pensioner').outerHTML}
+                    </div>
+
+                    <div class="sop-financial-income-subsection">
+                        <h4>Business Income</h4>
+                        <div class="sop-grid-cols-2">
+                            ${sopCreateInputGroup('Business Name:', 'text', 'businessName').outerHTML}
+                            ${sopCreateInputGroup('Established Year:', 'number', 'businessEstYear').outerHTML}
+                            <div class="sop-input-group col-span-full">
+                                <label>Annual Profit:</label>
+                                <input type="text" name="businessProfit[]" placeholder="e.g., $50,000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sop-financial-income-subsection">
+                        <h4>Salary Income</h4>
+                        <div class="sop-grid-cols-2">
+                            ${sopCreateInputGroup('Company Name (Salary):', 'text', 'companyName').outerHTML}
+                            ${sopCreateInputGroup('Location (Salary):', 'text', 'companyLocation').outerHTML}
+                            ${sopCreateInputGroup('Position (Salary):', 'text', 'salaryPosition').outerHTML}
+                            ${sopCreateInputGroup('Joining Date (Salary):', 'date', 'salaryJoiningDate').outerHTML}
+                            <div class="sop-input-group col-span-full">
+                                <label>Salary Amount (Annual):</label>
+                                <input type="text" name="salaryAmount[]" placeholder="e.g., $30,000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sop-financial-income-subsection">
+                        <h4>Pension Income</h4>
+                        <div class="sop-grid-cols-2">
+                            ${sopCreateInputGroup('Name of Pension Giver:', 'text', 'pensionGiver').outerHTML}
+                            <div class="sop-input-group col-span-full">
+                                <label>Pension Amount (Annual):</label>
+                                <input type="text" name="pensionAmount[]" placeholder="e.g., $10,000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sop-financial-income-subsection">
+                        <h4>Land Lease or House Rent Income</h4>
+                        <div class="sop-grid-cols-2">
+                            ${sopCreateInputGroup('Agreement Date (Land/Rent):', 'date', 'agreementDate').outerHTML}
+                            <div class="sop-input-group col-span-full">
+                                <label>Amount (Annual - Land/Rent):</label>
+                                <input type="text" name="rentAmount[]" placeholder="e.g., $5,000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sop-financial-income-subsection">
+                        <h4>Foreign Income</h4>
+                        <div class="sop-grid-cols-2">
+                            ${sopCreateInputGroup('Visa Type (Foreign Income):', 'text', 'visaType').outerHTML}
+                            ${sopCreateInputGroup('Work Position (Foreign Income):', 'text', 'foreignWorkPosition').outerHTML}
+                            ${sopCreateInputGroup('Company Name (Foreign Income):', 'text', 'foreignCompanyName').outerHTML}
+                            <div class="sop-input-group col-span-full">
+                                <label>Monthly or Annual Amount (Foreign Income):</label>
+                                <input type="text" name="foreignAmount[]" placeholder="e.g., $2,000/month">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newEntry);
+                sopFamilyMemberCount++;
+            });
+
+
+            // Handle form submission (for demonstration purposes)
+            const sopStudentForm = document.getElementById('sopStudentForm');
+            sopStudentForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Collect form data
+                const formData = new FormData(sopStudentForm);
+                const data = {};
+
+                // Helper to group array fields
+                const arrayFields = [
+                    'employerName', 'employerAddress', 'position', 'joiningDate', 'resigningDate', 'duties',
+                    'activityType', 'activityDuration', 'activityPosition', 'organizer', 'majorActivities',
+                    'fmName', 'fmWorkDetails', 'businessName', 'businessEstYear', 'businessProfit',
+                    'companyName', 'companyLocation', 'salaryPosition', 'salaryJoiningDate', 'salaryAmount',
+                    'pensionGiver', 'pensionAmount', 'agreementDate', 'rentAmount',
+                    'visaType', 'foreignWorkPosition', 'foreignCompanyName', 'foreignAmount'
+                ];
+
+                for (let [key, value] of formData.entries()) {
+                    const baseKey = key.replace(/\[\]$/, ''); // Remove [] for base key
+
+                    if (arrayFields.includes(baseKey)) {
+                        if (!data[baseKey]) {
+                            data[baseKey] = [];
+                        }
+                        data[baseKey].push(value);
+                    } else {
+                        data[key] = value;
+                    }
+                }
+
+                console.log('Form Data Collected:', data);
+
+                // Provide a simple message to the user instead of alert()
+                const messageBox = document.createElement('div');
+                messageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
+                messageBox.innerHTML = `
+                    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted!</h3>
+                        <p class="text-gray-600 mb-6">Thank you for providing your details. Check the console for collected data.</p>
+                        <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
+                    </div>
+                `;
+                document.body.appendChild(messageBox);
+
+                document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
+                    document.body.removeChild(messageBox);
+                });
+            });
+        })(); // End of IIFE
