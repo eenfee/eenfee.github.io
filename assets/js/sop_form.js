@@ -1,11 +1,13 @@
 
         (function() { // IIFE for encapsulation
             // IMPORTANT: Replace with your deployed Google Apps Script Web App URL
-            const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Y2cyQbJT1_tFkNy91jxoBjhNcAJwGLdvVmpDLMond-v4b7rttYJ6Tr66KeuYhFar/exec'; // <--- REPLACE THIS LINE
+            const GOOGLE_APP_SCRIPT_URL = 'YOUR_GOOGLE_APP_SCRIPT_WEB_APP_URL_HERE'; // <--- REPLACE THIS LINE
 
+            const sopStudentForm = document.getElementById('sopStudentForm');
             const sopStudyLevelSelect = document.getElementById('sopStudyLevel');
             const sopAcademicBachelors = document.getElementById('sop-academic-bachelors');
             const sopAcademicMasters = document.getElementById('sop-academic-masters');
+            const sopHiddenIframe = document.getElementById('sopHiddenIframe');
 
             // Function to update academic section visibility based on study level
             function sopUpdateAcademicVisibility() {
@@ -73,8 +75,9 @@
             }
 
             // Add Work Experience
-            let sopWorkExperienceCount = 1;
+            let sopWorkExperienceCount = 0; // Start at 0 for initial element
             document.getElementById('sopAddWorkExperience').addEventListener('click', function() {
+                sopWorkExperienceCount++; // Increment before creating new element
                 const container = document.getElementById('sop-work-experience-container');
                 const newEntry = document.createElement('div');
                 newEntry.className = 'sop-work-experience-entry border p-4 rounded-md mb-4 bg-white';
@@ -93,12 +96,12 @@
                     </div>
                 `;
                 container.appendChild(newEntry);
-                sopWorkExperienceCount++;
             });
 
             // Add Extra-Curricular Activity
-            let sopExtraCurricularCount = 1;
+            let sopExtraCurricularCount = 0; // Start at 0 for initial element
             document.getElementById('sopAddExtraCurricular').addEventListener('click', function() {
+                sopExtraCurricularCount++; // Increment before creating new element
                 const container = document.getElementById('sop-extra-curricular-container');
                 const newEntry = document.createElement('div');
                 newEntry.className = 'sop-extra-curricular-entry border p-4 rounded-md mb-4 bg-white';
@@ -116,12 +119,12 @@
                     </div>
                 `;
                 container.appendChild(newEntry);
-                sopExtraCurricularCount++;
             });
 
             // Add Family Member for Financial Background
-            let sopFamilyMemberCount = 1;
+            let sopFamilyMemberCount = 0; // Start at 0 for initial element
             document.getElementById('sopAddFamilyMember').addEventListener('click', function() {
+                sopFamilyMemberCount++; // Increment before creating new element
                 const container = document.getElementById('sop-financial-background-container');
                 const newEntry = document.createElement('div');
                 newEntry.className = 'sop-financial-entry border p-4 rounded-md mb-4 bg-white';
@@ -194,44 +197,11 @@
                     </div>
                 `;
                 container.appendChild(newEntry);
-                sopFamilyMemberCount++;
             });
 
 
-            // Handle form submission (for demonstration purposes)
-            const sopStudentForm = document.getElementById('sopStudentForm');
-            sopStudentForm.addEventListener('submit', async function(event) { // Added 'async'
-                event.preventDefault(); // Prevent default form submission
-
-                // Collect form data
-                const formData = new FormData(sopStudentForm);
-                const data = {};
-
-                // Helper to group array fields
-                const arrayFields = [
-                    'employerName', 'employerAddress', 'position', 'joiningDate', 'resigningDate', 'duties',
-                    'activityType', 'activityDuration', 'activityPosition', 'organizer', 'majorActivities',
-                    'fmName', 'fmWorkDetails', 'businessName', 'businessEstYear', 'businessProfit',
-                    'companyName', 'companyLocation', 'salaryPosition', 'salaryJoiningDate', 'salaryAmount',
-                    'pensionGiver', 'pensionAmount', 'agreementDate', 'rentAmount',
-                    'visaType', 'foreignWorkPosition', 'foreignCompanyName', 'foreignAmount'
-                ];
-
-                for (let [key, value] of formData.entries()) {
-                    const baseKey = key.replace(/\[\]$/, ''); // Remove [] for base key
-
-                    if (arrayFields.includes(baseKey)) {
-                        if (!data[baseKey]) {
-                            data[baseKey] = [];
-                        }
-                        data[baseKey].push(value);
-                    } else {
-                        data[key] = value;
-                    }
-                }
-
-                console.log('Form Data Collected:', data);
-
+            // Function to handle form submission (called by onsubmit)
+            function sopHandleSubmit() {
                 // Show loading message
                 const loadingBox = document.createElement('div');
                 loadingBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
@@ -259,64 +229,46 @@
                 `;
                 document.body.appendChild(loadingBox);
 
+                // Return true to allow the form to submit normally to the iframe
+                return true;
+            }
 
-                try {
-                    const response = await fetch(GOOGLE_APP_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors', // Required for Google Apps Script web app
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
-                    });
-
-                    // For 'no-cors' mode, response.ok will always be false, and response.json() will fail.
-                    // We rely on the Apps Script to confirm success via its execution log.
-                    // A simple way to handle this on the client-side is to assume success if no network error.
-                    console.log('Form submission initiated. Check Google Apps Script logs for details.');
-
-                    // Remove loading message
-                    document.body.removeChild(loadingBox);
-
-                    // Show success message
-                    const successMessageBox = document.createElement('div');
-                    successMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
-                    successMessageBox.innerHTML = `
-                        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted Successfully!</h3>
-                            <p class="text-gray-600 mb-6">Your data has been sent. A new Google Sheet will be created.</p>
-                            <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
-                        </div>
-                    `;
-                    document.body.appendChild(successMessageBox);
-
-                    document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
-                        document.body.removeChild(successMessageBox);
-                        sopStudentForm.reset(); // Optionally reset the form after successful submission
-                        sopUpdateAcademicVisibility(); // Reset academic section visibility
-                    });
-
-                } catch (error) {
-                    console.error('Error submitting form:', error);
-                    // Remove loading message
-                    document.body.removeChild(loadingBox);
-
-                    // Show error message
-                    const errorMessageBox = document.createElement('div');
-                    errorMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
-                    errorMessageBox.innerHTML = `
-                        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-                            <h3 class="text-2xl font-bold text-red-600 mb-4">Submission Failed!</h3>
-                            <p class="text-gray-600 mb-6">There was an error submitting your form. Please try again.</p>
-                            <button id="sopCloseMessageBox" class="px-6 py-3 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300">Close</button>
-                        </div>
-                    `;
-                    document.body.appendChild(errorMessageBox);
-
-                    document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
-                        document.body.removeChild(errorMessageBox);
-                    });
+            // Listen for the iframe to load (indicating the Apps Script has processed the submission)
+            sopHiddenIframe.onload = function() {
+                // Remove loading message
+                const existingLoadingBox = document.querySelector('.fixed.inset-0.bg-gray-800');
+                if (existingLoadingBox) {
+                    document.body.removeChild(existingLoadingBox);
                 }
-            });
+
+                // Show success message
+                const successMessageBox = document.createElement('div');
+                successMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
+                successMessageBox.innerHTML = `
+                    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted Successfully!</h3>
+                        <p class="text-gray-600 mb-6">Your form is submitted! Our team will reach out to you for further discussion.</p>
+                        <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
+                    </div>
+                `;
+                document.body.appendChild(successMessageBox);
+
+                document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
+                    document.body.removeChild(successMessageBox);
+                    sopStudentForm.reset(); // Optionally reset the form after successful submission
+                    sopUpdateAcademicVisibility(); // Reset academic section visibility
+                });
+
+                // Clear the iframe content to prevent re-triggering onload on subsequent submissions
+                sopHiddenIframe.contentWindow.document.open();
+                sopHiddenIframe.contentWindow.document.close();
+            };
+
+            // You might want an onerror for the iframe, but direct error feedback from no-cors POST is limited.
+            // Errors would primarily be seen in the Google Apps Script execution logs.
+
         })(); // End of IIFE
 
+        
+
+        
