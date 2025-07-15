@@ -1,0 +1,250 @@
+---
+layout: default
+title: ENFEE - SOP Request Form
+permalink: /sop_form/
+
+---
+
+<div class="container">
+        <h1>Applicant Information Form</h1>
+        <form id="applicationForm" action="YOUR_DEPLOYED_SCRIPT_ID" method="GET" target="hidden_iframe">
+
+            <section class="form-section">
+                <h2>Personal Background</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="Date of Birth" required>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="Address" rows="3" required></textarea>
+
+                <label for="passportNumber">Passport Number:</label>
+                <input type="text" id="passportNumber" name="Passport Number">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="Email" required>
+
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="Contact Number" required>
+            </section>
+
+            <section class="form-section">
+                <h2>Language Proficiency Background</h2>
+                <h3>English Language Proficiency Test</h3>
+                <label for="examDate">Exam Date:</label>
+                <input type="date" id="examDate" name="ELPT Exam Date">
+
+                <label for="uniqueID">Unique ID:</label>
+                <input type="text" id="uniqueID" name="ELPT Unique ID">
+
+                <label for="overallScore">Overall Score:</label>
+                <input type="text" id="overallScore" name="ELPT Overall Score">
+
+                <label for="listeningScore">Listening Score:</label>
+                <input type="text" id="listeningScore" name="ELPT Listening Score">
+                <label for="readingScore">Reading Score:</label>
+                <input type="text" id="readingScore" name="ELPT Reading Score">
+                <label for="writingScore">Writing Score:</label>
+                <input type="text" id="writingScore" name="ELPT Writing Score">
+                <label for="speakingScore">Speaking Score:</label>
+                <input type="text" id="speakingScore" name="ELPT Speaking Score">
+            </section>
+
+            <section class="form-section">
+                <h2>Academic Background</h2>
+                <div class="academic-entry" id="academicSEE">
+                    <h3>SEE/SLC / +2</h3>
+                    <label for="seeSchool">School Name:</label>
+                    <input type="text" id="seeSchool" name="SEE School Name">
+                    <label for="seeBoard">Board:</label>
+                    <input type="text" id="seeBoard" name="SEE Board">
+                    <label for="seePassYear">Pass Year:</label>
+                    <input type="number" id="seePassYear" name="SEE Pass Year" min="1900" max="2100">
+                    <label for="seeGPA">GPA/Percentage:</label>
+                    <input type="text" id="seeGPA" name="SEE GPA/Percentage">
+                </div>
+
+                <div class="academic-entry hidden" id="academicBachelors">
+                    <h3>Bachelors</h3>
+                    <label for="bachelorsUniversity">University Name:</label>
+                    <input type="text" id="bachelorsUniversity" name="Bachelors University Name">
+                    <label for="bachelorsBoard">Board:</label>
+                    <input type="text" id="bachelorsBoard" name="Bachelors Board">
+                    <label for="bachelorsPassYear">Pass Year:</label>
+                    <input type="number" id="bachelorsPassYear" name="Bachelors Pass Year" min="1900" max="2100">
+                    <label for="bachelorsGPA">GPA/Percentage:</label>
+                    <input type="text" id="bachelorsGPA" name="Bachelors GPA/Percentage">
+                    <label for="bachelorsMajor">Major:</label>
+                    <input type="text" id="bachelorsMajor" name="Bachelors Major">
+                    <label for="bachelorsThesis">Thesis Title (if applicable):</label>
+                    <input type="text" id="bachelorsThesis" name="Bachelors Thesis Title">
+                </div>
+
+                <div class="academic-entry hidden" id="academicMasters">
+                    <h3>Masters</h3>
+                    <label for="mastersUniversity">University Name:</label>
+                    <input type="text" id="mastersUniversity" name="Masters University Name">
+                    <label for="mastersBoard">Board:</label>
+                    <input type="text" id="mastersBoard" name="Masters Board">
+                    <label for="mastersPassYear">Pass Year:</label>
+                    <input type="number" id="mastersPassYear" name="Masters Pass Year" min="1900" max="2100">
+                    <label for="mastersGPA">GPA/Percentage:</label>
+                    <input type="text" id="mastersGPA" name="Masters GPA/Percentage">
+                    <label for="mastersMajor">Major:</label>
+                    <input type="text" id="mastersMajor" name="Masters Major">
+                    <label for="mastersThesis">Thesis Title (if applicable):</label>
+                    <input type="text" id="mastersThesis" name="Masters Thesis Title">
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>Work Experience Background</h2>
+                <div class="work-experience-entry">
+                    <label for="employerName">Employer’s Name:</label>
+                    <input type="text" id="employerName" name="Employer Name">
+                    <label for="employerAddress">Address:</label>
+                    <textarea id="employerAddress" name="Employer Address" rows="2"></textarea>
+                    <label for="yourPosition">Your Position:</label>
+                    <input type="text" id="yourPosition" name="Work Position">
+                    <label for="joiningDate">Joining Date:</label>
+                    <input type="date" id="joiningDate" name="Joining Date">
+                    <label for="resigningDate">Resigning Date:</label>
+                    <input type="date" id="resigningDate" name="Resigning Date">
+                    <label for="dutiesBrief">Your Duties in Brief:</label>
+                    <textarea id="dutiesBrief" name="Duties in Brief" rows="3"></textarea>
+                </div>
+                </section>
+
+            <section class="form-section">
+                <h2>Internship/Training/Extracurricular Documents Details</h2>
+                <div class="extra-details-entry">
+                    <label for="type">Type:</label>
+                    <select id="type" name="ITEC Type">
+                        <option value="">Select</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Training">Training</option>
+                        <option value="Extracurricular">Extracurricular</option>
+                    </select>
+                    <label for="duration">Duration:</label>
+                    <input type="text" id="duration" name="ITEC Duration">
+                    <label for="itecPosition">Your Position:</label>
+                    <input type="text" id="itecPosition" name="ITEC Position">
+                    <label for="organizer">Organizer:</label>
+                    <input type="text" id="organizer" name="ITEC Organizer">
+                    <label for="majorActivities">Major Activities:</label>
+                    <textarea id="majorActivities" name="ITEC Major Activities" rows="3"></textarea>
+                </div>
+                 </section>
+
+            <section class="form-section">
+                <h2>Offer Letter Details</h2>
+                <label for="uniCollegeName">Name and location of University/College:</label>
+                <input type="text" id="uniCollegeName" name="Offer Uni/College Name">
+
+                <label for="studyLevel">Your Study Level:</label>
+                <select id="studyLevel" name="Offer Study Level" onchange="toggleAcademicSections()">
+                    <option value="">Select</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Research">Research</option>
+                    <option value="PhD">PhD</option>
+                    </select>
+
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="Offer Course">
+
+                <label for="scholarshipDetails">Scholarship Details:</label>
+                <textarea id="scholarshipDetails" name="Offer Scholarship Details" rows="2"></textarea>
+
+                <label for="feeStructure">Fee Structure:</label>
+                <input type="text" id="feeStructure" name="Offer Fee Structure">
+
+                <label for="courseStartDate">Start Date of Course:</label>
+                <input type="date" id="courseStartDate" name="Offer Course Start Date">
+
+                <label for="courseEndDate">End Date of Course:</label>
+                <input type="date" id="courseEndDate" name="Offer Course End Date">
+
+                <label for="workPlacementDetails">Details of additional work placement (if applicable):</label>
+                <textarea id="workPlacementDetails" name="Offer Work Placement Details" rows="2"></textarea>
+            </section>
+
+            <section class="form-section">
+                <h2>Your Career Plan</h2>
+                <label for="careerPlan">What do you aspire to be after choosing this course:</label>
+                <textarea id="careerPlan" name="Career Plan" rows="4"></textarea>
+            </section>
+
+            <section class="form-section">
+                <h2>Your Financial Background</h2>
+                <div class="financial-entry">
+                    <h3>Family Member 1</h3>
+                    <label for="familyMemberName1">Family Member's Name:</label>
+                    <input type="text" id="familyMemberName1" name="FM1 Name">
+
+                    <label for="workDetails1">Their Work Details:</label>
+                    <select id="workDetails1" name="FM1 Work Type">
+                        <option value="">Select</option>
+                        <option value="Business">Business</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Pension">Pension</option>
+                        <option value="Land Lease/House Rent">Land Lease/House Rent</option>
+                        <option value="Foreign Income">Foreign Income</option>
+                    </select>
+
+                    <div id="businessDetails1" class="hidden">
+                        <label for="businessName1">Name of Business:</label>
+                        <input type="text" id="businessName1" name="FM1 Business Name">
+                        <label for="establishedYear1">Established Year:</label>
+                        <input type="number" id="establishedYear1" name="FM1 Established Year" min="1900" max="2100">
+                        <label for="annualProfit1">Annual Profit:</label>
+                        <input type="text" id="annualProfit1" name="FM1 Annual Profit">
+                    </div>
+
+                    <div id="salaryDetails1" class="hidden">
+                        <label for="companyName1">Name of Company:</label>
+                        <input type="text" id="companyName1" name="FM1 Company Name">
+                        <label for="salaryLocation1">Location:</label>
+                        <input type="text" id="salaryLocation1" name="FM1 Salary Location">
+                        <label for="salaryPosition1">Position:</label>
+                        <input type="text" id="salaryPosition1" name="FM1 Salary Position">
+                        <label for="salaryJoiningDate1">Joining Date:</label>
+                        <input type="date" id="salaryJoiningDate1" name="FM1 Salary Joining Date">
+                        <label for="salaryAmount1">Salary:</label>
+                        <input type="text" id="salaryAmount1" name="FM1 Salary Amount">
+                    </div>
+
+                    <div id="pensionDetails1" class="hidden">
+                        <label for="pensionGiver1">Name of Pension Giver:</label>
+                        <input type="text" id="pensionGiver1" name="FM1 Pension Giver">
+                        <label for="pensionAmount1">Amount:</label>
+                        <input type="text" id="pensionAmount1" name="FM1 Pension Amount">
+                    </div>
+
+                    <div id="landHouseDetails1" class="hidden">
+                        <label for="agreementDate1">Agreement Date:</label>
+                        <input type="date" id="agreementDate1" name="FM1 Agreement Date">
+                        <label for="rentAmount1">Amount:</label>
+                        <input type="text" id="rentAmount1" name="FM1 Rent Amount">
+                    </div>
+
+                    <div id="foreignIncomeDetails1" class="hidden">
+                        <label for="visaType1">Visa Type:</label>
+                        <input type="text" id="visaType1" name="FM1 Visa Type">
+                        <label for="foreignWorkPosition1">Work Position:</label>
+                        <input type="text" id="foreignWorkPosition1" name="FM1 Foreign Work Position">
+                        <label for="foreignCompanyName1">Company Name:</label>
+                        <input type="text" id="foreignCompanyName1" name="FM1 Foreign Company Name">
+                        <label for="foreignAmount1">Monthly or Annual Amount:</label>
+                        <input type="text" id="foreignAmount1" name="FM1 Foreign Amount">
+                    </div>
+                </div>
+                </section>
+
+            <button type="submit">Submit Application</button>
+            <div id="form-message" class="form-message"></div>
+        </form>
+</div>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showMessage('form-message');}"></iframe>
