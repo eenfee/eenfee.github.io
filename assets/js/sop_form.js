@@ -1,274 +1,257 @@
+// In your JavaScript file (e.g., script.js or a dedicated sop.js)
 
-        (function() { // IIFE for encapsulation
-            // IMPORTANT: Replace with your deployed Google Apps Script Web App URL
-            const GOOGLE_APP_SCRIPT_URL = 'YOUR_GOOGLE_APP_SCRIPT_WEB_APP_URL_HERE'; // <--- REPLACE THIS LINE
+function sopHandleSubmit() {
+    // You'll need a div to display the message. Let's add one to your HTML.
+    // For example, right after the closing </form> tag:
+    // <div class="message" id="sop-submission-message"></div>
 
-            const sopStudentForm = document.getElementById('sopStudentForm');
-            const sopStudyLevelSelect = document.getElementById('sopStudyLevel');
-            const sopAcademicBachelors = document.getElementById('sop-academic-bachelors');
-            const sopAcademicMasters = document.getElementById('sop-academic-masters');
-            const sopHiddenIframe = document.getElementById('sopHiddenIframe');
+    const messageDiv = document.getElementById('sop-submission-message');
 
-            // Function to update academic section visibility based on study level
-            function sopUpdateAcademicVisibility() {
-                const selectedLevel = sopStudyLevelSelect.value;
+    // Display a "Submitting..." message initially
+    messageDiv.textContent = "Submitting your application... Please wait.";
+    messageDiv.style.color = "blue"; // Optional: style the message
 
-                // Hide all dynamic academic sections first
-                sopAcademicBachelors.style.display = 'none';
-                sopAcademicMasters.style.display = 'none';
+    // After a short delay, you might want to show a "Thank you" message
+    // and then clear it. The actual success/failure would typically be
+    // handled by the Google Apps Script's response in the iframe,
+    // but this gives immediate feedback.
 
-                // Show sections based on selected study level
-                if (selectedLevel === 'bachelors') {
-                    // For Bachelor's, only SEE/SLC and +2 are needed (which are always visible)
-                } else if (selectedLevel === 'masters') {
-                    sopAcademicBachelors.style.display = 'block'; // Masters students also need Bachelor's info
-                } else if (selectedLevel === 'research') {
-                    sopAcademicBachelors.style.display = 'block'; // Research students need Bachelor's and Master's
-                    sopAcademicMasters.style.display = 'block';
-                }
-            }
+    // This setTimeout is for initial feedback. The real "thank you"
+    // should ideally come from the Apps Script callback if successful,
+    // but for simplicity mirroring the previous example, we'll use this.
+    setTimeout(() => {
+        messageDiv.textContent = "Thank you for submitting your application! We will get back to you soon.";
+        messageDiv.style.color = "green"; // Optional: style success message
 
-            // Add event listener for changes in the study level dropdown
-            sopStudyLevelSelect.addEventListener('change', sopUpdateAcademicVisibility);
+        // Clear the message after 5 seconds
+        setTimeout(() => {
+            messageDiv.textContent = "";
+        }, 5000);
+    }, 1000); // Show "Thank you" after 1 second (adjust as needed)
 
-            // Initial call to set correct visibility based on default/pre-selected value
-            sopUpdateAcademicVisibility();
+    return true; // Important: Allow the form to submit to the Google Apps Script
+}
 
-            // --- Dynamic "Add More" Functionality ---
+// --- Additional JavaScript for dynamic sections (if not already present) ---
 
-            // Function to create a new input group with incremented IDs/names
-            function sopCreateInputGroup(labelText, inputType, namePrefix, placeholder = '') {
-                const div = document.createElement('div');
-                div.className = 'sop-input-group';
-                const label = document.createElement('label');
-                label.textContent = labelText;
-                const input = document.createElement(inputType === 'textarea' ? 'textarea' : 'input');
-                input.type = inputType;
-                input.name = namePrefix + '[]'; // Use array notation for multiple entries
-                input.placeholder = placeholder;
-                if (inputType === 'number') {
-                    input.min = "1900";
-                    input.max = "2100";
-                }
-                div.appendChild(label);
-                div.appendChild(input);
-                return div;
-            }
+// Function to toggle academic sections based on study level
+function toggleAcademicSections() {
+    const studyLevel = document.getElementById('sopStudyLevel').value;
 
-            // Function to create a new select input group
-            function sopCreateSelectGroup(labelText, namePrefix, options) {
-                const div = document.createElement('div');
-                div.className = 'sop-input-group';
-                const label = document.createElement('label');
-                label.textContent = labelText;
-                const select = document.createElement('select');
-                select.name = namePrefix + '[]';
-                options.forEach(optionText => {
-                    const option = document.createElement('option');
-                    option.value = optionText.toLowerCase().replace(/ /g, '');
-                    option.textContent = optionText;
-                    select.appendChild(option);
-                });
-                div.appendChild(label);
-                div.appendChild(select);
-                return div;
-            }
+    document.getElementById('sop-academic-bachelors').style.display = 'none';
+    document.getElementById('sop-academic-masters').style.display = 'none';
 
-            // Add Work Experience
-            let sopWorkExperienceCount = 0; // Start at 0 for initial element
-            document.getElementById('sopAddWorkExperience').addEventListener('click', function() {
-                sopWorkExperienceCount++; // Increment before creating new element
-                const container = document.getElementById('sop-work-experience-container');
-                const newEntry = document.createElement('div');
-                newEntry.className = 'sop-work-experience-entry border p-4 rounded-md mb-4 bg-white';
-                newEntry.innerHTML = `
-                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Work Experience ${sopWorkExperienceCount + 1}</h3>
-                    <div class="sop-grid-cols-2">
-                        ${sopCreateInputGroup('Employer’s Name:', 'text', 'employerName').outerHTML}
-                        ${sopCreateInputGroup('Address:', 'text', 'employerAddress').outerHTML}
-                        ${sopCreateInputGroup('Your Position:', 'text', 'position').outerHTML}
-                        ${sopCreateInputGroup('Joining Date:', 'date', 'joiningDate').outerHTML}
-                        ${sopCreateInputGroup('Resigning Date (if applicable):', 'date', 'resigningDate').outerHTML}
-                        <div class="sop-input-group col-span-full">
-                            <label>Your Duties in brief:</label>
-                            <textarea name="duties[]"></textarea>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(newEntry);
-            });
+    if (studyLevel === 'bachelors' || studyLevel === 'masters' || studyLevel === 'research') {
+        document.getElementById('sop-academic-bachelors').style.display = 'block';
+    }
+    if (studyLevel === 'masters' || studyLevel === 'research') {
+        document.getElementById('sop-academic-masters').style.display = 'block';
+    }
+}
 
-            // Add Extra-Curricular Activity
-            let sopExtraCurricularCount = 0; // Start at 0 for initial element
-            document.getElementById('sopAddExtraCurricular').addEventListener('click', function() {
-                sopExtraCurricularCount++; // Increment before creating new element
-                const container = document.getElementById('sop-extra-curricular-container');
-                const newEntry = document.createElement('div');
-                newEntry.className = 'sop-extra-curricular-entry border p-4 rounded-md mb-4 bg-white';
-                newEntry.innerHTML = `
-                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Activity ${sopExtraCurricularCount + 1}</h3>
-                    <div class="sop-grid-cols-2">
-                        ${sopCreateSelectGroup('Type:', 'activityType', ['Select Type', 'Internship', 'Training', 'Extracurricular']).outerHTML}
-                        ${sopCreateInputGroup('Duration:', 'text', 'activityDuration', 'e.g., 3 months, Jan-Mar 2023').outerHTML}
-                        ${sopCreateInputGroup('Your Position:', 'text', 'activityPosition', 'e.g., Volunteer, Winner, Participant').outerHTML}
-                        ${sopCreateInputGroup('Organizer:', 'text', 'organizer').outerHTML}
-                        <div class="sop-input-group col-span-full">
-                            <label>Major Activities:</label>
-                            <textarea name="majorActivities[]"></textarea>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(newEntry);
-            });
-
-            // Add Family Member for Financial Background
-            let sopFamilyMemberCount = 0; // Start at 0 for initial element
-            document.getElementById('sopAddFamilyMember').addEventListener('click', function() {
-                sopFamilyMemberCount++; // Increment before creating new element
-                const container = document.getElementById('sop-financial-background-container');
-                const newEntry = document.createElement('div');
-                newEntry.className = 'sop-financial-entry border p-4 rounded-md mb-4 bg-white';
-                newEntry.innerHTML = `
-                    <h3 class="text-lg font-semibold text-gray-700 mb-3">Family Member ${sopFamilyMemberCount + 1}</h3>
-                    <div class="sop-grid-cols-2">
-                        ${sopCreateInputGroup('Family Member’s Name:', 'text', 'fmName').outerHTML}
-                        ${sopCreateInputGroup('Their Work Details (brief):', 'text', 'fmWorkDetails', 'e.g., Business Owner, Employee, Pensioner').outerHTML}
-                    </div>
-
-                    <div class="sop-financial-income-subsection">
-                        <h4>Business Income</h4>
-                        <div class="sop-grid-cols-2">
-                            ${sopCreateInputGroup('Business Name:', 'text', 'businessName').outerHTML}
-                            ${sopCreateInputGroup('Established Year:', 'number', 'businessEstYear').outerHTML}
-                            <div class="sop-input-group col-span-full">
-                                <label>Annual Profit:</label>
-                                <input type="text" name="businessProfit[]" placeholder="e.g., $50,000">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sop-financial-income-subsection">
-                        <h4>Salary Income</h4>
-                        <div class="sop-grid-cols-2">
-                            ${sopCreateInputGroup('Company Name (Salary):', 'text', 'companyName').outerHTML}
-                            ${sopCreateInputGroup('Location (Salary):', 'text', 'companyLocation').outerHTML}
-                            ${sopCreateInputGroup('Position (Salary):', 'text', 'salaryPosition').outerHTML}
-                            ${sopCreateInputGroup('Joining Date (Salary):', 'date', 'salaryJoiningDate').outerHTML}
-                            <div class="sop-input-group col-span-full">
-                                <label>Salary Amount (Annual):</label>
-                                <input type="text" name="salaryAmount[]" placeholder="e.g., $30,000">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sop-financial-income-subsection">
-                        <h4>Pension Income</h4>
-                        <div class="sop-grid-cols-2">
-                            ${sopCreateInputGroup('Name of Pension Giver:', 'text', 'pensionGiver').outerHTML}
-                            <div class="sop-input-group col-span-full">
-                                <label>Pension Amount (Annual):</label>
-                                <input type="text" name="pensionAmount[]" placeholder="e.g., $10,000">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sop-financial-income-subsection">
-                        <h4>Land Lease or House Rent Income</h4>
-                        <div class="sop-grid-cols-2">
-                            ${sopCreateInputGroup('Agreement Date (Land/Rent):', 'date', 'agreementDate').outerHTML}
-                            <div class="sop-input-group col-span-full">
-                                <label>Amount (Annual - Land/Rent):</label>
-                                <input type="text" name="rentAmount[]" placeholder="e.g., $5,000">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sop-financial-income-subsection">
-                        <h4>Foreign Income</h4>
-                        <div class="sop-grid-cols-2">
-                            ${sopCreateInputGroup('Visa Type (Foreign Income):', 'text', 'visaType').outerHTML}
-                            ${sopCreateInputGroup('Work Position (Foreign Income):', 'text', 'foreignWorkPosition').outerHTML}
-                            ${sopCreateInputGroup('Company Name (Foreign Income):', 'text', 'foreignCompanyName').outerHTML}
-                            <div class="sop-input-group col-span-full">
-                                <label>Monthly or Annual Amount (Foreign Income):</label>
-                                <input type="text" name="foreignAmount[]" placeholder="e.g., $2,000/month">
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(newEntry);
-            });
+// Event listener for study level change
+document.addEventListener('DOMContentLoaded', () => {
+    const studyLevelSelect = document.getElementById('sopStudyLevel');
+    if (studyLevelSelect) {
+        studyLevelSelect.addEventListener('change', toggleAcademicSections);
+        // Initial call to set visibility based on default/pre-selected value
+        toggleAcademicSections();
+    }
+});
 
 
-            // Function to handle form submission (called by onsubmit)
-            function sopHandleSubmit() {
-                // Show loading message
-                const loadingBox = document.createElement('div');
-                loadingBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
-                loadingBox.innerHTML = `
-                    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Submitting Form...</h3>
-                        <p class="text-gray-600 mb-6">Please wait while your data is being processed.</p>
-                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4 mx-auto"></div>
-                    </div>
-                    <style>
-                        .loader {
-                            border-top-color: #3b82f6;
-                            -webkit-animation: spinner 1.5s linear infinite;
-                            animation: spinner 1.5s linear infinite;
-                        }
-                        @-webkit-keyframes spinner {
-                            0% { -webkit-transform: rotate(0deg); }
-                            100% { -webkit-transform: rotate(360deg); }
-                        }
-                        @keyframes spinner {
-                            0% { transform: rotate(0deg); }
-                            100% { transform: rotate(360deg); }
-                        }
-                    </style>
-                `;
-                document.body.appendChild(loadingBox);
+// Function to add more work experience fields
+let workExperienceCount = 1; // Start from 1 as HTML already has one
+document.getElementById('sopAddWorkExperience').addEventListener('click', function() {
+    const container = document.getElementById('sop-work-experience-container');
+    const newEntry = document.createElement('div');
+    newEntry.className = 'sop-work-experience-entry border p-4 rounded-md mb-4 bg-white';
+    newEntry.innerHTML = `
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Work Experience ${workExperienceCount + 1}</h3>
+        <div class="sop-grid-cols-2">
+            <div class="sop-input-group">
+                <label for="sopEmployerName_${workExperienceCount}">Employer’s Name:</label>
+                <input type="text" id="sopEmployerName_${workExperienceCount}" name="employerName[]">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopEmployerAddress_${workExperienceCount}">Address:</label>
+                <input type="text" id="sopEmployerAddress_${workExperienceCount}" name="employerAddress[]">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopPosition_${workExperienceCount}">Your Position:</label>
+                <input type="text" id="sopPosition_${workExperienceCount}" name="position[]">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopJoiningDate_${workExperienceCount}">Joining Date:</label>
+                <input type="date" id="sopJoiningDate_${workExperienceCount}" name="joiningDate[]">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopResigningDate_${workExperienceCount}">Resigning Date (if applicable):</label>
+                <input type="date" id="sopResigningDate_${workExperienceCount}" name="resigningDate[]">
+            </div>
+            <div class="sop-input-group col-span-full">
+                <label for="sopDuties_${workExperienceCount}">Your Duties in brief:</label>
+                <textarea id="sopDuties_${workExperienceCount}" name="duties[]"></textarea>
+            </div>
+        </div>
+    `;
+    container.appendChild(newEntry);
+    workExperienceCount++;
+});
 
-                // Return true to allow the form to submit normally to the iframe
-                return true;
-            }
+// Function to add more extracurricular/internship fields
+let extraCurricularCount = 1;
+document.getElementById('sopAddExtraCurricular').addEventListener('click', function() {
+    const container = document.getElementById('sop-extra-curricular-container');
+    const newEntry = document.createElement('div');
+    newEntry.className = 'sop-extra-curricular-entry border p-4 rounded-md mb-4 bg-white';
+    newEntry.innerHTML = `
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Activity ${extraCurricularCount + 1}</h3>
+        <div class="sop-grid-cols-2">
+            <div class="sop-input-group">
+                <label for="sopActivityType_${extraCurricularCount}">Type:</label>
+                <select id="sopActivityType_${extraCurricularCount}" name="activityType[]">
+                    <option value="">Select Type</option>
+                    <option value="internship">Internship</option>
+                    <option value="training">Training</option>
+                    <option value="extracurricular">Extracurricular</option>
+                </select>
+            </div>
+            <div class="sop-input-group">
+                <label for="sopActivityDuration_${extraCurricularCount}">Duration:</label>
+                <input type="text" id="sopActivityDuration_${extraCurricularCount}" name="activityDuration[]" placeholder="e.g., 3 months, Jan-Mar 2023">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopActivityPosition_${extraCurricularCount}">Your Position:</label>
+                <input type="text" id="sopActivityPosition_${extraCurricularCount}" name="activityPosition[]" placeholder="e.g., Volunteer, Winner, Participant">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopOrganizer_${extraCurricularCount}">Organizer:</label>
+                <input type="text" id="sopOrganizer_${extraCurricularCount}" name="organizer[]">
+            </div>
+            <div class="sop-input-group col-span-full">
+                <label for="sopMajorActivities_${extraCurricularCount}">Major Activities:</label>
+                <textarea id="sopMajorActivities_${extraCurricularCount}" name="majorActivities[]"></textarea>
+            </div>
+        </div>
+    `;
+    container.appendChild(newEntry);
+    extraCurricularCount++;
+});
 
-            // Listen for the iframe to load (indicating the Apps Script has processed the submission)
-            sopHiddenIframe.onload = function() {
-                // Remove loading message
-                const existingLoadingBox = document.querySelector('.fixed.inset-0.bg-gray-800');
-                if (existingLoadingBox) {
-                    document.body.removeChild(existingLoadingBox);
-                }
+// Function to add more financial family members
+let familyMemberCount = 1;
+document.getElementById('sopAddFamilyMember').addEventListener('click', function() {
+    const container = document.getElementById('sop-financial-background-container');
+    const newEntry = document.createElement('div');
+    newEntry.className = 'sop-financial-entry border p-4 rounded-md mb-4 bg-white';
+    newEntry.innerHTML = `
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Family Member ${familyMemberCount + 1}</h3>
+        <div class="sop-grid-cols-2">
+            <div class="sop-input-group">
+                <label for="sopFmName_${familyMemberCount}">Family Member’s Name:</label>
+                <input type="text" id="sopFmName_${familyMemberCount}" name="fmName[]">
+            </div>
+            <div class="sop-input-group">
+                <label for="sopFmWorkDetails_${familyMemberCount}">Their Work Details (brief):</label>
+                <input type="text" id="sopFmWorkDetails_${familyMemberCount}" name="fmWorkDetails[]" placeholder="e.g., Business Owner, Employee, Pensioner">
+            </div>
+        </div>
 
-                // Show success message
-                const successMessageBox = document.createElement('div');
-                successMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
-                successMessageBox.innerHTML = `
-                    <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted Successfully!</h3>
-                        <p class="text-gray-600 mb-6">Your form is submitted! Our team will reach out to you for further discussion.</p>
-                        <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
-                    </div>
-                `;
-                document.body.appendChild(successMessageBox);
+        <div class="sop-financial-income-subsection">
+            <h4>Business Income</h4>
+            <div class="sop-grid-cols-2">
+                <div class="sop-input-group">
+                    <label for="sopBusinessName_${familyMemberCount}">Business Name:</label>
+                    <input type="text" id="sopBusinessName_${familyMemberCount}" name="businessName[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopBusinessEstYear_${familyMemberCount}">Established Year:</label>
+                    <input type="number" id="sopBusinessEstYear_${familyMemberCount}" name="businessEstYear[]" min="1900" max="2100">
+                </div>
+                <div class="sop-input-group col-span-full">
+                    <label for="sopBusinessProfit_${familyMemberCount}">Annual Profit:</label>
+                    <input type="text" id="sopBusinessProfit_${familyMemberCount}" name="businessProfit[]" placeholder="e.g., $50,000">
+                </div>
+            </div>
+        </div>
 
-                document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
-                    document.body.removeChild(successMessageBox);
-                    sopStudentForm.reset(); // Optionally reset the form after successful submission
-                    sopUpdateAcademicVisibility(); // Reset academic section visibility
-                });
+        <div class="sop-financial-income-subsection">
+            <h4>Salary Income</h4>
+            <div class="sop-grid-cols-2">
+                <div class="sop-input-group">
+                    <label for="sopCompanyName_${familyMemberCount}">Company Name (Salary):</label>
+                    <input type="text" id="sopCompanyName_${familyMemberCount}" name="companyName[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopCompanyLocation_${familyMemberCount}">Location (Salary):</label>
+                    <input type="text" id="sopCompanyLocation_${familyMemberCount}" name="companyLocation[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopSalaryPosition_${familyMemberCount}">Position (Salary):</label>
+                    <input type="text" id="sopSalaryPosition_${familyMemberCount}" name="salaryPosition[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopSalaryJoiningDate_${familyMemberCount}">Joining Date (Salary):</label>
+                    <input type="date" id="sopSalaryJoiningDate_${familyMemberCount}" name="salaryJoiningDate[]">
+                </div>
+                <div class="sop-input-group col-span-full">
+                    <label for="sopSalaryAmount_${familyMemberCount}">Salary Amount (Annual):</label>
+                    <input type="text" id="sopSalaryAmount_${familyMemberCount}" name="salaryAmount[]" placeholder="e.g., $30,000">
+                </div>
+            </div>
+        </div>
 
-                // Clear the iframe content to prevent re-triggering onload on subsequent submissions
-                sopHiddenIframe.contentWindow.document.open();
-                sopHiddenIframe.contentWindow.document.close();
-            };
+        <div class="sop-financial-income-subsection">
+            <h4>Pension Income</h4>
+            <div class="sop-grid-cols-2">
+                <div class="sop-input-group">
+                    <label for="sopPensionGiver_${familyMemberCount}">Name of Pension Giver:</label>
+                    <input type="text" id="sopPensionGiver_${familyMemberCount}" name="pensionGiver[]">
+                </div>
+                <div class="sop-input-group col-span-full">
+                    <label for="sopPensionAmount_${familyMemberCount}">Pension Amount (Annual):</label>
+                    <input type="text" id="sopPensionAmount_${familyMemberCount}" name="pensionAmount[]" placeholder="e.g., $10,000">
+                </div>
+            </div>
+        </div>
 
-            // You might want an onerror for the iframe, but direct error feedback from no-cors POST is limited.
-            // Errors would primarily be seen in the Google Apps Script execution logs.
+        <div class="sop-financial-income-subsection">
+            <h4>Land Lease or House Rent Income</h4>
+            <div class="sop-grid-cols-2">
+                <div class="sop-input-group">
+                    <label for="sopAgreementDate_${familyMemberCount}">Agreement Date (Land/Rent):</label>
+                    <input type="date" id="sopAgreementDate_${familyMemberCount}" name="agreementDate[]">
+                </div>
+                <div class="sop-input-group col-span-full">
+                    <label for="sopRentAmount_${familyMemberCount}">Amount (Annual - Land/Rent):</label>
+                    <input type="text" id="sopRentAmount_${familyMemberCount}" name="rentAmount[]" placeholder="e.g., $5,000">
+                </div>
+            </div>
+        </div>
 
-        })(); // End of IIFE
-
-        
-
-        
+        <div class="sop-financial-income-subsection">
+            <h4>Foreign Income</h4>
+            <div class="sop-grid-cols-2">
+                <div class="sop-input-group">
+                    <label for="sopVisaType_${familyMemberCount}">Visa Type (Foreign Income):</label>
+                    <input type="text" id="sopVisaType_${familyMemberCount}" name="visaType[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopForeignWorkPosition_${familyMemberCount}">Work Position (Foreign Income):</label>
+                    <input type="text" id="sopForeignWorkPosition_${familyMemberCount}" name="foreignWorkPosition[]">
+                </div>
+                <div class="sop-input-group">
+                    <label for="sopForeignCompanyName_${familyMemberCount}">Company Name (Foreign Income):</label>
+                    <input type="text" id="sopForeignCompanyName_${familyMemberCount}" name="foreignCompanyName[]">
+                </div>
+                <div class="sop-input-group col-span-full">
+                    <label for="sopForeignAmount_${familyMemberCount}">Monthly or Annual Amount (Foreign Income):</label>
+                    <input type="text" id="sopForeignAmount_${familyMemberCount}" name="foreignAmount[]" placeholder="e.g., $2,000/month">
+                </div>
+            </div>
+        </div>
+    `;
+    container.appendChild(newEntry);
+    familyMemberCount++;
+});
