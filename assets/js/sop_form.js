@@ -1,5 +1,8 @@
 
         (function() { // IIFE for encapsulation
+            // IMPORTANT: Replace with your deployed Google Apps Script Web App URL
+            const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Y2cyQbJT1_tFkNy91jxoBjhNcAJwGLdvVmpDLMond-v4b7rttYJ6Tr66KeuYhFar/exec'; // <--- REPLACE THIS LINE
+
             const sopStudyLevelSelect = document.getElementById('sopStudyLevel');
             const sopAcademicBachelors = document.getElementById('sop-academic-bachelors');
             const sopAcademicMasters = document.getElementById('sop-academic-masters');
@@ -197,7 +200,7 @@
 
             // Handle form submission (for demonstration purposes)
             const sopStudentForm = document.getElementById('sopStudentForm');
-            sopStudentForm.addEventListener('submit', function(event) {
+            sopStudentForm.addEventListener('submit', async function(event) { // Added 'async'
                 event.preventDefault(); // Prevent default form submission
 
                 // Collect form data
@@ -229,20 +232,91 @@
 
                 console.log('Form Data Collected:', data);
 
-                // Provide a simple message to the user instead of alert()
-                const messageBox = document.createElement('div');
-                messageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
-                messageBox.innerHTML = `
+                // Show loading message
+                const loadingBox = document.createElement('div');
+                loadingBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
+                loadingBox.innerHTML = `
                     <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted!</h3>
-                        <p class="text-gray-600 mb-6">Thank you for providing your details. Check the console for collected data.</p>
-                        <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Submitting Form...</h3>
+                        <p class="text-gray-600 mb-6">Please wait while your data is being processed.</p>
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4 mx-auto"></div>
                     </div>
+                    <style>
+                        .loader {
+                            border-top-color: #3b82f6;
+                            -webkit-animation: spinner 1.5s linear infinite;
+                            animation: spinner 1.5s linear infinite;
+                        }
+                        @-webkit-keyframes spinner {
+                            0% { -webkit-transform: rotate(0deg); }
+                            100% { -webkit-transform: rotate(360deg); }
+                        }
+                        @keyframes spinner {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    </style>
                 `;
-                document.body.appendChild(messageBox);
+                document.body.appendChild(loadingBox);
 
-                document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
-                    document.body.removeChild(messageBox);
-                });
+
+                try {
+                    const response = await fetch(GOOGLE_APP_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script web app
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    // For 'no-cors' mode, response.ok will always be false, and response.json() will fail.
+                    // We rely on the Apps Script to confirm success via its execution log.
+                    // A simple way to handle this on the client-side is to assume success if no network error.
+                    console.log('Form submission initiated. Check Google Apps Script logs for details.');
+
+                    // Remove loading message
+                    document.body.removeChild(loadingBox);
+
+                    // Show success message
+                    const successMessageBox = document.createElement('div');
+                    successMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
+                    successMessageBox.innerHTML = `
+                        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Form Submitted Successfully!</h3>
+                            <p class="text-gray-600 mb-6">Your data has been sent. A new Google Sheet will be created.</p>
+                            <button id="sopCloseMessageBox" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Close</button>
+                        </div>
+                    `;
+                    document.body.appendChild(successMessageBox);
+
+                    document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
+                        document.body.removeChild(successMessageBox);
+                        sopStudentForm.reset(); // Optionally reset the form after successful submission
+                        sopUpdateAcademicVisibility(); // Reset academic section visibility
+                    });
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    // Remove loading message
+                    document.body.removeChild(loadingBox);
+
+                    // Show error message
+                    const errorMessageBox = document.createElement('div');
+                    errorMessageBox.className = 'fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50';
+                    errorMessageBox.innerHTML = `
+                        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+                            <h3 class="text-2xl font-bold text-red-600 mb-4">Submission Failed!</h3>
+                            <p class="text-gray-600 mb-6">There was an error submitting your form. Please try again.</p>
+                            <button id="sopCloseMessageBox" class="px-6 py-3 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300">Close</button>
+                        </div>
+                    `;
+                    document.body.appendChild(errorMessageBox);
+
+                    document.getElementById('sopCloseMessageBox').addEventListener('click', function() {
+                        document.body.removeChild(errorMessageBox);
+                    });
+                }
             });
         })(); // End of IIFE
+
