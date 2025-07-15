@@ -4,465 +4,51 @@ title: SOP Request Form
 description: "A comprehensive form for students to provide their details for Statement of Purpose (SOP) preparation."
 permalink: /sop_form/
 ---
+    <h1>SOP Request Form</h1>
+    <p>Please fill out the form below to request your Statement of Purpose.</p>
 
+    <!--
+        Important: Replace "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+        with the actual Web App URL you obtained after deploying your Code.gs script.
+    -->
+    <form id="sopForm" method="POST" target="hidden_iframe"
+          action="https://script.google.com/macros/s/AKfycbyQFjBHQ64D3UTQrfjVyra2pB595yweOd4xHlFY854zxOywKFuoDUTehmiVJcwGwGfc/exec">
 
+        <!-- Hidden input for sheet name, crucial for Google Apps Script -->
+        <input type="hidden" name="sheetName" value="SOP_Requests">
 
+        <p>
+            <label for="fullName">Full Name:</label><br>
+            <input type="text" id="fullName" name="fullName" required>
+        </p>
 
-    <div class="sop-form-container">
-        <h1 class="sop-form-section-title">Student Data Collection Form</h1>
-        <form id="sopStudentForm"
-              action="https://script.google.com/macros/s/AKfycbz3Y2cyQbJT1_tFkNy91jxoBjhNcAJwGLdvVmpDLMond-v4b7rttYJ6Tr66KeuYhFar/exec" 
-              method="POST"
-              target="sopHiddenIframe"
-              onsubmit="return sopHandleSubmit();">
+        <p>
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" required>
+        </p>
 
-            <!-- Personal Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Personal Background</h2>
-                <div class="sop-grid-cols-2">
-                    <div class="sop-input-group">
-                        <label for="sopFullName">Name:</label>
-                        <input type="text" id="sopFullName" name="fullName" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopDob">Date of Birth:</label>
-                        <input type="date" id="sopDob" name="dob" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopAddress">Address:</label>
-                        <input type="text" id="sopAddress" name="address" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopPassportNumber">Passport Number:</label>
-                        <input type="text" id="sopPassportNumber" name="passportNumber">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopPassportUpload">Or Upload Passport:</label>
-                        <input type="file" id="sopPassportUpload" name="passportUpload" accept=".pdf,.jpg,.jpeg,.png">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopEmail">Email:</label>
-                        <input type="email" id="sopEmail" name="email" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopContactNumber">Contact Number:</label>
-                        <input type="text" id="sopContactNumber" name="contactNumber" required>
-                    </div>
-                </div>
-            </div>
+        <p>
+            <label for="contactNumber">Contact Number:</label><br>
+            <input type="tel" id="contactNumber" name="contactNumber" required>
+        </p>
 
-            <!-- Language Proficiency Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Language Proficiency Background (English)</h2>
-                <div class="sop-grid-cols-2">
-                    <div class="sop-input-group">
-                        <label for="sopEnglishExam">English Language Proficiency Test:</label>
-                        <input type="text" id="sopEnglishExam" name="englishExam" placeholder="e.g., IELTS, TOEFL">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopExamDate">Exam Date:</label>
-                        <input type="date" id="sopExamDate" name="examDate">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopUniqueId">Unique ID:</label>
-                        <input type="text" id="sopUniqueId" name="uniqueId">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopOverallScore">Overall Score:</label>
-                        <input type="text" id="sopOverallScore" name="overallScore" placeholder="e.g., 7.0">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopListeningScore">Listening Score:</label>
-                        <input type="text" id="sopListeningScore" name="listeningScore">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopReadingScore">Reading Score:</label>
-                        <input type="text" id="sopReadingScore" name="readingScore">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopWritingScore">Writing Score:</label>
-                        <input type="text" id="sopWritingScore" name="writingScore">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopSpeakingScore">Speaking Score:</label>
-                        <input type="text" id="sopSpeakingScore" name="speakingScore">
-                    </div>
-                </div>
-            </div>
+        <p>
+            <label for="universityName">Target University Name:</label><br>
+            <input type="text" id="universityName" name="universityName" required>
+        </p>
 
-            <!-- Offer letter details - Moved above Academic Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Offer Letter Details</h2>
-                <div class="sop-grid-cols-2">
-                    <div class="sop-input-group">
-                        <label for="sopUniCollegeName">Name and Location of University/College:</label>
-                        <input type="text" id="sopUniCollegeName" name="uniCollegeName" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopStudyLevel">Your Study Level:</label>
-                        <select id="sopStudyLevel" name="studyLevel" required>
-                            <option value="">Select Study Level</option>
-                            <option value="bachelors">Bachelor's</option>
-                            <option value="masters">Master's</option>
-                            <option value="research">Research (PhD, MPhil, etc.)</option>
-                        </select>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopCourseName">Course:</label>
-                        <input type="text" id="sopCourseName" name="courseName" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopScholarshipDetails">Scholarship Details (if applicable):</label>
-                        <input type="text" id="sopScholarshipDetails" name="scholarshipDetails">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopFeeStructure">Fee Structure:</label>
-                        <input type="text" id="sopFeeStructure" name="feeStructure" placeholder="e.g., $20,000/year">
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopCourseStartDate">Start Date of Course:</label>
-                        <input type="date" id="sopCourseStartDate" name="courseStartDate" required>
-                    </div>
-                    <div class="sop-input-group">
-                        <label for="sopCourseEndDate">End Date of Course:</label>
-                        <input type="date" id="sopCourseEndDate" name="courseEndDate" required>
-                    </div>
-                    <div class="sop-input-group col-span-full">
-                        <label for="sopWorkPlacementDetails">Details of additional work placement (if applicable):</label>
-                        <textarea id="sopWorkPlacementDetails" name="workPlacementDetails"></textarea>
-                    </div>
-                </div>
-            </div>
+        <p>
+            <label for="courseName">Desired Course Name:</label><br>
+            <input type="text" id="courseName" name="courseName" required>
+        </p>
 
-            <!-- Academic Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Academic Background</h2>
+        <p>
+            <button type="submit">Submit Request</button>
+        </p>
+    </form>
 
-                <!-- SEE/SLC Level - Always visible -->
-                <div id="sop-academic-see-slc" class="sop-academic-level-section" style="display: block;">
-                    <h3>SEE / School Leaving Certificate</h3>
-                    <div class="sop-grid-cols-2">
-                        <div class="sop-input-group">
-                            <label for="sopSeeSchoolName">School Name:</label>
-                            <input type="text" id="sopSeeSchoolName" name="seeSchoolName">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopSeeBoard">Board:</label>
-                            <input type="text" id="sopSeeBoard" name="seeBoard">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopSeePassYear">Pass Year:</label>
-                            <input type="number" id="sopSeePassYear" name="seePassYear" min="1900" max="2100">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopSeeGpa">GPA / Percentage:</label>
-                            <input type="text" id="sopSeeGpa" name="seeGpa">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- +2 Level - Always visible -->
-                <div id="sop-academic-plus2" class="sop-academic-level-section" style="display: block;">
-                    <h3>+2 Level / Intermediate</h3>
-                    <div class="sop-grid-cols-2">
-                        <div class="sop-input-group">
-                            <label for="sopPlus2SchoolName">School/College Name:</label>
-                            <input type="text" id="sopPlus2SchoolName" name="plus2SchoolName">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopPlus2Board">Board:</label>
-                            <input type="text" id="sopPlus2Board" name="plus2Board">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopPlus2PassYear">Pass Year:</label>
-                            <input type="number" id="sopPlus2PassYear" name="plus2PassYear" min="1900" max="2100">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopPlus2Gpa">GPA / Percentage:</label>
-                            <input type="text" id="sopPlus2Gpa" name="plus2Gpa">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bachelor's Level (Dynamically shown) -->
-                <div id="sop-academic-bachelors" class="sop-academic-level-section">
-                    <h3>Bachelor's Level</h3>
-                    <div class="sop-grid-cols-2">
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsUniName">University Name:</label>
-                            <input type="text" id="sopBachelorsUniName" name="bachelorsUniName">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsBoard">Board:</label>
-                            <input type="text" id="sopBachelorsBoard" name="bachelorsBoard">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsPassYear">Pass Year:</label>
-                            <input type="number" id="sopBachelorsPassYear" name="bachelorsPassYear" min="1900" max="2100">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsGpa">GPA / Percentage:</label>
-                            <input type="text" id="sopBachelorsGpa" name="bachelorsGpa">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsMajor">Major:</label>
-                            <input type="text" id="sopBachelorsMajor" name="bachelorsMajor">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopBachelorsThesis">Thesis Title (if applicable):</label>
-                            <input type="text" id="sopBachelorsThesis" name="bachelorsThesis">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Master's Level (Dynamically shown) -->
-                <div id="sop-academic-masters" class="sop-academic-level-section">
-                    <h3>Master's Level</h3>
-                    <div class="sop-grid-cols-2">
-                        <div class="sop-input-group">
-                            <label for="sopMastersUniName">University Name:</label>
-                            <input type="text" id="sopMastersUniName" name="mastersUniName">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopMastersBoard">Board:</label>
-                            <input type="text" id="sopMastersBoard" name="mastersBoard">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopMastersPassYear">Pass Year:</label>
-                            <input type="number" id="sopMastersPassYear" name="mastersPassYear" min="1900" max="2100">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopMastersGpa">GPA / Percentage:</label>
-                            <input type="text" id="sopMastersGpa" name="mastersGpa">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopMastersMajor">Major:</label>
-                            <input type="text" id="sopMastersMajor" name="mastersMajor">
-                        </div>
-                        <div class="sop-input-group">
-                            <label for="sopMastersThesis">Thesis Title (if applicable):</label>
-                            <input type="text" id="sopMastersThesis" name="mastersThesis">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Work Experience Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Work Experience Background</h2>
-                <div id="sop-work-experience-container">
-                    <div class="sop-work-experience-entry border p-4 rounded-md mb-4 bg-white">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Work Experience 1</h3>
-                        <div class="sop-grid-cols-2">
-                            <div class="sop-input-group">
-                                <label for="sopEmployerName_0">Employer’s Name:</label>
-                                <input type="text" id="sopEmployerName_0" name="employerName[]">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopEmployerAddress_0">Address:</label>
-                                <input type="text" id="sopEmployerAddress_0" name="employerAddress[]">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopPosition_0">Your Position:</label>
-                                <input type="text" id="sopPosition_0" name="position[]">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopJoiningDate_0">Joining Date:</label>
-                                <input type="date" id="sopJoiningDate_0" name="joiningDate[]">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopResigningDate_0">Resigning Date (if applicable):</label>
-                                <input type="date" id="sopResigningDate_0" name="resigningDate[]">
-                            </div>
-                            <div class="sop-input-group col-span-full">
-                                <label for="sopDuties_0">Your Duties in brief:</label>
-                                <textarea id="sopDuties_0" name="duties[]"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" id="sopAddWorkExperience" class="sop-add-more-button">Add More Work Experience</button>
-            </div>
-
-            <!-- Internship/ Training/ Extracurricular documents details -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Internship/Training/Extracurricular Details</h2>
-                <div id="sop-extra-curricular-container">
-                    <div class="sop-extra-curricular-entry border p-4 rounded-md mb-4 bg-white">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Activity 1</h3>
-                        <div class="sop-grid-cols-2">
-                            <div class="sop-input-group">
-                                <label for="sopActivityType_0">Type:</label>
-                                <select id="sopActivityType_0" name="activityType[]">
-                                    <option value="">Select Type</option>
-                                    <option value="internship">Internship</option>
-                                    <option value="training">Training</option>
-                                    <option value="extracurricular">Extracurricular</option>
-                                </select>
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopActivityDuration_0">Duration:</label>
-                                <input type="text" id="sopActivityDuration_0" name="activityDuration[]" placeholder="e.g., 3 months, Jan-Mar 2023">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopActivityPosition_0">Your Position:</label>
-                                <input type="text" id="sopActivityPosition_0" name="activityPosition[]" placeholder="e.g., Volunteer, Winner, Participant">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopOrganizer_0">Organizer:</label>
-                                <input type="text" id="sopOrganizer_0" name="organizer[]">
-                            </div>
-                            <div class="sop-input-group col-span-full">
-                                <label for="sopMajorActivities_0">Major Activities:</label>
-                                <textarea id="sopMajorActivities_0" name="majorActivities[]"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" id="sopAddExtraCurricular" class="sop-add-more-button">Add More Activity</button>
-            </div>
-
-            <!-- Your Career Plan -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Your Career Plan</h2>
-                <div class="sop-input-group">
-                    <label for="sopCareerPlan">What do you aspire to be after choosing this course:</label>
-                    <textarea id="sopCareerPlan" name="careerPlan" required></textarea>
-                </div>
-            </div>
-
-            <!-- Your Financial Background -->
-            <div class="sop-form-section">
-                <h2 class="sop-form-section-title">Your Financial Background</h2>
-                <p class="mb-4 text-gray-600">Please provide details for each family member contributing to your finances.</p>
-                <div id="sop-financial-background-container">
-                    <div class="sop-financial-entry border p-4 rounded-md mb-4 bg-white">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-3">Family Member 1</h3>
-                        <div class="sop-grid-cols-2">
-                            <div class="sop-input-group">
-                                <label for="sopFmName_0">Family Member’s Name:</label>
-                                <input type="text" id="sopFmName_0" name="fmName[]">
-                            </div>
-                            <div class="sop-input-group">
-                                <label for="sopFmWorkDetails_0">Their Work Details (brief):</label>
-                                <input type="text" id="sopFmWorkDetails_0" name="fmWorkDetails[]" placeholder="e.g., Business Owner, Employee, Pensioner">
-                            </div>
-                        </div>
-
-                        <!-- Business Subsection -->
-                        <div class="sop-financial-income-subsection">
-                            <h4>Business Income</h4>
-                            <div class="sop-grid-cols-2">
-                                <div class="sop-input-group">
-                                    <label for="sopBusinessName_0">Business Name:</label>
-                                    <input type="text" id="sopBusinessName_0" name="businessName[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopBusinessEstYear_0">Established Year:</label>
-                                    <input type="number" id="sopBusinessEstYear_0" name="businessEstYear[]" min="1900" max="2100">
-                                </div>
-                                <div class="sop-input-group col-span-full">
-                                    <label for="sopBusinessProfit_0">Annual Profit:</label>
-                                    <input type="text" id="sopBusinessProfit_0" name="businessProfit[]" placeholder="e.g., $50,000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Salary Subsection -->
-                        <div class="sop-financial-income-subsection">
-                            <h4>Salary Income</h4>
-                            <div class="sop-grid-cols-2">
-                                <div class="sop-input-group">
-                                    <label for="sopCompanyName_0">Company Name (Salary):</label>
-                                    <input type="text" id="sopCompanyName_0" name="companyName[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopCompanyLocation_0">Location (Salary):</label>
-                                    <input type="text" id="sopCompanyLocation_0" name="companyLocation[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopSalaryPosition_0">Position (Salary):</label>
-                                    <input type="text" id="sopSalaryPosition_0" name="salaryPosition[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopSalaryJoiningDate_0">Joining Date (Salary):</label>
-                                    <input type="date" id="sopSalaryJoiningDate_0" name="salaryJoiningDate[]">
-                                </div>
-                                <div class="sop-input-group col-span-full">
-                                    <label for="sopSalaryAmount_0">Salary Amount (Annual):</label>
-                                    <input type="text" id="sopSalaryAmount_0" name="salaryAmount[]" placeholder="e.g., $30,000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pension Subsection -->
-                        <div class="sop-financial-income-subsection">
-                            <h4>Pension Income</h4>
-                            <div class="sop-grid-cols-2">
-                                <div class="sop-input-group">
-                                    <label for="sopPensionGiver_0">Name of Pension Giver:</label>
-                                    <input type="text" id="sopPensionGiver_0" name="pensionGiver[]">
-                                </div>
-                                <div class="sop-input-group col-span-full">
-                                    <label for="sopPensionAmount_0">Pension Amount (Annual):</label>
-                                    <input type="text" id="sopPensionAmount_0" name="pensionAmount[]" placeholder="e.g., $10,000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Land Lease/House Rent Subsection -->
-                        <div class="sop-financial-income-subsection">
-                            <h4>Land Lease or House Rent Income</h4>
-                            <div class="sop-grid-cols-2">
-                                <div class="sop-input-group">
-                                    <label for="sopAgreementDate_0">Agreement Date (Land/Rent):</label>
-                                    <input type="date" id="sopAgreementDate_0" name="agreementDate[]">
-                                </div>
-                                <div class="sop-input-group col-span-full">
-                                    <label for="sopRentAmount_0">Amount (Annual - Land/Rent):</label>
-                                    <input type="text" id="sopRentAmount_0" name="rentAmount[]" placeholder="e.g., $5,000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Foreign Income Subsection -->
-                        <div class="sop-financial-income-subsection">
-                            <h4>Foreign Income</h4>
-                            <div class="sop-grid-cols-2">
-                                <div class="sop-input-group">
-                                    <label for="sopVisaType_0">Visa Type (Foreign Income):</label>
-                                    <input type="text" id="sopVisaType_0" name="visaType[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopForeignWorkPosition_0">Work Position (Foreign Income):</label>
-                                    <input type="text" id="sopForeignWorkPosition_0" name="foreignWorkPosition[]">
-                                </div>
-                                <div class="sop-input-group">
-                                    <label for="sopForeignCompanyName_0">Company Name (Foreign Income):</label>
-                                    <input type="text" id="sopForeignCompanyName_0" name="foreignCompanyName[]">
-                                </div>
-                                <div class="sop-input-group col-span-full">
-                                    <label for="sopForeignAmount_0">Monthly or Annual Amount (Foreign Income):</label>
-                                    <input type="text" id="sopForeignAmount_0" name="foreignAmount[]" placeholder="e.g., $2,000/month">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" id="sopAddFamilyMember" class="sop-add-more-button">Add Another Family Member</button>
-            </div>
-
-            <button type="submit" class="sop-submit-button">Submit Application</button>
-        </form>
-    </div>
-
-    <!-- Hidden iframe for form submission -->
-    <iframe name="sopHiddenIframe" id="sopHiddenIframe" style="display:none;"></iframe>
-
-
-
-
-
+    <!-- Hidden iframe for form submission to prevent page reload -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
 
 
