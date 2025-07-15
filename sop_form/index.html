@@ -679,7 +679,11 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="markdown-body">
       <div class="sop-form-container">
         <h1 class="sop-form-section-title">Student Data Collection Form</h1>
-        <form id="sopStudentForm">
+        <form id="sopStudentForm"
+              action="YOUR_GOOGLE_APP_SCRIPT_WEB_APP_URL_HERE" <!-- REPLACE THIS WITH YOUR DEPLOYED APP SCRIPT URL -->
+              method="POST"
+              target="sopHiddenIframe"
+              onsubmit="return sopHandleSubmit();">
 
             <!-- Personal Background -->
             <div class="sop-form-section">
@@ -1120,6 +1124,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <button type="submit" class="sop-submit-button">Submit Application</button>
         </form>
     </div>
+
+    <!-- Hidden iframe for form submission -->
+    <iframe name="sopHiddenIframe" id="sopHiddenIframe" style="display:none;"></iframe>
+
+
 
 
 
