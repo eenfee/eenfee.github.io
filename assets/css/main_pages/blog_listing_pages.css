@@ -2,17 +2,17 @@
 /* This ensures styles are scoped to the .blog-listing-page container */
 
 .blog-listing-page {
-    max-width: 1000px; /* Max width for the content */
-    margin: 40px auto; /* Center the content with vertical margin */
-    padding: 0 20px; /* Horizontal padding for smaller screens */
-    font-family: 'Inter', sans-serif; /* Use Inter font */
-    color: #333; /* Default text color */
+    max-width: 1200px; /* Wider max-width to accommodate more cards initially */
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+    color: #333;
 }
 
 .blog-listing__main-heading {
     text-align: center;
     font-size: 2.8em;
-    color: #2c3e50; /* Darker heading color */
+    color: #2c3e50;
     margin-bottom: 40px;
     position: relative;
     padding-bottom: 15px;
@@ -26,45 +26,69 @@
     transform: translateX(-50%);
     width: 80px;
     height: 5px;
-    background-color: #007bff; /* Accent color */
+    background-color: #007bff;
     border-radius: 3px;
 }
 
 .blog-listing__section {
-    margin-bottom: 50px; /* Space between sections */
+    margin-bottom: 50px;
 }
 
 .blog-listing__section-title {
     font-size: 2em;
     color: #34495e;
     margin-bottom: 30px;
-    border-bottom: 2px solid #eee; /* Subtle separator */
-    padding-bottom: 10px;
+    /* Removed border-bottom here for cleaner look above scrollable area */
+    text-align: center; /* Center the section title */
 }
 
-.blog-listing__list {
-    list-style: none; /* Remove default list bullets */
+/* --- Scrollable List Wrapper (ensures overflow works correctly) --- */
+.blog-listing__scroll-wrapper {
+    margin-bottom: 20px; /* Space below the scrollable area */
+    /* Add horizontal padding here so content isn't flush with the edge, but scrollbar is */
+    padding-bottom: 20px; /* Space for hidden scrollbar area */
+}
+
+/* --- Scrollable Flex Container (the <ul>) --- */
+.blog-listing__list--scrollable {
+    list-style: none;
     padding: 0;
     margin: 0;
-    display: grid; /* Use CSS Grid for a modern layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 30px; /* Space between grid items */
+    display: flex; /* Key change: display as flex */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-snap-type: x mandatory; /* Snap to items */
+    gap: 25px; /* Space between flex items */
+
+    /* Hide scrollbar for a cleaner look */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
-.blog-listing__item {
+.blog-listing__list--scrollable::-webkit-scrollbar { /* WebKit (Chrome, Safari) */
+    display: none;
+}
+
+/* --- Individual Blog Card Item (the <li>) --- */
+.blog-listing__item--card {
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     padding: 25px;
-    display: flex; /* Flexbox for content within each card */
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Push read more to bottom */
+    justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Key change: fixed width for each card */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    width: 320px; /* Fixed width for each card */
+    scroll-snap-align: start; /* Snap point at the start of each card */
 }
 
-.blog-listing__item:hover {
-    transform: translateY(-8px); /* Lift effect on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+.blog-listing__item--card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .blog-listing__item-title {
@@ -76,12 +100,12 @@
 
 .blog-listing__item-link {
     text-decoration: none;
-    color: #007bff; /* Blue link color */
+    color: #007bff;
     transition: color 0.3s ease;
 }
 
 .blog-listing__item-link:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
     text-decoration: underline;
 }
 
@@ -96,22 +120,28 @@
 .blog-listing__read-more-link {
     display: inline-block;
     margin-top: auto; /* Pushes the link to the bottom of the flex item */
-    color: #28a745; /* Green for read more */
+    color: #28a745;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .blog-listing__read-more-link:hover {
-    color: #218838; /* Darker green on hover */
-    transform: translateX(5px); /* Slight movement on hover */
+    color: #218838;
+    transform: translateX(5px);
 }
 
 /* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .blog-listing__item--card {
+        width: 300px; /* Slightly smaller cards on slightly smaller screens */
+    }
+}
+
 @media (max-width: 768px) {
     .blog-listing-page {
         margin: 30px auto;
-        padding: 0 15px;
+        padding: 0 0px; /* Remove horizontal padding here so scrollable area touches edges */
     }
     .blog-listing__main-heading {
         font-size: 2.2em;
@@ -120,12 +150,16 @@
     .blog-listing__section-title {
         font-size: 1.7em;
         margin-bottom: 25px;
+        padding: 0 20px; /* Add padding to title if container has none */
     }
-    .blog-listing__list {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .blog-listing__scroll-wrapper {
+         padding: 0 20px; /* Add padding to the scroll wrapper itself to create space for content */
+    }
+    .blog-listing__list--scrollable {
         gap: 20px;
     }
-    .blog-listing__item {
+    .blog-listing__item--card {
+        width: 280px; /* Adjust card width for tablets/larger mobiles */
         padding: 20px;
         border-radius: 10px;
     }
@@ -140,7 +174,7 @@
 @media (max-width: 480px) {
     .blog-listing-page {
         margin: 20px auto;
-        padding: 0 10px;
+        padding: 0 0px; /* No padding on main wrapper */
     }
     .blog-listing__main-heading {
         font-size: 1.8em;
@@ -149,19 +183,20 @@
     .blog-listing__section-title {
         font-size: 1.5em;
         margin-bottom: 20px;
+        padding: 0 15px; /* Add padding to title */
     }
-    .blog-listing__list {
-        grid-template-columns: 1fr; /* Stack items on very small screens */
+     .blog-listing__scroll-wrapper {
+         padding: 0 15px; /* Padding for the scrollable content */
+    }
+    .blog-listing__list--scrollable {
         gap: 15px;
     }
-    .blog-listing__item {
+    .blog-listing__item--card {
+        width: calc(100vw - 60px); /* Card takes nearly full viewport width minus padding and gap */
+        max-width: 300px; /* But doesn't get too wide on larger mobile views */
         padding: 15px;
         border-radius: 8px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Lighter shadow on mobile */
-    }
-    .blog-listing__item:hover {
-        transform: translateY(-5px); /* Less lift */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     }
     .blog-listing__item-title {
         font-size: 1.2em;
