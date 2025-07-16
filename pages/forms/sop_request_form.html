@@ -2,55 +2,39 @@
 layout: default
 title: SOP Request Form
 description: "A comprehensive form for students to provide their details for Statement of Purpose (SOP) preparation."
-permalink: /sop_form/
+permalink: services/sop_form/
 ---
-    <h1>SOP Request Form</h1>
-    <p>Please fill out the form below to request your Statement of Purpose.</p>
+<div class="sop-service-form-container">
+  <h2 class="sop-service-title">SOP Service Request</h2>
+  <form id="sopServiceForm"
+        class="sop-service-form"
+        method="POST"
+        action="https://script.google.com/macros/s/AKfycbwEr6ylRw_uP2yR7LuOO5cLuUxJ6ewRXAQMj4ElvpgAu1LDIplyVixKrRTJDBv0XB7s/exec"
+        target="sopServiceIframe"
+        onsubmit="return sopServiceFormSubmit();">
 
-    <!--
-        Important: Replace "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
-        with the actual Web App URL you obtained after deploying your Code.gs script.
-    -->
-    <form id="sopForm" method="POST" target="hidden_iframe"
-          action="https://script.google.com/macros/s/AKfycbyQFjBHQ64D3UTQrfjVyra2pB595yweOd4xHlFY854zxOywKFuoDUTehmiVJcwGwGfc/exec">
+    <div class="sop-service-form-group">
+      <input type="text" name="fullName" placeholder="Full Name" required>
+    </div>
 
-        <!-- Hidden input for sheet name, crucial for Google Apps Script -->
-        <input type="hidden" name="sheetName" value="SOP_Requests">
+    <div class="sop-service-form-group">
+      <input type="text" name="passportNumber" placeholder="Passport Number" required>
+    </div>
 
-        <p>
-            <label for="fullName">Full Name:</label><br>
-            <input type="text" id="fullName" name="fullName" required>
-        </p>
+    <div class="sop-service-form-group">
+      <input type="text" name="contactNumber" placeholder="Phone Number" required>
+    </div>
 
-        <p>
-            <label for="email">Email Address:</label><br>
-            <input type="email" id="email" name="email" required>
-        </p>
+    <div class="sop-service-form-group">
+      <input type="email" name="email" placeholder="Email Address" required>
+    </div>
 
-        <p>
-            <label for="contactNumber">Contact Number:</label><br>
-            <input type="tel" id="contactNumber" name="contactNumber" required>
-        </p>
+    <div class="sop-service-submit">
+      <button type="submit" class="sop-service-button">Request SOP Help</button>
+      <div class="sop-service-message" id="sopServiceMessage"></div>
+    </div>
+  </form>
 
-        <p>
-            <label for="universityName">Target University Name:</label><br>
-            <input type="text" id="universityName" name="universityName" required>
-        </p>
-
-        <p>
-            <label for="courseName">Desired Course Name:</label><br>
-            <input type="text" id="courseName" name="courseName" required>
-        </p>
-
-        <p>
-            <button type="submit">Submit Request</button>
-        </p>
-    </form>
-
-    <!-- Hidden iframe for form submission to prevent page reload -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-
-
-
+  <iframe name="sopServiceIframe" id="sopServiceIframe" style="display:none;"></iframe>
+</div>
 

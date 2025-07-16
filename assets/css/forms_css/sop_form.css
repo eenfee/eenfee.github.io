@@ -1,15 +1,4 @@
-
-/* Custom styles for better aesthetics and responsiveness */
-        sop_body {
-            font-family: "Inter", sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align to start to prevent vertical centering issues on long forms */
-            min-height: 100vh;
-            padding: 2rem 1rem; /* Add padding for mobile */
-        }
-        .sop-form-container {
+.sop-service-form-container {
             background-color: #ffffff;
             padding: 2.5rem;
             border-radius: 1rem; /* More rounded corners */
@@ -17,36 +6,36 @@
             max-width: 900px; /* Wider form */
             width: 100%;
         }
-        .sop-form-section {
+        .sop-service-form {
             margin-bottom: 2rem;
             padding: 1.5rem;
             border: 1px solid #e5e7eb; /* Light border */
             border-radius: 0.75rem; /* Rounded section borders */
             background-color: #f9fafb; /* Slightly different background for sections */
         }
-        .sop-form-section-title {
+        .sop-service-title {
             font-size: 1.75rem; /* Larger title */
             font-weight: 700; /* Bold */
             color: #1f2937; /* Darker text */
             margin-bottom: 1.5rem;
             text-align: center;
         }
-        .sop-input-group {
+        .sop-service-form-group {
             margin-bottom: 1.25rem;
         }
-        .sop-input-group label {
+        .sop-service-form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: #374151;
         }
-        .sop-input-group input[type="text"],
-        .sop-input-group input[type="email"],
-        .sop-input-group input[type="date"],
-        .sop-input-group input[type="number"],
-        .sop-input-group input[type="file"],
-        .sop-input-group textarea,
-        .sop-input-group select {
+        .sop-service-form-group input[type="text"],
+        .sop-service-form-group input[type="email"],
+        .sop-service-form-group input[type="date"],
+        .sop-service-form-group input[type="number"],
+        .sop-service-form-group input[type="file"],
+        .sop-service-form-group textarea,
+        .sop-service-form-group select {
             width: 100%;
             padding: 0.75rem 1rem;
             border: 1px solid #d1d5db;
@@ -56,18 +45,18 @@
             background-color: #ffffff;
             transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-        .sop-input-group input[type="text"]:focus,
-        .sop-input-group input[type="email"]:focus,
-        .sop-input-group input[type="date"]:focus,
-        .sop-input-group input[type="number"]:focus,
-        .sop-input-group input[type="file"]:focus,
-        .sop-input-group textarea:focus,
-        .sop-input-group select:focus {
+        .sop-service-form-group input[type="text"]:focus,
+        .sop-service-form-group input[type="email"]:focus,
+        .sop-service-form-group input[type="date"]:focus,
+        .sop-service-form-group input[type="number"]:focus,
+        .sop-service-form-group input[type="file"]:focus,
+        .sop-service-form-group textarea:focus,
+        .sop-service-form-group select:focus {
             outline: none;
             border-color: #3b82f6; /* Blue focus border */
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* Light blue shadow on focus */
         }
-        .sop-input-group textarea {
+        .sop-service-form-group textarea {
             min-height: 100px;
             resize: vertical;
         }
@@ -76,7 +65,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
             gap: 1.5rem;
         }
-        .sop-submit-button, .sop-add-more-button {
+        .sop-service-button, .sop-add-more-button {
             display: block;
             width: 100%;
             padding: 1rem 2rem;
@@ -96,7 +85,7 @@
             font-size: 1rem;
             padding: 0.75rem 1.5rem;
         }
-        .sop-submit-button:hover {
+        .sop-service-button:hover {
             background-color: #1d4ed8; /* Darker blue on hover */
             transform: translateY(-2px); /* Slight lift effect */
         }
@@ -104,7 +93,7 @@
             background-color: #059669; /* Darker green on hover */
             transform: translateY(-2px);
         }
-        .sop-submit-button:active, .sop-add-more-button:active {
+        .sop-service-button:active, .sop-add-more-button:active {
             transform: translateY(0);
         }
 
@@ -137,15 +126,184 @@
             margin-bottom: 1rem;
         }
 
+        /* Required field styling */
+        .sop-input-error input,
+        .sop-input-error select,
+        .sop-input-error textarea {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .sop-input-group.sop-input-error label {
+            color: #ef4444;
+        }
+
+        /* Required field asterisk default style */
+        .text-red-500 {
+            color: #ef4444;
+        }
+
+        /* Add subtle animation for error state */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .sop-input-error input,
+        .sop-input-error select,
+        .sop-input-error textarea {
+            animation: shake 0.2s ease-in-out 0s 2;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .sop-form-container {
+            .sop-service-form-container {
                 padding: 1.5rem;
             }
-            .sop-form-section {
+            .sop-service-form {
                 padding: 1rem;
             }
-            .sop-form-section-title {
+            .sop-service-title {
                 font-size: 1.5rem;
             }
         }
+
+        /* Large textarea specific styling */
+        .sop-large-textarea {
+            min-height: 400px;
+            line-height: 1.6;
+            font-family: monospace;
+            white-space: pre-wrap;
+            padding: 1rem;
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .sop-large-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        /* Message box styles */
+.sop-service-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.sop-service-message .message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+.sop-service-message .info {
+    background: #e1effe;
+    border: 1px solid #3b82f6;
+    color: #1e40af;
+}
+
+.sop-service-message .success {
+    background: #dcfce7;
+    border: 1px solid #22c55e;
+    color: #15803d;
+}
+
+.sop-service-message .error {
+    background: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #b91c1c;
+}
+
+.sop-service-message .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 5px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Alert Message Styling */
+.sop-service-alert {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  margin-top: 20px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.sop-service-alert.success {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.sop-service-alert-icon {
+  background: #22c55e;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+.sop-service-alert-content h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sop-service-alert-content p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sop-service-alert.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
