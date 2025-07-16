@@ -1,4 +1,3 @@
-
 # Site settings
 title: EENFEE
 description: Website of ENFEE.
@@ -54,7 +53,7 @@ defaults:
       layout: "post"
 
 sass:
-  sass_dir: _sass
+  sass_dir: assets/css
   style: compressed
 
 # Build settings

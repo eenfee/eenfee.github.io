@@ -1,10 +1,13 @@
-/* Basic Form Enhancements */
-.sop_importance-writing_quote {
+
+
+.sop-importance-writing-quote {
     text-align: center;
     font-style: italic;
-    color: #555;
+    background-color: #f374745d; /* Light background for emphasis */
+    color: #022400;
     margin: 20px 0;
     font-size: 1.2em;
+    padding: 0% 0%; /* Add padding for better readability */
 }
 .sop-service-title {
     text-align: center;
@@ -12,95 +15,96 @@
     color: #2c3e50;
 
 }
-    .sop-intro-text {
-        margin-bottom: 15px;
-        font-size: 1.1em;
-        color: #333;
-    }
-    .sop-timeline-info {
-        font-size: 0.95em;
-        color: #555;
-        margin-bottom: 25px;
-        background-color: #f0f8ff; /* Light blue background */
-        padding: 10px 15px;
-        border-left: 4px solid #2196F3; /* Blue border */
-    }
-    .sop-service-form-group {
-        margin-bottom: 15px;
-    }
-    .sop-service-form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #333;
-    }
-    .sop-service-form-group input[type="text"],
-    .sop-service-form-group input[type="email"],
-    .sop-service-form-group select,
-    .sop-service-form-group textarea {
-        width: calc(100% - 20px); /* Adjust for padding */
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1em;
-        box-sizing: border-box; /* Include padding in width calculation */
-    }
-    .sop-service-form-group textarea {
-        resize: vertical; /* Allow vertical resizing */
-    }
-    .form-text-hint {
-        font-size: 0.85em;
-        color: #777;
-        margin-top: 5px;
-        display: block; /* Ensure it takes full width */
-    }
-    .required-star {
-        color: red;
-        margin-left: 2px;
-    }
-    .checkbox-group {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-    }
-    .checkbox-group input[type="checkbox"] {
-        margin-right: 10px;
-        width: auto; /* Override general input width */
-    }
-    .checkbox-group label a {
-        color: #007bff; /* Link color for privacy policy */
-        text-decoration: none;
-    }
-    .checkbox-group label a:hover {
-        text-decoration: underline;
-    }
+.sop-intro-text {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #333;
+}
+.sop-timeline-info {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 25px;
+    background-color: #f0f8ff; /* Light blue background */
+    padding: 10px 15px;
+    border-left: 4px solid #2196F3; /* Blue border */
+}
+.sop-service-form-group {
+    margin-bottom: 15px;
+}
+.sop-service-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+.sop-service-form-group input[type="text"],
+.sop-service-form-group input[type="email"],
+.sop-service-form-group select,
+.sop-service-form-group textarea {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+.sop-service-form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+.form-text-hint {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+    display: block; /* Ensure it takes full width */
+}
+.required-star {
+    color: red;
+    margin-left: 2px;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Override general input width */
+}
+.checkbox-group label a {
+    color: #007bff; /* Link color for privacy policy */
+    text-decoration: none;
+}
+.checkbox-group label a:hover {
+    text-decoration: underline;
+}
 
-    /* Security Assurance */
-    .security-assurance {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-        font-size: 0.95em;
-        color: #555;
-        padding: 10px;
-        background-color: #e9f7ef; /* Light green background */
-        border: 1px solid #c3e6cb;
-        border-radius: 5px;
-    }
-    .security-assurance .fa { /* If using Font Awesome */
-        color: #28a745; /* Green color for lock icon */
-    }
-    /* If not using Font Awesome, you might use a simple SVG icon or Unicode character like &#128274; */
+/* Security Assurance */
+.security-assurance {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #555;
+    padding: 10px;
+    background-color: #e9f7ef; /* Light green background */
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+.security-assurance .fa { /* If using Font Awesome */
+    color: #28a745; /* Green color for lock icon */
+}
+/* If not using Font Awesome, you might use a simple SVG icon or Unicode character like &#128274; */
 
-    /* Testimonials */
-    /* Testimonials Slider */
+/* Testimonials */
+/* Testimonials Slider */
 .sop-testimonials {
     position: relative;
     padding: 30px 0;
     margin: 40px 0;
     max-width: 100%;
-    overflow: hidden; /* Prevent horizontal scroll on container */
+    overflow: hidden;
+    background-color: #02240036;
 }
 
 .sop-testimonials h3 {
@@ -113,24 +117,26 @@
 .testimonials-container {
     display: flex;
     gap: 20px;
-    padding: 20px 40px; /* Add padding for nav buttons */
+    padding: 20px 40px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    width: 100%;
+    width: calc(100% - 80px); /* Account for nav buttons */
+    margin: 0 auto;
 }
 
 .testimonials-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
+    display: none;
 }
 
 .testimonial-item {
-    flex: 0 0 300px; /* Fixed width for cards */
-    scroll-snap-align: center; /* Center align snap */
-    margin-right: 20px; /* Space between cards */
+    flex: 0 0 300px;
+    min-width: 300px;
+    scroll-snap-align: center;
+    margin-right: 20px;
     background: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -198,244 +204,384 @@
     z-index: 10;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0.9;
+}
+
+.testimonial-nav.testimonial-prev {
+    left: 0;
+}
+
+.testimonial-nav.testimonial-next {
+    right: 0;
 }
 
 .testimonial-nav:hover {
     background: #007bff;
     color: #fff;
-}
-
-.testimonial-prev {
-    left: 10px;
-}
-
-.testimonial-next {
-    right: 10px;
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
-    .testimonial-nav {
-        display: none;
+    .testimonials-container {
+        padding: 20px 0;
+        width: 100%;
     }
+    
     .testimonial-item {
         min-width: 260px;
     }
+    
+    .testimonial-nav {
+        display: none;
+    }
 }
 
-    /* FAQ Section */
-    .sop-faq-section {
+/* FAQ Section */
+.sop-faq-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f4f7f6;
+    border-radius: 8px;
+}
+.sop-faq-section h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+.faq-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-size: 1.1em;
+    color: #34495e;
+    transition: background-color 0.3s ease;
+}
+.faq-question:hover {
+    background-color: #f0f0f0;
+}
+.faq-arrow {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.faq-answer {
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Smooth transition */
+    padding: 0 15px;
+    background-color: #fdfdfd;
+    border-radius: 0 0 5px 5px;
+}
+.faq-answer p {
+    padding-bottom: 15px;
+    padding-top: 5px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Form Message */
+.sop-service-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Enhanced Form Message Styling */
+.sop-service-alert {
+    padding: 16px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    animation: slideIn 0.3s ease-out;
+}
+
+.sop-service-alert.success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.sop-service-alert.info {
+    background: linear-gradient(135deg, #cce5ff 0%, #b8daff 100%);
+    border-left: 4px solid #007bff;
+    color: #004085;
+}
+
+.sop-service-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sop-service-alert-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Form Input Enhancements */
+.sop-service-form-group input,
+.sop-service-form-group select,
+.sop-service-form-group textarea {
+    transition: all 0.3s ease;
+    border: 2px solid #002e691c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+}
+
+.sop-service-form-group input:focus,
+.sop-service-form-group select:focus,
+.sop-service-form-group textarea:focus {
+    border-color: #67e142;
+    box-shadow: 0 0 0 3px rgba(84, 225, 66, 0.233);
+    outline: none;
+}
+
+/* Enhanced Button Styling */
+.sop-service-button {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.sop-service-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.sop-service-button:active {
+    transform: translateY(1px);
+}
+
+/* Form Container Enhancement */
+.sop-service-form-container {
+    background: linear-gradient(to bottom, #ffffff, #f8fafc);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Required Field Styling */
+.required-star {
+    color: #e53e3e;
+    margin-left: 4px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Form Group Spacing */
+.sop-service-form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Input Hints */
+.form-text-hint {
+    font-size: 0.875rem;
+    color: #718096;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.sop-service-form-group:focus-within .form-text-hint {
+    color: #4a5568;
+}
+
+/* Labels */
+.sop-service-form-group label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.95rem;
+}
+
+/* --- Services Link Buttons Styling --- */
+
+
+/* --- Promotional Link Buttons --- */
+.promo-buttons {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px; /* More space between promo buttons */
+    padding: 0 20px;
+}
+
+.promo-buttons__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 450px; /* Wider promo buttons */
+    padding: 18px 30px; /* More padding */
+    background: linear-gradient(to right, #007bff, #0056b3); /* Primary blue gradient */
+    color: rgba(41, 0, 0, 0.726);
+    border-radius: 12px; /* More rounded */
+    text-decoration: none;
+    font-size: 1.2em; /* Larger font */
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-buttons__link:hover {
+    background: linear-gradient(to right, #33b300, #1a8000);
+    box-shadow: 0 10px 25px rgba(44, 255, 54, 0.35);
+    transform: translateY(-5px); /* More pronounced lift */
+}
+
+.promo-buttons__text {
+    display: block;
+    flex-grow: 1; /* Allow text to take available space */
+    text-align: left; /* Align text to the left */
+}
+
+.promo-buttons__arrow {
+    font-size: 1.8em; /* Larger arrow */
+    margin-left: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.promo-buttons__link:hover .promo-buttons__arrow {
+    transform: translateX(8px); /* More pronounced arrow movement */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sop-form-wrapper {
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .sop-form-wrapper__title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .sop-form-wrapper__intro-text {
+        font-size: 1em;
+    }
+    .sop-testimonials {
+        padding: 15px;
+    }
+    .sop-testimonials__heading {
+        font-size: 1.4em;
+    }
+    .sop-testimonials__item {
+        padding: 15px;
+    }
+    .sop-form__label {
+        font-size: 0.95em;
+    }
+    .sop-form__input, .sop-form__select, .sop-form__textarea {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+    .sop-form__button {
+        padding: 12px 25px;
+        font-size: 1.05em;
+    }
+    .faq-section {
         margin-top: 40px;
         padding: 20px;
-        background-color: #f4f7f6;
-        border-radius: 8px;
     }
-    .sop-faq-section h2 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 25px;
-        font-size: 1.8em;
+    .faq-section__heading {
+        font-size: 1.6em;
     }
-    .faq-item {
-        margin-bottom: 10px;
-        border-bottom: 1px solid #e0e0e0;
-    }
-    .faq-question {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
+    .faq-section__question {
         padding: 15px;
-        background-color: #ffffff;
-        border-radius: 5px;
-        font-size: 1.1em;
-        color: #34495e;
-        transition: background-color 0.3s ease;
+        font-size: 1em;
     }
-    .faq-question:hover {
-        background-color: #f0f0f0;
-    }
-    .faq-arrow {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-left: 10px;
-    }
-    .faq-answer {
-        max-height: 0; /* Hidden by default */
-        overflow: hidden;
-        transition: max-height 0.3s ease-out; /* Smooth transition */
-        padding: 0 15px;
-        background-color: #fdfdfd;
-        border-radius: 0 0 5px 5px;
-    }
-    .faq-answer p {
-        padding-bottom: 15px;
-        padding-top: 5px;
-        color: #666;
-        line-height: 1.6;
-    }
-
-    /* Form Message */
-    .sop-service-message {
-        margin-top: 15px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    /* Enhanced Form Message Styling */
-    .sop-service-alert {
-        padding: 16px 20px;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        margin: 20px 0;
-        animation: slideIn 0.3s ease-out;
-    }
-
-    .sop-service-alert.success {
-        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-        border-left: 4px solid #28a745;
-        color: #155724;
-    }
-
-    .sop-service-alert.info {
-        background: linear-gradient(135deg, #cce5ff 0%, #b8daff 100%);
-        border-left: 4px solid #007bff;
-        color: #004085;
-    }
-
-    .sop-service-alert-content {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .sop-service-alert-icon {
-        font-size: 24px;
-        line-height: 1;
-    }
-
-    /* Form Input Enhancements */
-    .sop-service-form-group input,
-    .sop-service-form-group select,
-    .sop-service-form-group textarea {
-        transition: all 0.3s ease;
-        border: 2px solid #e2e8f0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-    }
-
-    .sop-service-form-group input:focus,
-    .sop-service-form-group select:focus,
-    .sop-service-form-group textarea:focus {
-        border-color: #4299e1;
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
-        outline: none;
-    }
-
-    /* Enhanced Button Styling */
-    .sop-service-button {
-        background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-        border: none;
-        padding: 12px 24px;
-        color: white;
-        font-weight: 600;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
-
-    .sop-service-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-    }
-
-    .sop-service-button:active {
-        transform: translateY(1px);
-    }
-
-    /* Form Container Enhancement */
-    .sop-service-form-container {
-        background: linear-gradient(to bottom, #ffffff, #f8fafc);
-        border-radius: 16px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05),
-                    0 10px 15px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-    }
-
-    /* Animations */
-    @keyframes slideIn {
-        from {
-            transform: translateY(-10px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    /* Required Field Styling */
-    .required-star {
-        color: #e53e3e;
-        margin-left: 4px;
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.5; }
-        100% { opacity: 1; }
-    }
-
-    /* Form Group Spacing */
-    .sop-service-form-group {
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
-
-    /* Input Hints */
-    .form-text-hint {
-        font-size: 0.875rem;
-        color: #718096;
-        margin-top: 0.5rem;
-        transition: opacity 0.2s;
-    }
-
-    .sop-service-form-group:focus-within .form-text-hint {
-        color: #4a5568;
-    }
-
-    /* Labels */
-    .sop-service-form-group label {
-        font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 0.5rem;
-        display: block;
-        font-size: 0.95rem;
-    }
-
-    /* Other services links */
-    .services-link-buttons {
+    .promo-buttons {
         margin-top: 40px;
-        text-align: center;
+        margin-bottom: 40px;
+        gap: 15px;
     }
-    .services-link-buttons a {
-        display: block;
-        background-color: #28a745; /* Green button */
-        color: white;
-        padding: 12px 20px;
-        margin: 10px auto;
-        border-radius: 5px;
-        text-decoration: none;
+    .promo-buttons__link {
+        padding: 15px 25px;
         font-size: 1.1em;
-        transition: background-color 0.3s ease;
-        max-width: 350px; /* Constrain width */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        border-radius: 10px;
     }
-    .services-link-buttons a:hover {
-        background-color: #218838;
+    .promo-buttons__arrow {
+        font-size: 1.5em;
+        margin-left: 15px;
     }
-    .services-link-arrow {
-        font-size: 1.2em;
+}
+
+@media (max-width: 480px) {
+    .sop-form-wrapper {
+        padding: 15px;
+        box-shadow: none; /* Remove shadow on very small screens */
     }
+    .sop-form-wrapper__title {
+        font-size: 1.6em;
+    }
+    .sop-testimonials {
+        padding: 10px;
+    }
+    .sop-testimonials__item {
+        padding: 10px;
+    }
+    .sop-form__button {
+        width: 100%; /* Full width button on small screens */
+        padding: 12px;
+        font-size: 1em;
+    }
+    .faq-section {
+        padding: 15px;
+    }
+    .faq-section__question {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+    .faq-section__answer p {
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+    .promo-buttons__link {
+        font-size: 1em;
+        padding: 12px 20px;
+        border-radius: 8px;
+    }
+    .promo-buttons__arrow {
+        font-size: 1.3em;
+    }
+}
+
+
