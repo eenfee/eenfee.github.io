@@ -9,12 +9,16 @@ image: /assets/images/pen-paper-logo.png
 ---
 
 <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="Statement of Purpose" style="max-width:100%;">
+  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:150%;">
 </p>
+
+##### **Ready to get started? Fill out our [SOP Service Form](/services/sop_form/) for personalized review, draft feedback, comments, and expert tips.**
+
+---
 
 # How to Write a Winning Statement of Purpose for University Applications
 
-**Ready to get started? Fill out our [SOP Service Form](/services/sop_form/) for personalized review, draft feedback, comments, and expert tips.**
+
 
 A **Statement of Purpose (SOP)**, also known as a motivation letter or essay, is your chance to shine in a university application. It's more than just a document—it’s your personal narrative, showcasing your academic journey, motivations, and why you’re the perfect fit for your dream program. At Eenfee, we’ve helped countless students in Nepal craft SOPs that secure admissions to top universities worldwide. In this comprehensive guide, we’ll walk you through how to write a compelling SOP and introduce our expert SOP writing services to ensure your application stands out.
 
