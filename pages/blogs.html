@@ -13,7 +13,7 @@ permalink: /blogs/
         <div class="blog-listing__scroll-wrapper">
             <ul class="blog-listing__list blog-listing__list--scrollable"> 
                 {% for post in site.posts %}
-                <li class="blog-listing__item blog-listing__item--card"> {# Each item is a card #}
+                <li class="blog-listing__item blog-listing__item--card"> 
                     <h3 class="blog-listing__item-title">
                         <a href="{{ post.url }}" class="blog-listing__item-link">{{ post.title }}</a>
                     </h3>

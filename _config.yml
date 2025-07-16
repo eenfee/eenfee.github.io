@@ -104,6 +104,7 @@ include:
   - assets/js
   - assets/css
   - assets/css/pages_css
+  - assets/css/main_pages
   - _sass
   - assets/img
   - assets/images/logo
