@@ -9,9 +9,9 @@ permalink: /blogs/
 
     <section class="blog-listing__section">
         <h2 class="blog-listing__section-title">Latest Posts</h2>
-        {# Wrapper for horizontal scrolling to ensure better overflow behavior and potential scrollbar styling #}
+        
         <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable"> {# This becomes the scrollable flex container #}
+            <ul class="blog-listing__list blog-listing__list--scrollable"> 
                 {% for post in site.posts %}
                 <li class="blog-listing__item blog-listing__item--card"> {# Each item is a card #}
                     <h3 class="blog-listing__item-title">
