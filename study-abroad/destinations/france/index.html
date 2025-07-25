@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - EENFEE</title>
+    <title>FR Why Study in France — And How can You - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -50,7 +50,7 @@
     
       <li class="nav-item has-dropdown">
         <a href="/study-abroad/" 
-          class="nav-link "
+          class="nav-link active"
           aria-haspopup="true" aria-expanded="false">
           
           
@@ -167,7 +167,7 @@
                     
                       <li class="sub-dropdown-item">
                         <a href="/study-abroad/destinations/france/" 
-                          class="sub-dropdown-link ">
+                          class="sub-dropdown-link active">
                           France
                         </a>
                       </li>
@@ -287,7 +287,7 @@
     
       <li class="nav-item has-dropdown">
         <a href="/blogs/" 
-          class="nav-link active"
+          class="nav-link "
           aria-haspopup="true" aria-expanded="false">
           
           
@@ -607,89 +607,314 @@
 
     <main class="main-content">
     
-      <div class="blog-listing-page">
-    <h1 class="blog-listing__main-heading">All the Blogs</h1>
+      <div class="post-layout">
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Latest Posts</h2>
-        
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable"> 
-                
-            </ul>
-        </div>
-    </section>
+      
+      <ul class="tocbox-list-unique"></ul>
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Other Blog Entries</h2>
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable">
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__item-link">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
+    </div>
+    
+  </nav>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
 
-                    </div>
-                    <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/france/" class="blog-listing__item-link">FR Why Study in France — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
+  <article class="post-content">
+    <div class="markdown-body">
+  <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
 
-                    </div>
-                    <a href="/study-abroad/destinations/france/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/ielts/" class="blog-listing__item-link">IELTS</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Ielts info loading</p>
+<hr />
 
-                    </div>
-                    <a href="/study-abroad/ept/ielts/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/oellt/" class="blog-listing__item-link">Oxford ELLT Digital: Take Your English Test Online</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
+<h2 id="why-france-should-be-on-your-radar">Why France Should Be on Your Radar</h2>
 
+<p>Imagine strolling through centuries-old cobblestone streets after a morning lecture at a renowned public university—this is life in France. Beyond the romance and architecture, France delivers:</p>
 
-                    </div>
-                    <a href="/study-abroad/ept/oellt/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/application-writing-services/SOP/" class="blog-listing__item-link">Statement of Purpose</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:150%;" />
-</p>
+<ul>
+  <li><strong>Affordable Learning</strong>: Public universities charge far less than their Western counterparts, keeping education accessible even for those on a budget.</li>
+  <li><strong>International Classrooms</strong>: Over 1,200 programs are taught entirely in English, especially at the master’s level—ideal if you’re not yet fluent in French.</li>
+  <li><strong>Global Recognition</strong>: A degree from France instantly opens doors worldwide, thanks to the country’s strong reputation for academic rigor.</li>
+  <li><strong>Work While You Study</strong>: Part-time jobs are permitted, so you can gain professional experience and offset living costs.</li>
+  <li><strong>Post-Graduation Stay</strong>: Master’s graduates can extend their visa up to 12 months to hunt for employment in fields such as engineering, IT, business analytics, hospitality, and fashion.</li>
+</ul>
 
+<p>If you’d like a visual overview of where everything is, check out this interactive map of French campuses on <a href="https://www.campusfrance.org/en/carte-de-france">Campus France’s website:</a>.</p>
 
-                    </div>
-                    <a href="/application-writing-services/SOP/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+<hr />
+
+<h2 id="a-landscape-of-choices-institutions--programs">A Landscape of Choices: Institutions &amp; Programs</h2>
+
+<p>France’s higher-education ecosystem is vast:</p>
+
+<ul>
+  <li><strong>72 public universities</strong> and <strong>25 university communities</strong>, plus <strong>3,000 private schools</strong> and institutes.</li>
+  <li>Specialized training through <strong>271 doctoral schools</strong>, <strong>227 engineering schools</strong>, <strong>220 business/management schools</strong>, and <strong>45 public art colleges</strong>.</li>
+  <li>Preparatory tracks (CPGE), technical sections (STS), and short two-year diplomas (BTS) available in thousands of high schools.</li>
+  <li>Short cultural and language immersion programs for newcomers.</li>
+</ul>
+
+<p>Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fits your academic goals and language skills.</p>
+
+<hr />
+
+<h2 id="timing-your-application-the-two-intakes">Timing Your Application: The Two Intakes</h2>
+
+<p>Most universities open admissions twice a year:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Intake</th>
+      <th>Application Window</th>
+      <th>Deadlines</th>
+      <th>Course Start</th>
+      <th>Advantages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fall</strong></td>
+      <td>January – April</td>
+      <td>May – June</td>
+      <td>September – Oct.</td>
+      <td>Largest selection of courses and scholarships</td>
+    </tr>
+    <tr>
+      <td><strong>Spring</strong></td>
+      <td>August – October</td>
+      <td>November</td>
+      <td>January – Feb.</td>
+      <td>Less competition and shorter wait after application</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Tip:</strong> Begin preparing 8–12 months in advance—gather transcripts, draft your SOP, and schedule language tests early.</p>
+
+<hr />
+
+<h2 id="checking-your-eligibility">Checking Your Eligibility</h2>
+
+<p>While each institution may tweak its requirements, most programs ask for:</p>
+
+<ol>
+  <li>
+    <p><strong>Academic Credentials</strong>:</p>
+
+    <ul>
+      <li>Completed 10+2 for bachelor’s degrees</li>
+      <li>Bachelor’s degree for master’s programs</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Language Proficiency</strong>:</p>
+
+    <ul>
+      <li>TOEFL or IELTS Academic for English-taught courses</li>
+      <li>DELF/DALF for French</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Supporting Materials</strong>:</p>
+
+    <ul>
+      <li>Transcripts</li>
+      <li>Statement of Purpose (SOP)</li>
+      <li>Letters of Recommendation (LOR)</li>
+      <li>Updated CV or portfolio (for creative disciplines)</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Additional Screens</strong>:</p>
+
+    <ul>
+      <li>Interviews or entrance exams, depending on the program</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Always visit the official course page to confirm specifics—requirements can vary with each university and program.</p>
+
+<hr />
+
+<h2 id="step-by-step-application-via-études-en-france">Step-by-Step Application via Études en France</h2>
+
+<p>For Nepali students (and many other internationals), the Études en France (“Pastel”) platform streamlines the process:</p>
+
+<ol>
+  <li>
+    <p><strong>Account Setup</strong></p>
+
+    <ul>
+      <li>Register at pastel.diplomatie.gouv.fr.</li>
+      <li>Choose “Espace Campus France Népal” and activate your account.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Profile &amp; Documents</strong></p>
+
+    <ul>
+      <li>Fill in personal and academic details.</li>
+      <li>Upload passport scan, photo, transcripts, CV, and language-test results.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Program Selection</strong></p>
+
+    <ul>
+      <li>Indicate your accepted course and upload your official acceptance letter.</li>
+      <li>Finalize your choices by clicking “Je confirme mon choix définitif.”</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Payment &amp; Interview Booking</strong></p>
+
+    <ul>
+      <li>Pay the Campus France fee (NPR 14,500) and upload proof.</li>
+      <li>Download your attestation and book your interview slot.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Campus France Interview</strong></p>
+
+    <ul>
+      <li>Bring originals of all documents: pre-registration certificate, payment receipt, academic records, SOP, LORs, proof of accommodation, and more.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Visa Application</strong></p>
+
+    <ul>
+      <li>Upon successful interview, apply at france-visas.gouv.fr.</li>
+      <li>Submit paperwork through VFS and prepare to board your flight!</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="navigating-the-visa-landscape">Navigating the Visa Landscape</h2>
+
+<p>Depending on your course length, France issues:</p>
+
+<ul>
+  <li><strong>Short-Stay Visa</strong>: For courses under three months.</li>
+  <li><strong>Temporary Long-Stay Visa</strong>: For courses up to six months, valid immediately on arrival.</li>
+  <li><strong>Residence-Permit Visa</strong>: For programs over six months, requiring further formalities once you land.</li>
+</ul>
+
+<hr />
+
+<h2 id="preparing-for-the-big-day-interview-checklist">Preparing for the Big Day: Interview Checklist</h2>
+
+<p>Don’t step into Campus France Nepal without:</p>
+
+<ul>
+  <li><strong>Convocation Letter</strong> from the Pastel platform.</li>
+  <li><strong>Pre-registration Certificate</strong> with your EEF ID.</li>
+  <li><strong>Payment Receipts</strong> (Campus France &amp; Pastel fee).</li>
+  <li>Originals: Passport, diplomas, transcripts, language certificates.</li>
+  <li><strong>Accommodation Proof</strong>: Hotel booking, rental agreement, or host declaration.</li>
+  <li><strong>Any Other Supporting Documents</strong> you feel strengthen your case.</li>
+</ul>
+
+<hr />
+
+<h2 id="from-classroom-to-career">From Classroom to Career</h2>
+
+<p>Once you graduate, France welcomes you to stay up to 12 months (for master’s grads) to secure a job. Key sectors in demand include:</p>
+
+<ul>
+  <li>Engineering &amp; IT</li>
+  <li>Business Analytics</li>
+  <li>Hospitality &amp; Tourism</li>
+  <li>Fashion &amp; Luxury Goods</li>
+</ul>
+
+<p>Your journey doesn’t end at graduation—it’s just the beginning of a career launched on a global stage.</p>
+
+<hr />
+
+<p><strong>Studying in France</strong> comes with academic excellence with cultural discovery. By planning ahead—understanding the application timeline, meeting eligibility criteria, and gathering the right documents—you’ll be poised to thrive in one of the world’s most dynamic educational landscapes. <a href="https://eenfee.github.io/contact/">Contact EENFEE</a> Bonne chance!</p>
+
+    </div>
+
+  </article>
 </div>
+
+
+
+
+
+
+
+
+
 
 
 
