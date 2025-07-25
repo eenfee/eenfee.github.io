@@ -41,8 +41,9 @@ Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fi
 
 ## Timing Your Application: The Two Intakes
 
-Most universities open admissions twice a year in France:
+Most universities open admissions twice a year:
 
+```html
 <div style="overflow-x: auto;">
     
     | Intake       | Application Window   | Deadlines           | Course Start     | Advantages                                            |
@@ -51,6 +52,8 @@ Most universities open admissions twice a year in France:
     | **Spring**   | August – October     | November            | January – Feb.   | Less competition and shorter wait after application   |
 
 </div>
+```
+
 
 | Intake     | Application Window | Deadlines  | Course Start     | Advantages                                          |
 | ---------- | ------------------ | ---------- | ---------------- | --------------------------------------------------- |
