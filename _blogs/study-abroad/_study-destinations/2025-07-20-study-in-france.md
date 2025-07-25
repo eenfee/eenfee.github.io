@@ -42,12 +42,13 @@ Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fi
 ## Timing Your Application: The Two Intakes
 
 Most universities open admissions twice a year:
+
 <div style="overflow-x: auto;">
-  
-| Intake       | Application Window   | Deadlines           | Course Start     | Advantages                                            |
-|--------------|----------------------|---------------------|------------------|-------------------------------------------------------|
-| **Fall**     | January – April      | May – June          | September – Oct. | Largest selection of courses and scholarships         |
-| **Spring**   | August – October     | November            | January – Feb.   | Less competition and shorter wait after application   |
+    
+    | Intake       | Application Window   | Deadlines           | Course Start     | Advantages                                            |
+    |--------------|----------------------|---------------------|------------------|-------------------------------------------------------|
+    | **Fall**     | January – April      | May – June          | September – Oct. | Largest selection of courses and scholarships         |
+    | **Spring**   | August – October     | November            | January – Feb.   | Less competition and shorter wait after application   |
 
 </div>
 
