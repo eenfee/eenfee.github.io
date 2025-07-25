@@ -41,7 +41,7 @@ Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fi
 
 ## Timing Your Application: The Two Intakes
 
-Most universities open admissions twice a year:
+Most universities open admissions twice a year in France:
 
 <div style="overflow-x: auto;">
     
