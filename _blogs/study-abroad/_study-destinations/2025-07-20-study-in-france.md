@@ -41,27 +41,16 @@ Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fi
 
 ## Timing Your Application: The Two Intakes
 
-Most universities open admissions twice a year:
+Most universities of France open admissions twice a year:
 
-
-<div class="md-table-scroll">
-    
-    | Intake       | Application Window   | Deadlines           | Course Start     | Advantages                                            |
-    |--------------|----------------------|---------------------|------------------|-------------------------------------------------------|
-    | **Fall**     | January – April      | May – June          | September – Oct. | Largest selection of courses and scholarships         |
-    | **Spring**   | August – October     | November            | January – Feb.   | Less competition and shorter wait after application   |
-
-</div>
-
-
-
+<div class="table-wrapper">
 | Intake     | Application Window | Deadlines  | Course Start     | Advantages                                          |
 | ---------- | ------------------ | ---------- | ---------------- | --------------------------------------------------- |
 | **Fall**   | January – April    | May – June | September – Oct. | Largest selection of courses and scholarships       |
 | **Spring** | August – October   | November   | January – Feb.   | Less competition and shorter wait after application |
 
 **Tip:** Begin preparing 8–12 months in advance—gather transcripts, draft your SOP, and schedule language tests early.
-
+</div>
 ---
 
 ## Checking Your Eligibility
