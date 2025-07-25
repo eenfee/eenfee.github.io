@@ -43,8 +43,8 @@ Whether you aim for a bachelor’s, master’s, or PhD, there’s a path that fi
 
 Most universities open admissions twice a year:
 
-```html
-<div style="overflow-x: auto;">
+
+<div class="md-table-scroll">
     
     | Intake       | Application Window   | Deadlines           | Course Start     | Advantages                                            |
     |--------------|----------------------|---------------------|------------------|-------------------------------------------------------|
@@ -52,7 +52,7 @@ Most universities open admissions twice a year:
     | **Spring**   | August – October     | November            | January – Feb.   | Less competition and shorter wait after application   |
 
 </div>
-```
+
 
 
 | Intake     | Application Window | Deadlines  | Course Start     | Advantages                                          |
