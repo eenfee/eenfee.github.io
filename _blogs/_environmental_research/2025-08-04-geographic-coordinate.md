@@ -1,18 +1,17 @@
 ---
 layout: post
-title: ' Understanding Geographic Co-ordinate'
+title: 'Understanding Geographic Coordinate Precision and Accuracy'
 date: 2025-08-02
 permalink: /blogs/environmental-research/geographic-coordinate/
 tags:
-  - geo-graphic co-ordinate
-  - geo-spatial
+  - geographic-coordinate
+  - geospatial
   - mapping
 published: true
-description: "understanding the geo-graphic co-ordinate system."
+description: "Understanding the precision and accuracy of geographic coordinates for navigation and mapping."
 categories: environmental-research
 toc: true
 ---
-
 
 
 Geographic coordinates are crucial for navigation and mapping, but their precision and accuracy depend on decimal places and measurement tools. This blog explores how precision in degrees translates to distances on Earth's surface and the role of accuracy in different GPS technologies.
