@@ -32,7 +32,7 @@ collections:
 
   environmental-research:
     output: true
-    permalink: /blogs/environmental-research/:title/
+    permalink: /blogs/environmental_research/:title/
 
 defaults:
   - scope:
