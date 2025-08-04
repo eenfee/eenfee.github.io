@@ -30,6 +30,10 @@ collections:
     output: true
     permalink: /blogs/study-abroad/ept/:title/
 
+  environmental-research:
+    output: true
+    permalink: /blogs/environmental-research/:title/
+
 defaults:
   - scope:
       path: ""
