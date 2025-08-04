@@ -1,7 +1,8 @@
 ---
+layout: post
 title: ' Understanding Geographic Co-ordinate'
 date: 2025-08-04
-permalink: /blogs/environmental-research/2025/08/geographic-coordinate/
+permalink: /blogs/environmental-research/geographic-coordinate/
 tags:
   - geo-graphic co-ordinate
   - geo-spatial
