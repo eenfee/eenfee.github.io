@@ -12,7 +12,6 @@ toc: true
 ---
 
 
-# Understanding Geographic Coordinate Precision and Accuracy
 
 Geographic coordinates are crucial for navigation and mapping, but their precision and accuracy depend on decimal places and measurement tools. This blog explores how precision in degrees translates to distances on Earth's surface and the role of accuracy in different GPS technologies.
 
