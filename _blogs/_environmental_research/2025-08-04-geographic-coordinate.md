@@ -2,13 +2,14 @@
 layout: post
 title: ' Understanding Geographic Co-ordinate'
 date: 2025-08-02
-permalink: /blogs/environmental_research/geographic-coordinate/
+permalink: /blogs/environmental-research/geographic-coordinate/
 tags:
   - geo-graphic co-ordinate
   - geo-spatial
   - mapping
 published: true
 description: "understanding the geo-graphic co-ordinate system."
+categories: environmental-research
 toc: true
 ---
 
