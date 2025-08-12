@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EENFEE For Writing Services - Statement of Purpose (SOP) - EENFEE</title>
+    <title>How to make AI prompts for English Improvement - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -289,7 +289,7 @@
     
       <li class="nav-item has-dropdown">
         <a href="/blogs/" 
-          class="nav-link "
+          class="nav-link active"
           aria-haspopup="true" aria-expanded="false">
           
           
@@ -609,200 +609,223 @@
 
     <main class="main-content">
     
-      <div class="sop-service-form-container">
-    <h1 class="sop-service-title">EENFEE- For Writing Services - Statement of Purpose (SOP)</h1>
-    <p class="sop-importance-writing-quote">"Writing isn't just putting words on paper; it's excavating the depths of your being. Every sentence you craft, every idea you articulate, is a window into your mind, your passions, and your unique perspective. It's where your true voice emerges, unburdened by fleeting impressions, allowing others to see not just who you are, but the boundless potential you hold within."</p>
+      <div class="post-layout">
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
+
+      
+      <ul class="tocbox-list-unique"></ul>
+
+    </div>
     
-    <p class="sop-intro-text">Ready to craft a powerful Statement of Purpose that opens doors to your dream university? Fill out this form, and our expert team will reach out to discuss your personalized SOP strategy and kickstart your application journey.</p>
-    <p class="sop-timeline-info">Expect a call/email from our team within <strong>1 business day</strong> to discuss your needs.</p>
+  </nav>
 
-    <div class="security-assurance">
-        <i class="fa fa-lock" aria-hidden="true"></i> Your information is secure and confidential.
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
+
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
+
+  <article class="post-content">
+    <div class="markdown-body">
+  <p><strong>EENFEE Believes …</strong></p>
+
+<blockquote>
+  <p>“True wisdom lies not in being taught precisely what to know, but in discovering what must be learned and mastering the art of learning itself.”</p>
+</blockquote>
+
+<h2 id="-using-ai-as-your-personal-english-teacher">📚 Using AI as Your Personal English Teacher</h2>
+
+<p>Artificial Intelligence is more than just a chatbot — it can be your <strong>24/7 English tutor</strong> for speaking, listening, writing, and reading. The secret is learning how to <strong>write effective prompts</strong> so the AI knows exactly what you want.</p>
+
+<hr />
+
+<h3 id="1️⃣-how-to-write-effective-prompts">1️⃣ How to Write Effective Prompts</h3>
+
+<p>A great prompt tells the AI:</p>
+<ul>
+  <li><strong>Role</strong> → Who you want it to be</li>
+  <li><strong>Goal</strong> → What you want to achieve</li>
+  <li><strong>Context</strong> → Your current level and needs</li>
+  <li><strong>Task</strong> → What activity you want</li>
+  <li><strong>Format</strong> → How you want feedback</li>
+  <li><strong>Tone</strong> → Encouraging, strict, or casual</li>
+</ul>
+
+<p>💡 <strong>Prompt formula</strong>:<br />
+<code class="language-plaintext highlighter-rouge">Role + Goal + Context + Task + Format + Tone</code></p>
+
+<hr />
+
+<h3 id="2️⃣-ready-to-use-ai-prompts-for-each-skill">2️⃣ Ready-to-Use AI Prompts for Each Skill</h3>
+
+<h4 id="-speaking-practice">🗣 Speaking Practice</h4>
+
+<div class="prompt-box">
+  You are my English speaking coach. Ask me one question at a time about my hobbies, daily life, and opinions. After my answer, correct my grammar, suggest better vocabulary, and tell me my fluency score from 1–10. Be encouraging but point out mistakes clearly.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<div class="prompt-box">
+  Act as an IELTS Speaking Examiner. Give me 3 Part 1 questions, 2 Part 2 topics (with 1-minute preparation time), and 3 Part 3 questions. After my responses, give me:
+1. Band score estimate
+2. Grammar corrections
+3. Pronunciation advice
+4. Vocabulary improvement suggestions
+  <button class="copy-btn">Copy</button>
+</div>
+
+<hr />
+
+<h4 id="-listening-practice">🎧 Listening Practice</h4>
+
+<div class="prompt-box">
+  Recommend a 2–3 minute English listening audio for B2 level. After I listen, ask me 5 comprehension questions. At the end, give me the transcript and highlight words I didn’t understand.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<div class="prompt-box">
+  Read a short paragraph aloud (B1 level) and make me type exactly what I hear. Then show me the correct text, highlight my errors, and explain them.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<hr />
+
+<h4 id="-writing-practice">✍ Writing Practice</h4>
+
+<div class="prompt-box">
+  I will write an essay. Give me feedback on: grammar, vocabulary, structure, and clarity. Highlight mistakes, rewrite them correctly, and explain why they were wrong. Also, give me a 0–9 IELTS Writing score.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<div class="prompt-box">
+  Each day I will write a short diary entry. Correct grammar, suggest better phrases, and teach me 2–3 new words based on my writing.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<hr />
+
+<h4 id="-reading-practice">📖 Reading Practice</h4>
+
+<div class="prompt-box">
+  Give me a short article (around 200 words) at my level. After I read, extract 10 new vocabulary words, explain them in simple English, and use each in an example sentence.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<div class="prompt-box">
+  Provide a short passage and ask me 5 comprehension questions. Then check my answers and explain the correct ones.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<hr />
+
+<h3 id="3️⃣-make-ai-act-like-an-english-teacher-with-feedback">3️⃣ Make AI Act Like an English Teacher with Feedback</h3>
+
+<p>Use this <strong>meta-prompt</strong> before any activity:</p>
+
+<div class="prompt-box">
+You are my personal English teacher. I am an intermediate student preparing for IELTS. Whenever I speak or write, you must:
+1. Correct grammar mistakes (showing before and after)
+2. Suggest better vocabulary and expressions
+3. Give pronunciation tips if applicable
+4. Encourage me with positive feedback
+5. Give me one short homework task for practice.
+  <button class="copy-btn">Copy</button>
+</div>
+
+<hr />
+
+<h3 id="-pro-tips-for-students">🔹 Pro Tips for Students</h3>
+<ul>
+  <li><strong>Be specific</strong> → Ask for exactly what you need</li>
+  <li><strong>Always ask for explanations</strong> → Learn why corrections are made</li>
+  <li><strong>Practice daily</strong> → Even 15 minutes a day matters</li>
+  <li><strong>Mix skills</strong> → Link listening → speaking → writing → reading in one session</li>
+  <li><strong>Save your prompts</strong> → Reuse the ones that work best</li>
+</ul>
+
+<hr />
+
+<p>✅ <em>With these prompts, AI becomes more than a chatbot — it becomes your personal English coach, giving real-time feedback and helping you improve faster.</em></p>
+
+
     </div>
 
-
-    <div class="sop-testimonials">
-        <h3>What Our Students Say</h3>
-        <button class="testimonial-nav testimonial-prev" onclick="slideTestimonials(-1)">❮</button>
-        <button class="testimonial-nav testimonial-next" onclick="slideTestimonials(1)">❯</button>
-        <div class="testimonials-container">
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <p>"Eenfee helped me articulate my goals perfectly. I got accepted into my top choice university!"</p>
-                </div>
-                <p class="testimonial-author">- Master's in Computer Science, Canada</p>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <p>"The team at Eenfee truly understood my story and helped it shine through my SOP. Highly recommend!"</p>
-                </div>
-                <p class="testimonial-author">-  BBA, Australia</p>
-            </div>
-            <!-- Add more testimonials here -->
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <p>"Professional, responsive, and truly dedicated to helping students succeed. Worth every penny!"</p>
-                </div>
-                <p class="testimonial-author">- PhD candidate, UK</p>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <p>"I was struggling to express my academic journey, but the team at Eenfee made it so easy. My SOP was perfect!"</p>
-                </div>
-                <p class="testimonial-author">- Bachelor's in Engineering, USA</p>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <p>"The personalized approach and attention to detail made all the difference. I felt supported throughout the process."</p>
-                </div>
-                <p class="testimonial-author">- Masters in Research (STEAM), Australia</p>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="sop-service-title">SOP Service Request</h2>
-
-    <form id="sopServiceForm"
-                class="sop-service-form"
-                method="POST"
-                action="https://script.google.com/macros/s/AKfycbyVSmavwOoO3D94SWGqrxyRgkV_JlO-eVH2zGa1NxZgiCmrUQ8fMfSRhL6xMEOQbpHG/exec"
-                target="sopServiceIframe"
-                onsubmit="return sopServiceFormSubmit();">
-
-        <div class="sop-service-form-group">
-            <label for="fullName">Full Name <span class="required-star">*</span></label>
-            <input type="text" id="fullName" name="fullName" placeholder="e.g., John Doe, Eenfee Study Abroad" required aria-describedby="fullNameHint">
-            <small id="fullNameHint" class="form-text-hint">Please enter your full legal name as it appears on your passport.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="targetCountry">Target Country/Region <span class="required-star">*</span></label>
-            <select id="targetCountry" name="targetCountry" required>
-                <option value="">Select a country...</option>
-                <option value="USA">USA</option>
-                <option value="UK">United Kingdom</option>
-                <option value="Australia">Australia</option>
-                <option value="Canada">Canada</option>
-                <option value="Europe">Europe (Specify in additional notes)</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <div class="sop-service-form-group">
-            <label for="email">Email Address <span class="required-star">*</span></label>
-            <input type="email" id="email" name="email" placeholder="e.g.,info@eenfee.com" required>
-            <small class="form-text-hint">We will use this email to contact you regarding your SOP request.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="e.g., +977 9843314630">
-            <small class="form-text-hint">Please enter your phone number including the country code.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="passportNumber">Passport Number</label>
-            <input type="text" id="passportNumber" name="passportNumber" placeholder="e.g., PA12345678">
-            <small class="form-text-hint">Please enter your passport number.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="academicBackground">Brief Academic Background</label>
-            <textarea id="academicBackground" name="academicBackground" rows="3" placeholder="e.g., Bachelor's in Civil Engineering from Tribhuvan University..."></textarea>
-            <small class="form-text-hint">Mention your latest degree, institution, and major.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="specificGoals">What are your primary goals for this SOP?</label>
-            <textarea id="specificGoals" name="specificGoals" rows="4" placeholder="e.g., Applying for a Master's in Computer Science at University X, focusing on AI research."></textarea>
-            <small class="form-text-hint">Tell us about your target program, desired universities, and what you hope to achieve.</small>
-        </div>
-
-        <div class="sop-service-form-group">
-            <label for="financialDetails">Financial Details</label>
-            <textarea id="financialDetails" name="financialDetails" rows="3" placeholder="e.g., Self-funded, Scholarship details..."></textarea>
-            <small class="form-text-hint">Provide information about your funding sources and any scholarships you are applying for.</small>
-        </div>
-
-        <div class="sop-service-form-group checkbox-group">
-            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-            <label for="privacyConsent">I agree to the <a href="/privacy-policy/" target="_blank">Privacy Policy</a> and consent to my data being processed for this service. <span class="required-star">*</span></label>
-        </div>
-
-        <div class="sop-service-submit">
-            <button type="submit" class="sop-service-button">Request Consultation</button> <div class="sop-service-message" id="sopServiceMessage"></div>
-        </div>
-    </form>
-
-    <iframe name="sopServiceIframe" id="sopServiceIframe" style="display:none;"></iframe>
+  </article>
 </div>
 
 
-<div class="sop-faq-section">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <h4 class="faq-question">What's included in EENFEE SOP service? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>Our SOP service includes a personalized consultation, drafting of your Statement of Purpose from scratch, multiple revisions for your maximum satisfaction, and proofreading to ensure error-free content. We focus on highlighting your unique story and academic goals.</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <h4 class="faq-question">How long does it take to get my SOP draft? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>After our initial consultation and receiving all necessary documents, the first draft is typically delivered within 3-5 business days. Revisions depend on your feedback and response time.</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <h4 class="faq-question">What if I need revisions? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>We offer multiple revisions to ensure your SOP perfectly reflects your vision and meets all requirements. Our goal is your success followed by satisfaction.</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <h4 class="faq-question">What happens after I submit this form? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>Once you submit the form, our team will review your details. An expert counselor will contact you within 1 business day via your preferred method to schedule a free consultation and discuss your specific SOP needs in detail.</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <h4 class="faq-question">How do I contact EENFEE for further questions? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>You can reach us via email at <a href="mailto:info@eenfee.com">info@eenfee.com</a>.</p>
-            <p>You can call/text us at 9843314630 (Whatsapp) for immediate assistance.</p>
-        </div>
-    </div>
 
 
-    <div class="faq-item">
-        <h4 class="faq-question">What are the pricing options for the SOP service? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>Our SOP service starts at NPR 5,000 for a standard Australian Statement of Purpose, which also includes free GTE/GS questionnaire responses. We also specialize in crafting compelling SOPs for universities, tailored to meet specific institutional and visa requirements. For advanced profiles or country-specific formats, we offer customized SOP packages to suit your unique needs. We frequently run special offers, provide referral discounts, coupon codes, and even consider scholarship-based pricing for deserving or financially constrained students.📩 Contact us today for a detailed consultation and the latest offers!</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <h4 class="faq-question">Can I get a discount for referring friends? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>Yes and No! We offer a referral cash-back program. If you refer a friend who successfully uses our SOP service, both you and your friend will receive a cash-back reward after the service is completed. Please contact us for more details.</p>
-        </div>
-    </div>
 
-    <div class="faq-item">
-        <h4 class="faq-question">What are the payment options for the SOP service offered by EENFEE? <span class="faq-arrow">+</span></h4>
-        <div class="faq-answer">
-            <p>We accept various payment methods, including cash payments, mobile payments, and online payment gateways. Please contact us for more details on the available options.</p>
-        </div>
-    </div>
-</div>
 
-<div class="promo-buttons">
-    <a href="/application-writing-services/SOP/" class="promo-buttons__link">
-        <span class="promo-buttons__text">Additional Information about SOP Services</span>
-        <span class="promo-buttons__arrow">&#8594;</span>
-    </a>
-    <a href="/application-writing-services/" class="promo-buttons__link">
-        <span class="promo-buttons__text">Explore Our Other Writing Services</span>
-        <span class="promo-buttons__arrow">&#8594;</span>
-    </a>
-</div>
+
+
+
+
+
+
 
       <!-- Main content goes here -->
     </main> 

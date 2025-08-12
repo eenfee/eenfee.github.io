@@ -9,6 +9,7 @@
   position: relative;
   transition: box-shadow 0.2s, border 0.2s;
   overflow: hidden;
+  z-index: 10; /* add this */
 }
 
 .tocbox-container-unique {
