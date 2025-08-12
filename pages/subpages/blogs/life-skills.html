@@ -5,25 +5,28 @@ permalink: /blogs/life-skills/
 description: Articles about personal development, productivity, and essential life skills.
 ---
 
-<div class="archive">
-  <h1>{{ page.title }}</h1>
-  <p class="page-description">{{ page.description }}</p>
-  
-  {% assign posts = site.posts | where_exp: "post", "post.categories contains 'life-skills'" %}
-  
-  {% for post in posts %}
-    <article class="archive-item">
-      <h2 class="archive-item-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <div class="archive-item-meta">
-        <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
-      </div>
-      {% if post.excerpt %}
-        <div class="archive-item-excerpt">
-          {{ post.excerpt | strip_html | truncate: 160 }}
+<div class="blog-listing-page">
+    <h1 class="blog-listing__main-heading">💡 Life Skills Blogs</h1>
+
+    <section class="blog-listing__section">
+        <h2 class="blog-listing__section-title">Our Top Life Skills Articles</h2>
+
+        <div class="blog-listing__scroll-wrapper">
+            <ul class="blog-listing__list blog-listing__list--scrollable">
+                {% assign life_skills_blogs = site.blogs | where: "category", "life-skills" %}
+                {% for post in life_skills_blogs %}
+                <li class="blog-listing__item blog-listing__item--card">
+                    <h3 class="blog-listing__item-title">
+                        <a href="{{ post.url | relative_url }}" class="blog-listing__item-link">{{ post.title }}</a>
+                    </h3>
+                    <p class="blog-listing__item-date"><small><em>{{ post.date | date: "%B %d, %Y" }}</em></small></p>
+                    <div class="blog-listing__item-excerpt">
+                        {{ post.description }}
+                    </div>
+                    <a href="{{ post.url | relative_url }}" class="blog-listing__read-more-link">Read More &rarr;</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
-      {% endif %}
-    </article>
-  {% endfor %}
+    </section>
 </div>
