@@ -44,21 +44,26 @@ AI bridges the gap between traditional learning and **personalized, interactive 
 Role-play with AI to simulate **real-life English situations**.
 
 <div class="prompt-box">
-Hi AI, pretend you are an immigration officer at the airport. Ask me 10 questions in English and correct my responses.
-<button class="copy-btn">Copy</button>
+  <span id="prompt-text">
+  Hi AI, pretend you are an immigration officer at the airport. Ask me 10 questions in English and correct my responses.
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
+
 
 Other examples:
 - **Shop Assistant Role-Play**
 <div class="prompt-box">
-I want to practice my English with you. You play the part of a shop assistant and I am a confused customer. Lead the conversation and correct my mistakes at the end.
-<button class="copy-btn">Copy</button>
+  <span id="prompt-text">
+  I want to practice my English with you. You play the part of a shop assistant and I am a confused customer. Lead the conversation and correct my mistakes at the end.
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 - **Tour Guide in London**
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 I want to practice my English with you. Act as my tour guide in London for a full day. Include transport, sites, food, and general chit-chat. Correct mistakes at the end.
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 ---
@@ -67,14 +72,14 @@ I want to practice my English with you. Act as my tour guide in London for a ful
 
 AI can **edit your writing** and explain why changes are needed.
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 Correct this message and explain my mistakes in simple English: [Your text here]
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 Is this sentence grammatically correct? [Paste sentence]
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 ---
@@ -83,14 +88,14 @@ Is this sentence grammatically correct? [Paste sentence]
 
 Learn new words **with context and examples**.
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 Teach me 10 advanced English words for academic writing with example sentences.
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 Suggest a synonym for [word] that fits in this sentence: [Your sentence]
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 ---
@@ -99,9 +104,9 @@ Suggest a synonym for [word] that fits in this sentence: [Your sentence]
 
 Use AI tools with audio features to **practice speaking**.
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 Pronounce these words for me and let me repeat: [word list]
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 ---
@@ -110,9 +115,9 @@ Pronounce these words for me and let me repeat: [word list]
 
 Get **personalized roadmaps** for IELTS, TOEFL, or business English.
 
-<div class="prompt-box">
+<div class="prompt-box" id="prompt-text">
 I’m an intermediate English learner preparing for IELTS in 2 months. Create a daily 1-hour study plan.
-<button class="copy-btn">Copy</button>
+<button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
 </div>
 
 ---
