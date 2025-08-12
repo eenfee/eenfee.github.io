@@ -341,15 +341,14 @@
   max-width: 100%;
 }
 
-.prompt-box pre {
+.prompt-box span {
   margin: 0;         /* remove default margin */
   padding: 0;
   line-height: 1.2;   /* tighten line spacing if needed */
   font-family: monospace, monospace;
   word-wrap: break-word;
-  width: 100%;
   white-space: pre-wrap;
-  display: block;
+  display: inline;
 }
 
 .copy-btn {
