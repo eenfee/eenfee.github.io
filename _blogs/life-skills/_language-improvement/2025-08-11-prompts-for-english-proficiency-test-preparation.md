@@ -7,7 +7,11 @@ permalink: /blogs/life-skills/language-improvement/prompts-for-ept-preparation/
 toc: true
 category: life-skills
 tag: [abroad-study-english, english-improvement, use-case-of-AI]
+image: \assets\images\blogs\life-skills\prompt-writing_for_english_learning.png
 ---
+<p align="center">
+  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:150%;">
+</p>
 
 **EENFEE Believes ...**
 

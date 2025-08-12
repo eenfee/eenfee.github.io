@@ -8,8 +8,12 @@ toc: true
 category: life-skills
 tag: [abroad-study-english, english-improvement, use-case-of-AI, English learning, AI tools, ChatGPT, IELTS, TOEFL, Gemini AI, Grok AI, DeepSeek]
 keywords: "learn English with AI, ChatGPT English learning, AI for IELTS, AI language learning, Gemini AI English, Grok AI, DeepSeek English, AI prompts for English"
+image: \assets\images\blogs\life-skills\improve_english_with_AI.png
 ---
 
+<p align="center">
+  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;">
+</p>
 
 **EENFEE Believes ...**
 
