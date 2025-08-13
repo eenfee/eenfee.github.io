@@ -42,60 +42,76 @@ A great prompt tells the AI:
 
 #### 🗣 Speaking Practice
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   You are my English speaking coach. Ask me one question at a time about my hobbies, daily life, and opinions. After my answer, correct my grammar, suggest better vocabulary, and tell me my fluency score from 1–10. Be encouraging but point out mistakes clearly.
+  </span>
   <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Act as an IELTS Speaking Examiner. Give me 3 Part 1 questions, 2 Part 2 topics (with 1-minute preparation time), and 3 Part 3 questions. After my responses, give me:
 1. Band score estimate
 2. Grammar corrections
 3. Pronunciation advice
 4. Vocabulary improvement suggestions
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+   </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
 ---
 
 #### 🎧 Listening Practice
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Recommend a 2–3 minute English listening audio for B2 level. After I listen, ask me 5 comprehension questions. At the end, give me the transcript and highlight words I didn’t understand.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Read a short paragraph aloud (B1 level) and make me type exactly what I hear. Then show me the correct text, highlight my errors, and explain them.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
 ---
 
 #### ✍ Writing Practice
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   I will write an essay. Give me feedback on: grammar, vocabulary, structure, and clarity. Highlight mistakes, rewrite them correctly, and explain why they were wrong. Also, give me a 0–9 IELTS Writing score.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Each day I will write a short diary entry. Correct grammar, suggest better phrases, and teach me 2–3 new words based on my writing.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
 ---
 
 #### 📖 Reading Practice
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Give me a short article (around 200 words) at my level. After I read, extract 10 new vocabulary words, explain them in simple English, and use each in an example sentence.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
   Provide a short passage and ask me 5 comprehension questions. Then check my answers and explain the correct ones.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+  </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
 ---
@@ -104,14 +120,16 @@ A great prompt tells the AI:
 
 Use this **meta-prompt** before any activity:
 
-<div class="prompt-box" id="prompt-text">
+<div class="prompt-box">
+  <span id="prompt-text">
 You are my personal English teacher. I am an intermediate student preparing for IELTS. Whenever I speak or write, you must:
 1. Correct grammar mistakes (showing before and after)
 2. Suggest better vocabulary and expressions
 3. Give pronunciation tips if applicable
 4. Encourage me with positive feedback
 5. Give me one short homework task for practice.
-  <button class="copy-btn" data-copy-target="#prompt-text">Copy</button>
+   </span>
+  <button class="copy-btn" data-copy-target="#prompt-text">📋</button>
 </div>
 
 ---
