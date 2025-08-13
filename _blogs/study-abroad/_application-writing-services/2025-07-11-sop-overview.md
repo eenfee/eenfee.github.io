@@ -9,7 +9,7 @@ image: /assets/images/pen-paper-logo.png
 ---
 
 <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:150%;">
+  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;">
 </p>
 
 ##### **Ready to get started? Fill out our [SOP Service Form](/services/sop_form/) for personalized review, draft feedback, comments, and expert tips.**
