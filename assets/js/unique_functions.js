@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (code) {
         navigator.clipboard.writeText(code).then(() => {
           button.innerText = 'Copied!';
-          setTimeout(() => button.innerText = 'Copy', 1500);
+          setTimeout(() => button.innerText = '📋', 1500);
         }).catch(() => {
           alert('Failed to copy. Please copy manually.');
-          button.innerText = 'Copy';
+          button.innerText = '📋';
         });
       } else {
         alert('No text to copy. Check data-copy-target.');
