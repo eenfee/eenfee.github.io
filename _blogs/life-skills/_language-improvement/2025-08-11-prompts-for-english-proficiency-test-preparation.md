@@ -10,15 +10,15 @@ tag: [abroad-study-english, english-improvement, use-case-of-AI]
 image: \assets\images\blogs\life-skills\prompt-writing_for_english_learning.png
 ---
 
-
+<p align="center">
+  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;">
+</p>
 
 **EENFEE Believes ...**
 
 > "True wisdom lies not in being taught precisely what to know, but in discovering what must be learned and mastering the art of learning itself."
 
-<p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;">
-</p>
+
 
 ## 📚 Using AI as Your Personal English Teacher
 
