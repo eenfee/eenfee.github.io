@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opinion & Commentary - EENFEE</title>
+    <title>Why Study in the USA — And How Can You - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -52,7 +52,7 @@
     
       <li class="nav-item has-dropdown">
         <a href="/study-abroad/" 
-          class="nav-link "
+          class="nav-link active"
           aria-haspopup="true" aria-expanded="false">
           
           
@@ -148,7 +148,7 @@
                     
                       <li class="sub-dropdown-item">
                         <a href="/study-abroad/destinations/usa/" 
-                          class="sub-dropdown-link ">
+                          class="sub-dropdown-link active">
                           USA
                         </a>
                       </li>
@@ -296,7 +296,7 @@
     
       <li class="nav-item has-dropdown">
         <a href="/blogs/" 
-          class="nav-link active"
+          class="nav-link "
           aria-haspopup="true" aria-expanded="false">
           
           
@@ -355,7 +355,7 @@
             
               <li class="dropdown-item ">
                 <a href="/blogs/opinion/" 
-                  class="dropdown-link active">
+                  class="dropdown-link ">
                   Opinion & Commentary
                   
                 </a>
@@ -616,137 +616,348 @@
 
     <main class="main-content">
     
-      <h1>Opinion & Commentary </h1>
-<p class="page-description">Personal insights, commentary, and analysis on various topics.</p>
+      <div class="post-layout">
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
+
+      
+      <ul class="tocbox-list-unique"></ul>
+
+    </div>
+    
+  </nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
+
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
+
+  <article class="post-content">
+    <div class="markdown-body">
+  <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
+
+<h2 id="why-choose-the-usa-for-higher-education">Why Choose the USA for Higher Education?</h2>
+
+<p>The USA is a global leader in education, known for its innovation, flexibility, and prestige. Here’s why Nepali students are drawn to it:</p>
 
 <ul>
-  
-    <li>
-      <h2><a href="/blogs/abroad-studies/why-abroad-studies/">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/france/">FR Why Study in France — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/south-korea/">Study in South Korea — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="guide-to-studying-in-south-korea-for-nepalese-students-d-2-visa-requirements-updated-for-september-2025">Guide to Studying in South Korea for Nepalese Students: D-2 Visa Requirements (Updated for September 2025)</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/australia/">Why Study in Australia — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Dreaming of studying in a country with world-class universities, stunning beaches, and a vibrant multicultural vibe? Australia is calling! From the bustling cities of Sydney and Melbourne to the laid-back charm of Perth, Australia offers Nepali students an unmatched blend of academic excellence and lifestyle. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless students from Nepal to achieve their study abroad goals in Australia. This practical, story-driven guide will walk you through why Australia is a top choice and how to make your study journey a reality.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/canada/">Why Study in Canada — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Imagine studying in the vibrant city of Toronto, exploring the breathtaking landscapes of British Columbia, or launching a career in Vancouver’s thriving tech scene. Canada is a top destination for Nepali students, offering world-class education, a welcoming multicultural environment, and excellent post-study work opportunities. With over 600,000 international students, Canada is known for its quality education and pathways to permanent residency. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their Canadian study dreams. This practical, story-driven guide will show you why Canada is the perfect place to study and how to make it happen.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/europe/">Why Study in Europe — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Imagine studying in the historic halls of Paris, coding in the tech hubs of Berlin, or exploring sustainable innovations in Amsterdam—all while building a global career. Europe is a dream destination for Nepali students, offering world-class education, affordable tuition, and a rich cultural experience. With over 4,000 universities across 50 countries, Europe provides endless opportunities to pursue your academic and professional goals. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless Nepali students navigate their journey to Europe. This practical, story-driven guide will show you why Europe is the perfect place to study and how to make it happen.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/uk/">Why Study in the UK — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Planning to pursue your higher education in the UK? Imagine strolling through the historic streets of London, studying in world-renowned universities like Oxford or Imperial College, and building a global career—all while sipping tea in a cozy café. The United Kingdom is a top destination for Nepali students, offering cutting-edge academic programs, a multicultural environment, and a gateway to international opportunities. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless students turn their UK study dreams into reality. Here’s a practical, story-driven guide to why you should study in the UK and how to navigate the journey.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/usa/">Why Study in the USA — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/ept/ielts/">IELTS</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Ielts info loading</p>
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/ept/oellt/">Oxford ELLT Digital: Take Your English Test Online</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/application-writing-services/SOP/">Statement of Purpose</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;" />
-</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/environmental-research/geographic-coordinate/">Understanding Geographic Coordinate Precision and Accuracy</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="understanding-geographic-coordinate-precision-and-accuracy">Understanding Geographic Coordinate Precision and Accuracy</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/">How to improve English with AI</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;" />
-</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/malta/">Why Study in Malta — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <h2 id="malta-student-visa-financial-guide-for-south-asian-students-nepal-india-pakistan-bangladesh-bhutan"><strong>Malta Student Visa: Financial Guide for South Asian Students (Nepal, India, Pakistan, Bangladesh, Bhutan)</strong></h2>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/">How to make AI prompts for English Improvement</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;" />
-</p>
-
-
-    </li>
-  
+  <li><strong>World-Class Universities</strong>: Home to institutions like Harvard, MIT, and Stanford, the USA dominates global university rankings.</li>
+  <li><strong>Diverse Academic Programs</strong>: From liberal arts to STEM, business, and creative fields, the USA offers programs for every interest.</li>
+  <li><strong>Post-Study Work Opportunities</strong>: The Optional Practical Training (OPT) program allows graduates to work in the USA for up to 3 years (STEM fields) after completing their degree.</li>
+  <li><strong>Cultural Diversity</strong>: With students from around the world and active Nepali student communities, you’ll feel at home while embracing global perspectives.</li>
+  <li><strong>Innovation and Research</strong>: The USA leads in research and technology, offering access to cutting-edge facilities and industry connections.</li>
 </ul>
+
+<blockquote>
+  <p><strong>A Student’s Story</strong>: Meet Kiran, a Nepali student who dreamed of studying computer science in the USA. With Eenfinitee Horizons’ support, he enrolled at the University of California, Berkeley. “Studying in the USA gave me access to top professors and Silicon Valley internships,” he says. “It was a game-changer!”</p>
+</blockquote>
+
+<h2 id="academic-programs-and-universities">Academic Programs and Universities</h2>
+
+<p>The USA offers a wide range of programs tailored to diverse goals:</p>
+
+<ul>
+  <li><strong>Undergraduate Programs</strong>: 4-year bachelor’s degrees in fields like engineering, business, biology, and arts.</li>
+  <li><strong>Postgraduate Programs</strong>: 1–2 year master’s degrees, MBAs, and research-based PhDs.</li>
+  <li><strong>Associate Degrees and Community Colleges</strong>: 2-year programs for affordable entry, with pathways to transfer to 4-year universities.</li>
+  <li><strong>Pathway Programs</strong>: Foundation courses for students transitioning from Nepal’s +2 system.</li>
+</ul>
+
+<p><strong>Top Universities for Nepali Students</strong>:</p>
+<ul>
+  <li>Massachusetts Institute of Technology (MIT)</li>
+  <li>Stanford University</li>
+  <li>Harvard University</li>
+  <li>University of California, Berkeley</li>
+  <li>New York University (NYU)</li>
+</ul>
+
+<p>Each university has unique strengths. For example, MIT excels in STEM, while NYU is renowned for business and arts.</p>
+
+<h2 id="admission-requirements">Admission Requirements</h2>
+
+<p>To study in the USA, you’ll need to meet academic and language requirements:</p>
+
+<ul>
+  <li><strong>Academic Qualifications</strong>:
+    <ul>
+      <li><strong>Undergraduate</strong>: Completion of +2 (HSEB) or A-Levels with a minimum of 65–80% marks, depending on the university.</li>
+      <li><strong>Postgraduate</strong>: A bachelor’s degree with a minimum GPA of 3.0/4.0 (around 65%+ in Nepal’s grading system).</li>
+    </ul>
+  </li>
+  <li><strong>Standardized Tests</strong>:
+    <ul>
+      <li><strong>Undergraduate</strong>: SAT or ACT (optional for many universities in 2025).</li>
+      <li><strong>Postgraduate</strong>: GRE (for STEM/business) or GMAT (for MBAs), though some programs waive these.</li>
+    </ul>
+  </li>
+  <li><strong>English Proficiency</strong>:
+    <ul>
+      <li>IELTS: Overall score of 6.5–7.5 (no band below 6.0).</li>
+      <li>TOEFL: 80–100 (iBT).</li>
+      <li>Alternatives: Duolingo English Test or PTE Academic (accepted by many universities).</li>
+    </ul>
+  </li>
+  <li><strong>Supporting Documents</strong>:
+    <ul>
+      <li>Academic transcripts and certificates</li>
+      <li>Statement of Purpose (SOP)</li>
+      <li>Letters of Recommendation (LORs)</li>
+      <li>Resume/CV (for postgraduate)</li>
+      <li>Valid passport</li>
+      <li>Proof of financial capacity</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Pro Tip</strong>: A strong SOP is crucial for US applications. Highlight your academic goals, career aspirations, and why you chose the USA. Eenfinitee Horizons offers personalized SOP coaching to help you stand out.</p>
+</blockquote>
+
+<h2 id="the-application-process">The Application Process</h2>
+
+<p>Here’s a step-by-step guide to applying for US universities:</p>
+
+<ol>
+  <li><strong>Research Programs and Universities</strong>:
+    <ul>
+      <li>Explore options on platforms like Common App (undergraduate) or university websites (postgraduate).</li>
+      <li>Shortlist 5–10 universities based on your academic interests, budget, and location preferences.</li>
+    </ul>
+  </li>
+  <li><strong>Check Deadlines</strong>:
+    <ul>
+      <li>Undergraduate: Early Decision/Early Action (November) or Regular Decision (January–February).</li>
+      <li>Postgraduate: December–March for fall intake (August/September).</li>
+    </ul>
+  </li>
+  <li><strong>Submit Applications</strong>:
+    <ul>
+      <li>Undergraduate: Apply via Common App, Coalition App, or university portals (up to 20 choices for Common App).</li>
+      <li>Postgraduate: Apply directly through university portals.</li>
+    </ul>
+  </li>
+  <li><strong>Receive Offers</strong>:
+    <ul>
+      <li>Conditional (based on meeting academic/language requirements) or unconditional offers.</li>
+    </ul>
+  </li>
+  <li><strong>Accept an Offer</strong>:
+    <ul>
+      <li>Confirm your place by paying a deposit and submitting acceptance forms.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>A Student’s Story</strong>: Suman, a Nepali student, was overwhelmed by the US application process. With our guidance, he secured admission to the University of Texas at Austin for engineering. “Eenfinitee Horizons helped me navigate applications and scholarships,” he shares.</p>
+</blockquote>
+
+<h2 id="visa-process-for-nepali-students">Visa Process for Nepali Students</h2>
+
+<p>To study in the USA, you’ll need an <strong>F-1 Student Visa</strong>. Here’s how to apply:</p>
+
+<ol>
+  <li><strong>Receive a Form I-20</strong>:
+    <ul>
+      <li>Your university issues an I-20 after you accept an offer and prove financial capability.</li>
+    </ul>
+  </li>
+  <li><strong>Pay the SEVIS Fee</strong>:
+    <ul>
+      <li>Pay the $350 SEVIS (Student and Exchange Visitor Information System) fee online.</li>
+    </ul>
+  </li>
+  <li><strong>Prepare Documents</strong>:
+    <ul>
+      <li>Valid passport</li>
+      <li>Form I-20</li>
+      <li>SEVIS fee receipt</li>
+      <li>Proof of funds (e.g., bank statements showing $25,000–$50,000/year for tuition and living costs)</li>
+      <li>English proficiency test results</li>
+      <li>Visa application form (DS-160 confirmation)</li>
+      <li>Passport-sized photographs</li>
+    </ul>
+  </li>
+  <li><strong>Apply for the Visa</strong>:
+    <ul>
+      <li>Complete the DS-160 form online and schedule an interview at the US Embassy in Kathmandu.</li>
+      <li>Pay the visa fee ($185 as of 2025).</li>
+    </ul>
+  </li>
+  <li><strong>Attend a Visa Interview</strong>:
+    <ul>
+      <li>Demonstrate your study plans and ties to Nepal to prove you’ll return after studies.</li>
+    </ul>
+  </li>
+  <li><strong>Wait for a Decision</strong>:
+    <ul>
+      <li>Processing typically takes 3–5 weeks, though interviews may add time.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>Pro Tip</strong>: Prepare for the visa interview by practicing answers about your study plans and financial support. Eenfinitee Horizons offers visa interview coaching for Nepali students.</p>
+</blockquote>
+
+<h2 id="costs-and-funding-options">Costs and Funding Options</h2>
+
+<p>Studying in the USA requires financial planning, but scholarships and work options can help:</p>
+
+<ul>
+  <li><strong>Tuition Fees</strong>:
+    <ul>
+      <li>Undergraduate: $20,000–$60,000 per year.</li>
+      <li>Postgraduate: $20,000–$50,000 per year.</li>
+      <li>Community colleges: $8,000–$15,000 per year.</li>
+    </ul>
+  </li>
+  <li><strong>Living Costs</strong>:
+    <ul>
+      <li>Major cities (New York, San Francisco): $15,000–$25,000 per year.</li>
+      <li>Smaller cities (Austin, Pittsburgh): $10,000–$15,000 per year.</li>
+    </ul>
+  </li>
+  <li><strong>Scholarships for Nepali Students</strong>:
+    <ul>
+      <li><strong>Fulbright Foreign Student Program</strong>: Fully funded master’s and PhD scholarships.</li>
+      <li>University-specific scholarships: Check with institutions like NYU or University of Southern California.</li>
+      <li>Need-based aid: Available at some liberal arts colleges (e.g., Amherst, Williams).</li>
+    </ul>
+  </li>
+  <li><strong>Part-Time Work</strong>:
+    <ul>
+      <li>F-1 visas allow on-campus work (up to 20 hours/week during term time, full-time during breaks).</li>
+      <li>Optional Practical Training (OPT) allows off-campus work post-graduation.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Did You Know?</strong> Many US universities offer merit-based or need-based aid for international students. Contact Eenfinitee Horizons to explore funding options tailored to your profile.</p>
+</blockquote>
+
+<h2 id="life-as-a-student-in-the-usa">Life as a Student in the USA</h2>
+
+<p>The USA offers a vibrant student experience:</p>
+
+<ul>
+  <li><strong>Cultural Diversity</strong>: Join Nepali student associations in cities like Boston or Los Angeles, or celebrate Dashain and Tihar with local communities.</li>
+  <li><strong>Student Support</strong>: Universities provide academic advisors, career services, and free tutoring.</li>
+  <li><strong>Affordable Living</strong>: Save by sharing apartments, cooking Nepali meals (dal bhat, anyone?), and using student discounts.</li>
+  <li><strong>Travel Opportunities</strong>: Explore iconic landmarks like the Grand Canyon or New York City during breaks.</li>
+</ul>
+
+<h2 id="post-study-opportunities">Post-Study Opportunities</h2>
+
+<p>The <strong>Optional Practical Training (OPT)</strong> program allows graduates to work in the USA for 1 year (3 years for STEM fields). Many Nepali students find jobs in tech, finance, or healthcare. Pathways to permanent residency are available through employer-sponsored visas like H-1B.</p>
+
+<blockquote>
+  <p><strong>A Student’s Story</strong>: Nisha, a Nepali graduate from NYU, used OPT to secure a marketing role in Chicago. “The USA’s education and job opportunities opened doors I never imagined,” she says.</p>
+</blockquote>
+
+<h2 id="how-eenfinitee-horizons-can-help">How Eenfinitee Horizons Can Help</h2>
+
+<p>At Eenfinitee Horizons Pvt. Ltd., we’re your trusted partner for studying in the USA. From selecting the right university to crafting SOPs, securing scholarships, and preparing for visa interviews, our Kathmandu-based team is here to support you. Visit us in New Baneshwor, email <a href="mailto:info@enfee.com.np">info@enfee.com.np</a>, or call <a href="tel:+97798123456789">+977-98123456789</a>.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Studying in the USA is more than earning a degree—it’s about gaining a global perspective, building skills for the future, and living the American dream. With careful planning and the right support, you can make it happen. Let Eenfinitee Horizons guide you on this transformative journey.</p>
+
+<p>Ready to study in the USA? <a href="/contact/">Contact us</a> today, and let’s start your American adventure!</p>
+
+<hr />
+
+<p><em>Connect with us on social media for more tips and updates:</em></p>
+
+<ul>
+  <li><a href="https://x.com/x_eenfee">X (Twitter)</a></li>
+  <li><a href="https://www.linkedin.com/in/eenfee">LinkedIn</a></li>
+  <li><a href="https://www.instagram.com/eenfee_official/">Instagram</a></li>
+  <li><a href="https://www.facebook.com/profile.php?id=61582291474235">Facebook</a></li>
+  <li><a href="https://www.tiktok.com/@eenfee_official">TikTok</a></li>
+</ul>
+
+    </div>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- Main content goes here -->
     </main> 
     
