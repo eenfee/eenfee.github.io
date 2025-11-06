@@ -69,6 +69,19 @@
         - name: Alumni Stories
           link: /study-abroad/experiences/alumni/
 
+- name: Other Services
+  link: /other-services/
+  icon: briefcase
+  dropdown:
+    - name: Consulting
+      link: /other-services/consulting/
+    - name: Tutoring
+      link: /other-services/tutoring/
+    - name: Editing & Proofreading
+      link: /other-services/editing-proofreading/
+    - name: Workshops & Webinars
+      link: /other-services/workshops-webinars/
+
 - name: Blogs
   link: /blogs/
   icon: edit
