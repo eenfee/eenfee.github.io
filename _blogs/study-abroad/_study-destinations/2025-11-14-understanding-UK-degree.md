@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Understand the UK Undergraduate Degree"
-date: 2025-06-20
+date: 2025-11-11
 description: "Explore the UK education structure (Undergraduate Level)."
 permalink: /blogs/abroad-studies/understanding-uk-study-bachelor-degree/
 toc: true
