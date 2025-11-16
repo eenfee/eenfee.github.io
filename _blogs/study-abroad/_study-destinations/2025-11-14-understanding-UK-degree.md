@@ -5,7 +5,7 @@ date: 2025-11-11
 description: "Explore the UK education structure (Undergraduate Level)."
 permalink: /blogs/abroad-studies/understanding-uk-study-bachelor-degree/
 toc: true
-category: abroad-studies, study-destinations, study-in-uk
+category: abroad-studies
 ---
 
 
