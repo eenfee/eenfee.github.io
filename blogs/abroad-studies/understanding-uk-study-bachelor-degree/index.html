@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - EENFEE</title>
+    <title>Understand the UK Undergraduate Degree - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -679,225 +679,233 @@
 
     <main class="main-content">
     
-      <div class="blog-listing-page">
-    <h1 class="blog-listing__main-heading">All the Blogs</h1>
+      <div class="post-layout">
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Latest Posts</h2>
-        
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable"> 
-                
-            </ul>
-        </div>
-    </section>
+      
+      <ul class="tocbox-list-unique"></ul>
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Other Blog Entries</h2>
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable">
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__item-link">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
+    </div>
+    
+  </nav>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
 
-                    </div>
-                    <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/france/" class="blog-listing__item-link">FR Why Study in France — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
+  <article class="post-content">
+    <div class="markdown-body">
+  <h2 id="️-understanding-the-key-terms">🏛️ Understanding the Key Terms</h2>
 
-                    </div>
-                    <a href="/study-abroad/destinations/france/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/south-korea/" class="blog-listing__item-link">Study in South Korea — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="guide-to-studying-in-south-korea-for-nepalese-students-d-2-visa-requirements-updated-for-september-2025">Guide to Studying in South Korea for Nepalese Students: D-2 Visa Requirements (Updated for September 2025)</h1>
+<p>The terms you asked about refer to different <em>stages</em> and <em>standards</em> of a degree, rather than entirely different types of degrees. Here’s how they fit together.</p>
 
+<h3 id="foundation-year-or-year-0">Foundation Year (or “Year 0”)</h3>
+<p>A <strong>Foundation Year</strong> is a <strong>preparatory year</strong> taken <em>before</em> Year 1 of a full bachelor’s degree. It’s often called “Year 0.”</p>
 
-                    </div>
-                    <a href="/study-abroad/destinations/south-korea/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/australia/" class="blog-listing__item-link">Why Study in Australia — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Dreaming of studying in a country with world-class universities, stunning beaches, and a vibrant multicultural vibe? Australia is calling! From the bustling cities of Sydney and Melbourne to the laid-back charm of Perth, Australia offers Nepali students an unmatched blend of academic excellence and lifestyle. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless students from Nepal to achieve their study abroad goals in Australia. This practical, story-driven guide will walk you through why Australia is a top choice and how to make your study journey a reality.</p>
+<ul>
+  <li><strong>Who is it for?</strong> It’s designed for students who don’t meet the direct entry requirements for Year 1. This could be because:
+    <ul>
+      <li>They have slightly lower grades than required.</li>
+      <li>They studied subjects at A-level (or equivalent) that don’t relate to the degree.</li>
+      <li>They are returning to education after a long break.</li>
+    </ul>
+  </li>
+  <li><strong>How it works:</strong> You apply for a “degree with a foundation year” (e.g., “BSc (Hons) Business Management with Foundation Year”). This makes the total course <strong>four years long</strong> instead of the typical three. After you successfully pass the foundation year, you automatically progress to Year 1 of the main degree.</li>
+</ul>
 
+<h3 id="year-1">Year 1</h3>
+<p>This is simply the <strong>first year</strong> of a standard bachelor’s degree (also known as Level 4). This is what you enter <em>after</em> you complete your A-levels, IB, BTEC, or a Foundation Year. A standard degree is then composed of Year 1, Year 2, and Year 3.</p>
 
-                    </div>
-                    <a href="/study-abroad/destinations/australia/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/canada/" class="blog-listing__item-link">Why Study in Canada — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the vibrant city of Toronto, exploring the breathtaking landscapes of British Columbia, or launching a career in Vancouver’s thriving tech scene. Canada is a top destination for Nepali students, offering world-class education, a welcoming multicultural environment, and excellent post-study work opportunities. With over 600,000 international students, Canada is known for its quality education and pathways to permanent residency. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their Canadian study dreams. This practical, story-driven guide will show you why Canada is the perfect place to study and how to make it happen.</p>
+<h3 id="hons-honours">Hons (Honours)</h3>
+<p>“Hons” stands for <strong>Honours</strong>. This is <em>not</em> a different type of degree; it’s the <strong>standard of academic achievement</strong> for almost all bachelor’s degrees in England, Wales, and Northern Ireland.</p>
 
+<ul>
+  <li><strong>What it means:</strong> An Honours degree (e.g., “BA (Hons)”) signifies a higher level of study and achievement than an “Ordinary” degree. The main difference is that an Honours degree requires you to complete a <strong>final-year dissertation</strong> or a major independent research project.</li>
+  <li><strong>The alternative:</strong> An <strong>Ordinary degree</strong> (or “pass” degree) may be awarded to students who complete all the modules but do not pass the dissertation, or who complete fewer credits. It’s generally considered a lower qualification than an Honours degree.</li>
+  <li><strong>Degree Classification:</strong> When you graduate with an Honours degree, you receive a “class” or grade:
+    <ul>
+      <li><strong>First-Class Honours (1st):</strong> The highest grade.</li>
+      <li><strong>Upper Second-Class Honours (2:1):</strong> A very common requirement for postgraduate study.</li>
+      <li><strong>Lower Second-Class Honours (2:2):</strong></li>
+      <li><strong>Third-Class Honours (3rd):</strong></li>
+    </ul>
+  </li>
+</ul>
 
-                    </div>
-                    <a href="/study-abroad/destinations/canada/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/europe/" class="blog-listing__item-link">Why Study in Europe — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the historic halls of Paris, coding in the tech hubs of Berlin, or exploring sustainable innovations in Amsterdam—all while building a global career. Europe is a dream destination for Nepali students, offering world-class education, affordable tuition, and a rich cultural experience. With over 4,000 universities across 50 countries, Europe provides endless opportunities to pursue your academic and professional goals. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless Nepali students navigate their journey to Europe. This practical, story-driven guide will show you why Europe is the perfect place to study and how to make it happen.</p>
+<blockquote>
+  <p><strong>Summary:</strong> The typical path for a standard UK (England) degree is:</p>
 
+  <ol>
+    <li>(Optional) <strong>Foundation Year (Year 0)</strong></li>
+    <li><strong>Year 1</strong> (Level 4)</li>
+    <li><strong>Year 2</strong> (Level 5)</li>
+    <li><strong>Year 3</strong> (Level 6), which includes a dissertation to earn the <strong>(Hons)</strong> title.</li>
+  </ol>
+</blockquote>
 
-                    </div>
-                    <a href="/study-abroad/destinations/europe/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/uk/" class="blog-listing__item-link">Why Study in the UK — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in the UK? Imagine strolling through the historic streets of London, studying in world-renowned universities like Oxford or Imperial College, and building a global career—all while sipping tea in a cozy café. The United Kingdom is a top destination for Nepali students, offering cutting-edge academic programs, a multicultural environment, and a gateway to international opportunities. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless students turn their UK study dreams into reality. Here’s a practical, story-driven guide to why you should study in the UK and how to navigate the journey.</p>
+<hr />
 
+<h2 id="-common-types-of-uk-bachelors-degrees">📚 Common Types of UK Bachelor’s Degrees</h2>
 
-                    </div>
-                    <a href="/study-abroad/destinations/uk/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/usa/" class="blog-listing__item-link">Why Study in the USA — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
+<p>The main type of undergraduate qualification is the <strong>Bachelor’s Degree</strong>. The title shows the general subject area.</p>
 
+<ul>
+  <li><strong>BA (Bachelor of Arts):</strong> For humanities, arts, and social sciences subjects like History, English, Philosophy, or Sociology.</li>
+  <li><strong>BSc (Bachelor of Science):</strong> For science, technology, and maths (STEM) subjects like Biology, Computer Science, or Physics. It’s also used for many social sciences that are data-driven, like Economics or Psychology.</li>
+  <li><strong>BEng (Bachelor of Engineering):</strong> A standard 3-year degree specifically for engineering subjects like Mechanical, Civil, or Electrical Engineering.</li>
+  <li><strong>LLB (Bachelor of Laws):</strong> The standard 3-year professional qualifying degree for law.</li>
+</ul>
 
-                    </div>
-                    <a href="/study-abroad/destinations/usa/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__item-link">Understand the UK Undergraduate Degree</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h2 id="️-understanding-the-key-terms">🏛️ Understanding the Key Terms</h2>
+<hr />
 
+<h2 id="-other-degree-types-and-structures">📅 Other Degree Types and Structures</h2>
 
-                    </div>
-                    <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/ielts/" class="blog-listing__item-link">IELTS</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Ielts info loading</p>
+<p>Besides the standard titles, you’ll also see these variations:</p>
 
-                    </div>
-                    <a href="/study-abroad/ept/ielts/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/oellt/" class="blog-listing__item-link">Oxford ELLT Digital: Take Your English Test Online</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
+<h3 id="degree-length-england-vs-scotland">Degree Length: England vs. Scotland</h3>
+<p>This is a major difference in the UK system.</p>
+<ul>
+  <li><strong>England, Wales, &amp; Northern Ireland:</strong> A standard Honours degree is <strong>three years</strong> long.</li>
+  <li><strong>Scotland:</strong> A standard Honours degree is <strong>four years</strong> long. The Scottish “Ordinary” degree (without honours) is three years.</li>
+</ul>
 
+<h3 id="integrated-masters-msci-meng">Integrated Master’s (MSci, MEng)</h3>
+<p>This is a four-year (or five-year in Scotland) degree that combines a bachelor’s and a master’s degree into one program. You graduate with a master’s level qualification (e.g., “Master of Science” or “Master of Engineering”). This is common in science and engineering subjects.</p>
 
-                    </div>
-                    <a href="/study-abroad/ept/oellt/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/application-writing-services/SOP/" class="blog-listing__item-link">Statement of Purpose</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;" />
-</p>
+<h3 id="sandwich-year-year-in-industry">Sandwich Year (Year in Industry)</h3>
+<p>This is <em>not</em> a different degree type but a common structure. A student on a 3-year course takes a full year (usually between Year 2 and Year 3) to work in a paid professional placement. This makes the total degree <strong>four years</strong> long and is excellent for work experience.</p>
 
+<h3 id="shorter-qualifications">Shorter Qualifications</h3>
+<p>You may also see two-year qualifications that are <em>not</em> full bachelor’s degrees:</p>
+<ul>
+  <li><strong>Foundation Degree (FdA / FdSc):</strong> A standalone two-year (Level 5) qualification that is work-based. It is <em>different</em> from a “foundation year.”</li>
+  <li><strong>DipHE (Diploma of Higher Education):</strong> A two-year academic qualification, equivalent to the first two years of a bachelor’s degree.</li>
+</ul>
 
-                    </div>
-                    <a href="/application-writing-services/SOP/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__item-link">Understanding Geographic Coordinate Precision and Accuracy</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="understanding-geographic-coordinate-precision-and-accuracy">Understanding Geographic Coordinate Precision and Accuracy</h1>
+<h3 id="summary-table-uk-degree-components">Summary Table: UK Degree Components</h3>
 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Term</th>
+      <th style="text-align: left">What It Is</th>
+      <th style="text-align: left">Typical Length</th>
+      <th style="text-align: left">Place in the Degree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Foundation Year</strong></td>
+      <td style="text-align: left">A preparatory “Year 0”</td>
+      <td style="text-align: left">1 year</td>
+      <td style="text-align: left"><em>Before</em> Year 1 (makes a 3-year degree 4 years total)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Bachelor’s Degree</strong></td>
+      <td style="text-align: left">The standard undergraduate degree</td>
+      <td style="text-align: left">3 years (Eng/Wales/NI) or 4 years (Scotland)</td>
+      <td style="text-align: left">The entire course (Years 1, 2, 3)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Hons (Honours)</strong></td>
+      <td style="text-align: left">The academic <em>standard</em> of the degree</td>
+      <td style="text-align: left">Part of the 3- or 4-year degree</td>
+      <td style="text-align: left">Awarded at the end, usually for a final-year dissertation</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Integrated Master’s</strong></td>
+      <td style="text-align: left">A combined Bachelor’s + Master’s</td>
+      <td style="text-align: left">4 years (Eng/Wales/NI) or 5 years (Scotland)</td>
+      <td style="text-align: left">The entire course</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Sandwich Year</strong></td>
+      <td style="text-align: left">A work placement year</td>
+      <td style="text-align: left">Adds 1 year</td>
+      <td style="text-align: left">Usually between Year 2 and Year 3</td>
+    </tr>
+  </tbody>
+</table>
 
-                    </div>
-                    <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__item-link">How to improve English with AI</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;" />
-</p>
+<p>Would you like to go for Undergraduate study in UK, if so <a href="">apply today</a>. EENFEE will be your trusted partner for your academic journey.</p>
 
+    </div>
 
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/malta/" class="blog-listing__item-link">Why Study in Malta — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h2 id="malta-student-visa-financial-guide-for-south-asian-students-nepal-india-pakistan-bangladesh-bhutan"><strong>Malta Student Visa: Financial Guide for South Asian Students (Nepal, India, Pakistan, Bangladesh, Bhutan)</strong></h2>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/malta/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__item-link">How to make AI prompts for English Improvement</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;" />
-</p>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+  </article>
 </div>
+
+
+
+
+
+
+
+
+
 
 
 
