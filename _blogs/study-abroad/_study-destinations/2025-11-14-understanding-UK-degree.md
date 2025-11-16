@@ -79,4 +79,4 @@ You may also see two-year qualifications that are *not* full bachelor's degrees:
 | **Integrated Master's** | A combined Bachelor's + Master's | 4 years (Eng/Wales/NI) or 5 years (Scotland) | The entire course |
 | **Sandwich Year** | A work placement year | Adds 1 year | Usually between Year 2 and Year 3 |
 
-Would you like to go for Unsergraduate study in UK, if so [apply today](). EENFEE will be your trusted partner for your academic journey.
+Would you like to go for Undergraduate study in UK, if so [apply today](). EENFEE will be your trusted partner for your academic journey.
