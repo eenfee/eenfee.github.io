@@ -56,6 +56,217 @@
   z-index: 0;
 }
 
+/* ====== Social Media Follow Banner ====== */
+.social-follow-banner {
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  margin-bottom: var(--space-lg);
+  box-shadow: 0 10px 40px rgba(46, 125, 50, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  animation: bannerPulse 3s ease-in-out infinite;
+}
+
+@keyframes bannerPulse {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(46, 125, 50, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 50px rgba(46, 125, 50, 0.5);
+  }
+}
+
+.social-follow-banner::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatBubble 6s ease-in-out infinite;
+}
+
+@keyframes floatBubble {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(1.1);
+  }
+}
+
+.social-follow-banner::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  left: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatBubble 8s ease-in-out infinite reverse;
+}
+
+.social-follow-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.social-follow-title {
+  font-size: var(--text-2xl);
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.social-follow-text {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: var(--text-md);
+  margin-bottom: var(--space-lg);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.social-follow-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 2rem;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(15px);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon-link::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 20px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.social-icon-link:hover::before {
+  opacity: 1;
+}
+
+.social-icon-link:hover {
+  background: var(--white);
+  transform: translateY(-12px) scale(1.2) rotate(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--white);
+}
+
+.social-icon-link:active {
+  transform: translateY(-8px) scale(1.15) rotate(5deg);
+}
+
+/* Staggered animation for icons */
+.social-icon-link:nth-child(1) {
+  animation: iconBounce 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.social-icon-link:nth-child(2) {
+  animation: iconBounce 2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.social-icon-link:nth-child(3) {
+  animation: iconBounce 2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.social-icon-link:nth-child(4) {
+  animation: iconBounce 2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.social-icon-link:nth-child(5) {
+  animation: iconBounce 2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Individual social media icon colors on hover with gradient backgrounds */
+.social-icon-link:nth-child(1):hover {
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.social-icon-link:nth-child(2):hover {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(10, 102, 194, 0.5);
+}
+
+.social-icon-link:nth-child(3):hover {
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(245, 133, 41, 0.5);
+}
+
+.social-icon-link:nth-child(4):hover {
+  background: linear-gradient(135deg, #1877f2 0%, #0c5dbf 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(24, 119, 242, 0.5);
+}
+
+.social-icon-link:nth-child(5):hover {
+  background: linear-gradient(135deg, #00f2ea 0%, #ff0050 50%, #000000 100%);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 242, 234, 0.5);
+}
+
 /* ====== Grid Layout ====== */
 .about-grid {
   display: grid;
@@ -307,6 +518,20 @@
   .about-cta p {
     font-size: var(--text-base);
   }
+  
+  .social-follow-title {
+    font-size: var(--text-xl);
+  }
+  
+  .social-follow-text {
+    font-size: var(--text-base);
+  }
+  
+  .social-icon-link {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -321,6 +546,20 @@
   
   .about-cta {
     padding: var(--space-md) var(--space-sm);
+  }
+  
+  .social-follow-banner {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .social-icon-link {
+    width: 56px;
+    height: 56px;
+    font-size: 1.6rem;
+  }
+  
+  .social-follow-links {
+    gap: var(--space-sm);
   }
 }
 
@@ -342,5 +581,23 @@
   
   .btn {
     width: 100%;
+  }
+  
+  .social-follow-links {
+    gap: var(--space-xs);
+  }
+  
+  .social-icon-link {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+  
+  .social-follow-title {
+    font-size: var(--text-lg);
+  }
+  
+  .social-follow-text {
+    font-size: var(--text-sm);
   }
 }
