@@ -1,1 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en, np"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://eenfee.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://eenfee.github.io/" rel="alternate" type="text/html" hreflang="en, np" /><updated>2025-12-14T11:08:12+05:45</updated><id>https://eenfee.github.io/feed.xml</id><title type="html">EENFEE</title><subtitle>Website of ENFEE.</subtitle></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en, np"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://eenfee.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://eenfee.github.io/" rel="alternate" type="text/html" hreflang="en, np" /><updated>2025-12-15T22:35:50+05:45</updated><id>https://eenfee.github.io/feed.xml</id><title type="html">EENFEE</title><subtitle>Website of ENFEE.</subtitle><entry><title type="html">The Complete Guide to Literature Reviews: From Basics to Best Practices</title><link href="https://eenfee.github.io/blog/literature-review-intro/" rel="alternate" type="text/html" title="The Complete Guide to Literature Reviews: From Basics to Best Practices" /><published>2025-12-15T00:00:00+05:45</published><updated>2025-12-15T00:00:00+05:45</updated><id>https://eenfee.github.io/blog/literature-review-intro</id><content type="html" xml:base="https://eenfee.github.io/blog/literature-review-intro/"><![CDATA[<p>Starting a new research project can feel overwhelming. Where do you begin? What has already been discovered? How do you build on existing knowledge? These questions lead us to one of the most critical components of any research endeavor: the literature review.</p>
+
+<h2 id="what-is-a-literature-review">What is a Literature Review?</h2>
+
+<p>A literature review serves as the foundation for new research by critically analyzing existing studies in a specific field. Think of it as a comprehensive conversation with the scholars who came before you—understanding their findings, identifying gaps they left behind, and positioning your work within this broader academic dialogue.</p>
+
+<p>Before diving into any research project, you need to answer four fundamental questions:</p>
+
+<ol>
+  <li>What research do you want to do?</li>
+  <li>Why do you want to do this research?</li>
+  <li>How are you going to do this research?</li>
+  <li>What has already been done?</li>
+</ol>
+
+<p>That fourth question is where your literature review comes in.</p>
+
+<h2 id="why-conduct-a-literature-review">Why Conduct a Literature Review?</h2>
+
+<p>A well-executed literature review does more than summarize existing research. It:</p>
+
+<ul>
+  <li><strong>Identifies research gaps</strong> that your study can address</li>
+  <li><strong>Highlights inconsistencies</strong> in current findings</li>
+  <li><strong>Evaluates contributions</strong> from previous scholars</li>
+  <li><strong>Summarizes key findings</strong> to establish context</li>
+  <li><strong>Synthesizes relevant studies</strong> to build a coherent narrative</li>
+</ul>
+
+<p>Without this critical foundation, your research risks being redundant, misdirected, or lacking the necessary depth to make a meaningful contribution to your field.</p>
+
+<h2 id="types-of-literature-reviews">Types of Literature Reviews</h2>
+
+<p>Not all literature reviews are created equal. Depending on your research goals, you might employ different approaches:</p>
+
+<p><strong>Narrative Review</strong> provides a broad overview of existing literature, summarizing key findings without following a rigid systematic approach. This type works well for exploratory topics or when you need to paint a general picture of a field.</p>
+
+<p><strong>Systematic Review</strong> uses structured and rigorous methodology to collect, assess, and synthesize relevant studies based on predefined criteria. This is the gold standard when you need comprehensive, unbiased coverage of a topic.</p>
+
+<p><strong>Meta-Analysis</strong> takes systematic reviews a step further by combining statistical data from multiple studies to derive overall conclusions about specific research questions.</p>
+
+<p><strong>Scoping Review</strong> maps key concepts, research gaps, and available evidence in a broad topic area, often serving as a precursor to more detailed systematic reviews.</p>
+
+<p><strong>Integrative Review</strong> synthesizes both qualitative and quantitative research to provide a comprehensive understanding of complex topics that span multiple methodologies.</p>
+
+<p><strong>Critical Review</strong> evaluates and critiques existing literature to highlight strengths, weaknesses, and theoretical advancements in the field.</p>
+
+<p><strong>Rapid Review</strong> condenses the systematic review process to quickly provide evidence-based insights, particularly useful for policy-making or time-sensitive decisions.</p>
+
+<p><strong>State-of-the-Art Review</strong> examines the most recent and cutting-edge research developments to identify emerging trends and advancements in rapidly evolving fields.</p>
+
+<h2 id="structure-of-a-literature-review">Structure of a Literature Review</h2>
+
+<p>A well-organized literature review follows a clear structure:</p>
+
+<h3 id="introduction">Introduction</h3>
+<p>This section introduces your topic, explains the purpose and scope of your review, and describes the types of sources you’ll be examining. Set the stage for your readers by explaining why this review matters.</p>
+
+<h3 id="body">Body</h3>
+<p>Here’s where you analyze and synthesize existing research. Organize your discussion by themes, trends, or chronological order—whatever makes the most sense for your topic. This is the heart of your review, where you demonstrate your understanding of the field and identify patterns or contradictions.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>Summarize your main findings, discuss their implications, and suggest areas for future research. Present the general consensus on your topic or highlight significant gaps that need addressing.</p>
+
+<h2 id="the-seven-step-process-for-conducting-a-literature-review">The Seven-Step Process for Conducting a Literature Review</h2>
+
+<h3 id="step-1-understand-the-need">Step 1: Understand the Need</h3>
+
+<p>Before you start searching databases, clarify why you need this literature review. Are you establishing foundations for your study? Identifying gaps? Understanding trends? Validating findings? This clarity will guide every subsequent decision.</p>
+
+<p>A literature review serves multiple purposes: it establishes foundations for your study, identifies unexplored areas, recognizes emerging patterns, confirms or challenges previous results, and helps refine your research objectives and methodology.</p>
+
+<h3 id="step-2-define-research-questions">Step 2: Define Research Questions</h3>
+
+<p>Your research questions are the backbone of your literature review. Start broad, then narrow down:</p>
+
+<ul>
+  <li>Outline your broader research topic</li>
+  <li>Develop initial research questions</li>
+  <li>Focus on specific challenges and solutions</li>
+  <li>Guide the scope of your review</li>
+  <li>Ensure questions are targeted and precise</li>
+</ul>
+
+<p>For example, instead of asking “How does climate change affect agriculture?” refine it to “What are the key adaptation strategies adopted by farmers in Nepal to mitigate climate-induced yield loss?”</p>
+
+<h3 id="step-3-conduct-a-pilot-study">Step 3: Conduct a Pilot Study</h3>
+
+<p>Before diving into a full-scale review, conduct a mini-study to test your approach. This helps you test the feasibility of your research questions, identify major sources and key databases, assess literature availability, and refine your strategy.</p>
+
+<p>A pilot study might involve reviewing 5-10 key papers to identify themes and research gaps before committing to your full review.</p>
+
+<h3 id="step-4-design-your-search-string">Step 4: Design Your Search String</h3>
+
+<p>A search string combines keywords and Boolean operators (AND, OR, NOT) to retrieve relevant studies from databases. Here’s how to build an effective one:</p>
+
+<ul>
+  <li>Identify key concepts from your research question</li>
+  <li>Include synonyms and variations (different studies use different terminologies)</li>
+  <li>Apply Boolean operators strategically</li>
+  <li>Test and refine based on results</li>
+</ul>
+
+<p>For example, a search string for climate adaptation in agriculture might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>("Climate change" OR "global warming") AND ("crop yield" OR "agricultural productivity") AND ("adaptation strategies" OR "mitigation measures")
+</code></pre></div></div>
+
+<p>Use this in databases like Google Scholar, Scopus, Web of Science, or PubMed.</p>
+
+<h3 id="step-5-define-inclusion-and-exclusion-criteria">Step 5: Define Inclusion and Exclusion Criteria</h3>
+
+<p>Not every paper deserves a spot in your review. Establish clear criteria for filtering:</p>
+
+<p><strong>Include studies that are:</strong></p>
+<ul>
+  <li>Relevant to your research topic</li>
+  <li>Published in peer-reviewed journals</li>
+  <li>Recent publications (typically last 5-10 years)</li>
+  <li>Empirical studies with strong methodology</li>
+</ul>
+
+<p><strong>Exclude studies that are:</strong></p>
+<ul>
+  <li>From unverified or non-peer-reviewed sources</li>
+  <li>Outdated (unless they’re foundational works)</li>
+  <li>From irrelevant research areas</li>
+</ul>
+
+<p>If you’re studying agricultural adaptation in Nepal, a paper on urban climate adaptation in the USA likely won’t make the cut.</p>
+
+<h3 id="step-6-select-relevant-studies">Step 6: Select Relevant Studies</h3>
+
+<p>With your search string and criteria in hand, start selecting studies:</p>
+
+<ul>
+  <li>Screen titles and abstracts before reading full papers</li>
+  <li>Categorize papers into themes</li>
+  <li>Use citation tracking to find additional relevant studies</li>
+</ul>
+
+<p>Reference management tools like Zotero, Mendeley, or EndNote can be invaluable for organizing and citing papers efficiently.</p>
+
+<h3 id="step-7-extract-data-and-synthesize-findings">Step 7: Extract Data and Synthesize Findings</h3>
+
+<p>After selecting relevant papers, extract key information and analyze patterns:</p>
+
+<p><strong>What to extract:</strong></p>
+<ul>
+  <li>Key findings and conclusions</li>
+  <li>Methodology used (qualitative, quantitative, mixed-method)</li>
+  <li>Research gaps identified</li>
+  <li>Theories and frameworks employed</li>
+  <li>Implications for your research</li>
+</ul>
+
+<p>Create an extraction table to organize this information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Study</th>
+      <th>Key Findings</th>
+      <th>Methodology</th>
+      <th>Gaps Identified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Smith (2020)</td>
+      <td>Climate adaptation improves yield by 15%</td>
+      <td>Quantitative</td>
+      <td>Lacks farmer perspectives</td>
+    </tr>
+    <tr>
+      <td>Khan (2021)</td>
+      <td>Drought-resistant crops increase resilience</td>
+      <td>Mixed-Method</td>
+      <td>No policy-level insights</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Finally, synthesize your extracted data critically, highlighting trends, conflicts, and areas requiring further investigation.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>A literature review is more than an academic exercise—it’s your opportunity to join an ongoing scholarly conversation. By systematically analyzing existing research, you position yourself to make meaningful contributions to your field. The process requires patience, critical thinking, and attention to detail, but the result is a solid foundation for impactful research.</p>
+
+<p>Remember: every groundbreaking study stands on the shoulders of those that came before. Your literature review is how you climb onto those shoulders and see further than anyone has before.</p>
+
+<hr />
+
+<p><em>What challenges have you faced when conducting literature reviews? Share your experiences in the comments below!</em></p>]]></content><author><name>Bishwa Prakash Puri</name></author><category term="research-methods" /><category term="literature-review" /><category term="research-methodology" /><category term="academic-writing" /><summary type="html"><![CDATA[A comprehensive guide to conducting effective literature reviews, covering types, methods, and best practices to build a strong research foundation.]]></summary></entry></feed>
