@@ -3,6 +3,7 @@ layout: post
 title: "The Complete Guide to Literature Reviews: From Basics to Best Practices"
 date: 2025-12-15
 categories: research academic-writing
+permalink: /blogs/research-methods/literature-review-Introduction/
 tags: literature-review research-methodology academic-writing
 description: A comprehensive guide to conducting effective literature reviews, covering types, methods, and best practices to build a strong research foundation.
 category: research-methods
