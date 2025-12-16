@@ -2,9 +2,9 @@
 /* This ensures styles are scoped to the .blog-listing-page container */
 
 .blog-listing-page {
-    max-width: 1280px; /* Increased max-width for more content room on large screens */
+    max-width: 100%; /* Increased max-width for more content room on large screens */
     margin: 60px auto; /* More vertical margin for better page separation */
-    padding: 0 25px; /* Generous horizontal padding for content safety */
+    padding: 0 10px; /* Generous horizontal padding for content safety */
     font-family: 'Inter', sans-serif; /* Consistent font */
     color: #333; /* Default text color */
     box-sizing: border-box; /* Include padding in element's total width/height */
@@ -12,7 +12,7 @@
 
 .blog-listing__main-heading {
     text-align: center;
-    font-size: 3.2em; /* Slightly larger for impact */
+    font-size: 2em; /* Slightly larger for impact */
     color: #2c3e50;
     margin-bottom: 50px; /* More space below the main heading */
     position: relative;
@@ -59,7 +59,7 @@
     display: flex;
     flex-wrap: wrap; /* Cards wrap vertically */
     justify-content: center; /* Center cards in rows */
-    gap: 35px; /* Increased gap for better visual separation */
+    gap: 15px; /* Increased gap for better visual separation */
 }
 
 /* --- Individual Blog Card Item (the <li>) --- */
@@ -68,7 +68,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 16px; /* More rounded corners for a softer modern look */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper, softer shadow */
-    padding: 30px; /* More generous internal padding */
+    padding: 10px; /* More generous internal padding */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -77,8 +77,8 @@
 
     /* Flexible width for responsive columns */
     /* Aims for 3 columns on large screens */
-    flex: 1 1 300px; /* Base width for cards, allowing them to shrink/grow */
-    max-width: calc(33.333% - 24px); /* Calc for 3 columns with 35px gap: (35px * 2 / 3) = ~23.33px. Used 24px for cleaner number. */
+    flex: 1 1 500px; /* Base width for cards, allowing them to shrink/grow */
+    max-width: calc(49% - 24px); /* Calc for 3 columns with 35px gap: (35px * 2 / 3) = ~23.33px. Used 24px for cleaner number. */
     min-height: 380px; /* Ensures a minimum height for visual consistency */
 }
 
