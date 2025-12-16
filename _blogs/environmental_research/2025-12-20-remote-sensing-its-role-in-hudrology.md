@@ -11,6 +11,8 @@ toc: true
 mathjax: true
 ---
 
+# Basic Principles of Remote Sensing and Its Role in Hydrology
+
 ## Introduction
 
 Remote sensing is a powerful scientific approach for acquiring information about the Earth’s surface without direct physical contact. Using sensors mounted on satellites, aircraft, or drones, remote sensing enables continuous, large-scale monitoring of environmental and hydrological processes. By analyzing how electromagnetic (EM) radiation interacts with the Earth’s surface, researchers can observe precipitation, surface water, soil moisture, groundwater, and snow dynamics across entire river basins.

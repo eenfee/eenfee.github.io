@@ -12,6 +12,9 @@ toc: true
 mathjax: true
 ---
 
+
+# Guide to Literature Reviews: From Basics to Best Practices
+
 Starting a new research project can feel overwhelming. Where do you begin? What has already been discovered? How do you build on existing knowledge? These questions lead us to one of the most critical components of any research endeavor: the literature review.
 
 ## What is a Literature Review?
