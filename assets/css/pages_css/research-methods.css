@@ -1,0 +1,124 @@
+/* ================================
+   Research Methods – Academic Style
+================================ */
+
+.rm-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  font-family: "Inter", "Georgia", serif;
+}
+
+.rm-page__header {
+  margin-bottom: 3rem;
+}
+
+.rm-page__title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.rm-page__description {
+  color: #555;
+  max-width: 700px;
+}
+
+/* Section Titles */
+.rm-section-title {
+  font-size: 1.4rem;
+  margin: 3rem 0 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* Featured */
+.rm-featured__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.rm-featured-card {
+  background: #f8f9fb;
+  padding: 1.5rem;
+  border-left: 4px solid #2c3e50;
+}
+
+.rm-featured-card__title a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+/* Articles Grid */
+.rm-articles__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Card */
+.rm-card {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.rm-card:hover {
+  transform: translateY(-4px);
+}
+
+.rm-card__title a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.rm-card__meta {
+  font-size: 0.85rem;
+  color: #777;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Tags */
+.rm-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rm-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  background: #eef1f4;
+}
+
+/* Difficulty */
+.rm-card__footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rm-card__difficulty {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+}
+
+.rm-level--beginner { background: #e8f5e9; color: #2e7d32; }
+.rm-level--intermediate { background: #fff8e1; color: #f57f17; }
+.rm-level--advanced { background: #fdecea; color: #c62828; }
+
+.rm-card__read-more {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #1a73e8;
+}
