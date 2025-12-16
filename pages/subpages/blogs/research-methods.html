@@ -12,15 +12,15 @@ description: Articles about research methodology, tools, and best practices.
   {% assign posts = site.posts | where_exp: "post", "post.categories contains 'research-methods'" %}
   
   {% for post in posts %}
-    <article class="archive-item">
-      <h2 class="archive-item-title">
+    <article class="blog-listing__item blog-listing__item--card">
+      <h2 class="blog-listing__item-title">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </h2>
       <div class="archive-item-meta">
-        <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
+        <span class="blog-listing__item-date">{{ post.date | date: "%B %d, %Y" }}</span>
       </div>
       {% if post.excerpt %}
-        <div class="archive-item-excerpt">
+        <div class="blog-listing__item-excerpt">
           {{ post.excerpt | strip_html | truncate: 160 }}
         </div>
       {% endif %}
