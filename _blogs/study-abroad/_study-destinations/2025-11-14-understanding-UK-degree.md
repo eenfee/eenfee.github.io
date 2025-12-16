@@ -9,7 +9,7 @@ category: abroad-studies
 ---
 
 
-
+# Understanding UK Undergraduate Degree Structure
 
 ## 🏛️ Understanding the Key Terms
 
