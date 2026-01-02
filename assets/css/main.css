@@ -12,8 +12,11 @@
 @import url("content.css");
 @import url("index.css");
 @import url("study-abroad.css");
-@import url("pages_css/research-methods.css");
 
+
+
+@import url("pages_css/research-methods.css");
+@import url("pages_css/government-documents.css");
 
 
 @import url("about.css");
