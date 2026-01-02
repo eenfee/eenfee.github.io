@@ -2,7 +2,7 @@
 layout: post
 title: "Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide"
 date: 2026-01-02
-categories: [government-documents, Government, Travel]
+categories: [government-documents, abroad-studies, Government, Travel]
 tags: [Consular Services, Document Authentication, Nepal, Study Abroad]
 description: "Everything you need to know about the new standardized formats for consular document authentication in Nepal. Download templates and learn the attestation process."
 permalink: /study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies
