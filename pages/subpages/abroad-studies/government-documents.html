@@ -1,0 +1,53 @@
+---
+layout: page
+title: Government Documentation and Resources
+permalink: /study-abroad/documentation/government-documents/
+---
+
+
+<div class="gov-docs-container">
+  <div class="gov-docs-header">
+    <h1 class="gov-docs-title">Government Documentation and Resources</h1>
+    <p class="gov-docs-subtitle">Official guides and resources for Nepali citizens on consular services, document authentication, and travel documentation.</p>
+  </div>
+
+  <div class="gov-docs-grid">
+    {% for post in site.categories.government-documents %}
+    <article class="gov-doc-card">
+      <div class="gov-doc-card-header">
+        <span class="gov-doc-badge">Official Guide</span>
+        <time class="gov-doc-date" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%B %d, %Y" }}
+        </time>
+      </div>
+      
+      <h2 class="gov-doc-card-title">
+        <a href="{{ post.url | relative_url }}" class="gov-doc-link">
+          {{ post.title }}
+        </a>
+      </h2>
+      
+      <p class="gov-doc-description">{{ post.description }}</p>
+      
+      <div class="gov-doc-tags">
+        {% for tag in post.tags %}
+        <span class="gov-doc-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      
+      <a href="{{ post.url | relative_url }}" class="gov-doc-read-more">
+        Read Guide
+        <svg class="gov-doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if site.categories.government-documents.size == 0 %}
+  <div class="gov-docs-empty">
+    <p>No government documentation guides are currently available. Check back soon for updates.</p>
+  </div>
+  {% endif %}
+</div>
