@@ -681,133 +681,396 @@
     
       <div class="post-layout">
 
-  
-  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
-    <h2 class="tocbox-title-unique">☰ Contents</h2>
-    <div class="tocbox-container-unique">
-      <ul class="tocbox-list-unique"></ul>
+
+  <article class="post">
+    <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+  <button class="tocbox-title-unique" type="button" aria-label="Toggle Table of Contents" aria-expanded="false">
+    <span class="tocbox-hamburger"></span>
+    <!-- Progress indicator -->
+    <svg class="progress-ring" width="36" height="36">
+      <circle class="progress-ring-circle" stroke="#fff" stroke-width="2" fill="transparent" r="16" cx="18" cy="18"/>
+    </svg>
+  </button>
+  <div class="tocbox-container-unique" id="toc-content">
+    <div class="toc-header">
+      <span class="toc-progress-text">0% Complete</span>
     </div>
-  </nav>
+    <ul class="tocbox-list-unique"></ul>
+  </div>
+</nav>
 
+<!-- Overlay -->
+<div class="tocbox-overlay"></div>
 
+<!-- Print-only TOC -->
+<div class="tocbox-print-only">
+  <h2>Table of Contents</h2>
+  <ul class="tocbox-print-list"></ul>
+</div><script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toc = document.querySelector(".tocbox-nav-unique");
+  const toggle = document.querySelector(".tocbox-title-unique");
+  const overlay = document.querySelector(".tocbox-overlay");
+  const tocList = document.querySelector(".tocbox-list-unique");
+  const content = document.querySelector(".post-content") || document.querySelector(".markdown-body");
+  const progressText = document.querySelector(".toc-progress-text");
+  const progressCircle = document.querySelector(".progress-ring-circle");
+  const printList = document.querySelector(".tocbox-print-list");
+  
+  const STORAGE_KEY = "toc-open";
+  const COLLAPSE_KEY = "toc-collapsed";
 
+  if (!toc || !toggle || !overlay || !tocList || !content) return;
 
+  // Setup progress ring
+  const radius = progressCircle.r.baseVal.value;
+  const circumference = radius * 2 * Math.PI;
+  progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+  progressCircle.style.strokeDashoffset = circumference;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector(".tocbox-nav-unique");
-  if (!nav) return;
-
-  const title = nav.querySelector(".tocbox-title-unique");
-  const tocList = nav.querySelector(".tocbox-list-unique");
-  const content = document.querySelector(".markdown-body, .post-content, article, main");
-
-  if (!content) return;
-
-  /* ---------------------------
-     Click to expand/collapse
-  ---------------------------- */
-  title.setAttribute("role", "button");
-  title.setAttribute("tabindex", "0");
-  title.setAttribute("aria-expanded", "false");
-
-  // Toggle on title click
-  title.addEventListener("click", (e) => {
-    e.stopPropagation();
-    nav.classList.toggle("expanded");
-    title.setAttribute("aria-expanded", nav.classList.contains("expanded"));
-  });
-
-  // Keyboard support
-  title.addEventListener("keydown", e => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      title.click();
-    }
-  });
-
-  // Close when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && nav.classList.contains("expanded")) {
-      nav.classList.remove("expanded");
-      title.setAttribute("aria-expanded", "false");
-    }
-  });
-
-  /* ---------------------------
-     Build TOC (robust nesting)
-  ---------------------------- */
-  const headings = content.querySelectorAll("h1, h2, h3, h4");
-  if (!headings.length) return;
-
-  let currentLevel = 1;
-  let stack = [tocList];
-
-  headings.forEach((h, i) => {
-    if (!h.id) h.id = `toc-${i}`;
-    const level = parseInt(h.tagName[1]);
-
-    while (level > currentLevel) {
-      const ul = document.createElement("ul");
-      stack[stack.length - 1].lastElementChild?.appendChild(ul);
-      stack.push(ul);
-      currentLevel++;
+  /* ================= BUILD TOC FROM HEADINGS ================= */
+  (function buildTOC() {
+    const headings = content.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    if (!headings.length) {
+      tocList.innerHTML = "<li><em>No headings found</em></li>";
+      return;
     }
 
-    while (level < currentLevel) {
-      stack.pop();
-      currentLevel--;
+    // Slugify helper with collision avoidance
+    const slugCounts = {};
+    const slugify = (str) => {
+      let s = str
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/--+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80);
+      if (!s) s = "heading";
+      
+      const baseSlug = s;
+      let counter = 1;
+      while (document.getElementById(s)) {
+        s = `${baseSlug}-${counter}`;
+        counter++;
+      }
+      
+      return s;
+    };
+
+    tocList.innerHTML = "";
+    if (printList) printList.innerHTML = "";
+    
+    let currentLevel = parseInt(headings[0].tagName.slice(1));
+    let stack = [tocList];
+    let printStack = printList ? [printList] : [];
+
+    // Load collapsed state from localStorage
+    let collapsedSections = {};
+    try {
+      collapsedSections = JSON.parse(localStorage.getItem(COLLAPSE_KEY) || "{}");
+    } catch (e) {
+      console.warn("Could not load collapsed state:", e);
     }
 
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = `#${h.id}`;
-    a.textContent = h.textContent;
-    li.appendChild(a);
-    stack[stack.length - 1].appendChild(li);
-  });
+    headings.forEach((h, index) => {
+      const level = parseInt(h.tagName.slice(1));
+      if (!h.id) h.id = slugify(h.textContent || h.innerText || "heading");
 
-  /* ---------------------------
-     Active section highlight
-  ---------------------------- */
-  const links = tocList.querySelectorAll("a");
+      // Adjust stack to heading level
+      if (level > currentLevel) {
+        for (let i = currentLevel; i < level; i++) {
+          const ul = document.createElement("ul");
+          const lastLi = stack[stack.length - 1].lastElementChild || document.createElement("li");
+          if (!lastLi.parentNode) stack[stack.length - 1].appendChild(lastLi);
+          lastLi.appendChild(ul);
+          stack.push(ul);
+          
+          // Print version
+          if (printList) {
+            const printUl = document.createElement("ul");
+            const printLastLi = printStack[printStack.length - 1].lastElementChild || document.createElement("li");
+            if (!printLastLi.parentNode) printStack[printStack.length - 1].appendChild(printLastLi);
+            printLastLi.appendChild(printUl);
+            printStack.push(printUl);
+          }
+        }
+      } else if (level < currentLevel) {
+        for (let i = currentLevel; i > level; i--) {
+          stack.pop();
+          if (printList) printStack.pop();
+        }
+      }
+      currentLevel = level;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        links.forEach(l => l.classList.remove("active"));
-        const active = tocList.querySelector(`a[href="#${entry.target.id}"]`);
-        active?.classList.add("active");
+      // Create interactive TOC item
+      const li = document.createElement("li");
+      li.dataset.headingId = h.id;
+      
+      const itemWrapper = document.createElement("div");
+      itemWrapper.className = "toc-item-wrapper";
+      
+      const a = document.createElement("a");
+      a.href = `#${h.id}`;
+      a.textContent = h.textContent.trim();
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.getElementById(h.id);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        
+        // Close TOC on mobile after clicking
+        if (window.innerWidth <= 768) {
+          toc.classList.remove("expanded");
+          document.body.style.overflow = "";
+          toggle.setAttribute("aria-expanded", "false");
+          try {
+            localStorage.setItem(STORAGE_KEY, "closed");
+          } catch (e) {}
+        }
+      });
+      
+      itemWrapper.appendChild(a);
+      li.appendChild(itemWrapper);
+      
+      // Check if this item will have children (peek ahead)
+      const nextHeading = headings[index + 1];
+      const willHaveChildren = nextHeading && parseInt(nextHeading.tagName.slice(1)) > level;
+      
+      if (willHaveChildren) {
+        const collapseBtn = document.createElement("button");
+        collapseBtn.className = "toc-collapse-btn";
+        collapseBtn.setAttribute("aria-label", "Expand subsection");
+        collapseBtn.innerHTML = `
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        `;
+        
+        // Apply saved collapsed state
+        if (collapsedSections[h.id]) {
+          li.classList.add("collapsed");
+          collapseBtn.setAttribute("aria-label", "Expand subsection");
+        }
+        
+        collapseBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          li.classList.toggle("collapsed");
+          const isCollapsed = li.classList.contains("collapsed");
+          collapseBtn.setAttribute("aria-label", isCollapsed ? "Expand subsection" : "Collapse subsection");
+          
+          // Save collapse state
+          try {
+            collapsedSections[h.id] = isCollapsed;
+            localStorage.setItem(COLLAPSE_KEY, JSON.stringify(collapsedSections));
+          } catch (e) {
+            console.warn("Could not save collapsed state:", e);
+          }
+        });
+        
+        itemWrapper.appendChild(collapseBtn);
+        li.classList.add("has-children");
+      }
+      
+      stack[stack.length - 1].appendChild(li);
+
+      // Build print version (simple, no collapse buttons)
+      if (printList) {
+        const printLi = document.createElement("li");
+        const printA = document.createElement("a");
+        printA.href = `#${h.id}`;
+        printA.textContent = h.textContent.trim();
+        printLi.appendChild(printA);
+        printStack[printStack.length - 1].appendChild(printLi);
       }
     });
-  }, { rootMargin: "-40% 0px -55% 0px" });
+  })();
 
-  headings.forEach(h => observer.observe(h));
+  /* ================= ACTIVE SECTION TRACKING WITH PROGRESS ================= */
+  (function setupActiveTracking() {
+    const headings = Array.from(content.querySelectorAll("h1,h2,h3,h4,h5,h6"));
+    const tocLinks = tocList.querySelectorAll("a");
+    let activeHeadings = new Set();
+
+    const updateProgress = () => {
+      const progress = activeHeadings.size / headings.length;
+      const percent = Math.round(progress * 100);
+      
+      // Update progress text
+      if (progressText) {
+        progressText.textContent = `${percent}% Complete`;
+      }
+      
+      // Update progress ring
+      if (progressCircle) {
+        const offset = circumference - (progress * circumference);
+        progressCircle.style.strokeDashoffset = offset;
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeHeadings.add(entry.target);
+          
+          // Update active link
+          tocLinks.forEach(link => link.classList.remove("active"));
+          const activeLink = tocList.querySelector(`a[href="#${entry.target.id}"]`);
+          if (activeLink) {
+            activeLink.classList.add("active");
+            
+            // Expand parent sections if collapsed
+            let parent = activeLink.closest("li").parentElement;
+            while (parent && parent !== tocList) {
+              const parentLi = parent.closest("li");
+              if (parentLi && parentLi.classList.contains("collapsed")) {
+                parentLi.classList.remove("collapsed");
+              }
+              parent = parentLi ? parentLi.parentElement : null;
+            }
+          }
+        } else if (entry.boundingClientRect.top < 0) {
+          // Heading has been scrolled past
+          activeHeadings.add(entry.target);
+        }
+      });
+      
+      updateProgress();
+    }, { 
+      rootMargin: "-10% 0px -80% 0px",
+      threshold: 0
+    });
+
+    headings.forEach(h => observer.observe(h));
+    updateProgress(); // Initial update
+  })();
+
+  /* ================= RESTORE SAVED STATE ================= */
+  try {
+    if (localStorage.getItem(STORAGE_KEY) === "open") {
+      toc.classList.add("expanded");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+  } catch (e) {
+    console.warn("Could not restore TOC state:", e);
+  }
+
+  /* ================= TOGGLE TOC ================= */
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent document click listener from firing
+    
+    const isExpanded = toc.classList.toggle("expanded");
+    toggle.setAttribute("aria-expanded", isExpanded);
+    
+    // Prevent body scroll on mobile when drawer is open
+    if (window.innerWidth <= 768) {
+      document.body.style.overflow = isExpanded ? "hidden" : "";
+    }
+    
+    try {
+      localStorage.setItem(STORAGE_KEY, isExpanded ? "open" : "closed");
+    } catch (e) {
+      console.warn("Could not save TOC state:", e);
+    }
+    
+    // Focus first link on mobile when opening
+    if (isExpanded && window.innerWidth <= 768) {
+      setTimeout(() => {
+        const firstLink = tocList.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }, 300);
+    }
+  });
+
+  /* ================= OVERLAY CLICK CLOSES TOC ================= */
+  overlay.addEventListener("click", () => {
+    toc.classList.remove("expanded");
+    document.body.style.overflow = "";
+    toggle.setAttribute("aria-expanded", "false");
+    try {
+      localStorage.setItem(STORAGE_KEY, "closed");
+    } catch (e) {}
+  });
+
+  /* ================= SWIPE TO CLOSE (MOBILE) ================= */
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  toc.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  toc.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    // Swipe left to close
+    if (touchEndX < touchStartX - 50 && toc.classList.contains("expanded")) {
+      toc.classList.remove("expanded");
+      document.body.style.overflow = "";
+      toggle.setAttribute("aria-expanded", "false");
+      try {
+        localStorage.setItem(STORAGE_KEY, "closed");
+      } catch (e) {}
+    }
+  });
+
+  /* ================= CLICK OUTSIDE TO CLOSE (DESKTOP) ================= */
+  document.addEventListener("click", (e) => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) return; // Mobile uses overlay instead
+    
+    if (
+      toc.classList.contains("expanded") &&
+      !toc.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      toc.classList.remove("expanded");
+      toggle.setAttribute("aria-expanded", "false");
+      try {
+        localStorage.setItem(STORAGE_KEY, "closed");
+      } catch (e) {}
+    }
+  });
+
+  /* ================= ESC KEY TO CLOSE ================= */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && toc.classList.contains("expanded")) {
+      toc.classList.remove("expanded");
+      document.body.style.overflow = "";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus(); // Return focus to button
+      try {
+        localStorage.setItem(STORAGE_KEY, "closed");
+      } catch (e) {}
+    }
+  });
+
+  /* ================= KEYBOARD NAVIGATION ================= */
+  tocList.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const links = Array.from(tocList.querySelectorAll("a"));
+      const current = document.activeElement;
+      const index = links.indexOf(current);
+      
+      if (e.key === "ArrowDown" && index < links.length - 1) {
+        links[index + 1].focus();
+      } else if (e.key === "ArrowUp" && index > 0) {
+        links[index - 1].focus();
+      } else if (e.key === "ArrowUp" && index === 0) {
+        // If at first item, focus the toggle button
+        toggle.focus();
+      }
+    }
+  });
 });
 </script>
+    
 
 
-  <article class="post-content">
 
-    <div class="markdown-body">
+    <div class="post-content markdown-body">
       <h1 id="basic-principles-of-remote-sensing-and-its-role-in-hydrology">Basic Principles of Remote Sensing and Its Role in Hydrology</h1>
 
 <h2 id="introduction">Introduction</h2>

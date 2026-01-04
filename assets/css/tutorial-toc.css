@@ -1,111 +1,514 @@
 /* ================= TOC CONTAINER ================= */
 .tocbox-nav-unique {
-  background: rgba(255, 255, 255, 0);
-  border-radius: 12px;
-  padding: 0.75rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  backdrop-filter: blur(6px);
-  transition: top 0.3s ease, transform 0.3s ease;
-  position: fixed;
-  z-index: 1000;
+  background: none;
+  border: none;
+  border-radius: 16px;
+  padding: 0.4rem;
+  width: fit-content;
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, box-shadow 0.3s ease, width 0.3s ease;
+  margin-bottom: 2rem;
+  z-index: 999;
+  position: relative;
 }
 
-/* ================= TITLE ================= */
+/* Sticky TOC on desktop */
+@media (min-width: 1024px) {
+  .tocbox-nav-unique {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/* Expanded TOC */
+.tocbox-nav-unique.expanded {
+  width: 100%;
+  max-width: 360px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 48px rgba(10, 95, 163, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Full width on mobile */
+@media (max-width: 768px) {
+  .tocbox-nav-unique.expanded {
+    max-width: none;
+  }
+}
+
+/* ================= TOGGLE BUTTON ================= */
 .tocbox-title-unique {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: linear-gradient(135deg, #0a8fdc 0%, #0a5fa3 100%);
+  border-radius: 10px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-weight: 700;
-  font-size: 1rem;
-  background: linear-gradient(90deg, #0a8fdc, #0a5fa3);
-  color: #fff;
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  cursor: pointer;
-  user-select: none;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(10, 143, 220, 0.3);
+  padding: 0;
+  position: relative;
 }
 
-.tocbox-title-unique::before {
+/* ================= PROGRESS RING ================= */
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease;
+  opacity: 0.8;
+}
+
+/* ================= HAMBURGER ICON ================= */
+.tocbox-hamburger {
+  width: 18px;
+  height: 2px;
+  background: #ffffff00;
+  position: relative;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.tocbox-hamburger::before,
+.tocbox-hamburger::after {
   content: "";
-  transition: transform 0.3s ease;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, top 0.3s ease;
 }
 
-.tocbox-nav-unique.expanded .tocbox-title-unique::before {
-  transform: rotate(90deg);
+.tocbox-hamburger::before {
+  top: -6px;
 }
 
-/* ================= CONTAINER ================= */
+.tocbox-hamburger::after {
+  top: 6px;
+}
+
+/* Hamburger → Close animation */
+.tocbox-nav-unique.expanded .tocbox-hamburger {
+  background: transparent;
+}
+
+.tocbox-nav-unique.expanded .tocbox-hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.tocbox-nav-unique.expanded .tocbox-hamburger::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* ================= TOC HEADER ================= */
+.toc-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(10, 143, 220, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.toc-progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0a5fa3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toc-progress-text::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #0a8fdc 0%, #0a5fa3 100%);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* ================= TOC CONTENT (GRID ANIMATION) ================= */
 .tocbox-container-unique {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(248, 250, 252, 0.5);
+  border-radius: 10px;
+  margin-top: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+}
+
+.tocbox-container-unique > * {
+  overflow: hidden;
 }
 
 .tocbox-nav-unique.expanded .tocbox-container-unique {
-  max-height: 65vh;
+  grid-template-rows: 1fr;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  max-height: 70vh;
   overflow-y: auto;
-  margin-top: 1rem;
+}
+
+/* Desktop specific scrolling */
+@media (min-width: 769px) {
+  .tocbox-nav-unique.expanded .tocbox-container-unique {
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* Scrollbar */
+.tocbox-container-unique::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tocbox-container-unique::-webkit-scrollbar-thumb {
+  background: rgba(10, 143, 220, 0.35);
+  border-radius: 10px;
 }
 
 /* ================= LIST ================= */
 .tocbox-list-unique,
 .tocbox-list-unique ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
+}
+
+/* ================= TOC ITEM WRAPPER ================= */
+.toc-item-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* ================= COLLAPSE BUTTON ================= */
+.toc-collapse-btn {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: rgba(10, 143, 220, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #0a5fa3;
+  transition: all 0.2s ease;
+  order: -1;
+}
+
+.toc-collapse-btn:hover {
+  background: rgba(10, 143, 220, 0.2);
+  transform: scale(1.1);
+}
+
+.toc-collapse-btn svg {
+  transition: transform 0.3s ease;
+}
+
+/* Collapsed state */
+li.collapsed > .toc-item-wrapper .toc-collapse-btn svg {
+  transform: rotate(-90deg);
+}
+
+li.collapsed > ul {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+li.collapsed > ul > * {
+  overflow: hidden;
+}
+
+li.has-children > ul {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease;
 }
 
 /* ================= LINKS ================= */
 .tocbox-nav-unique a {
+  position: relative;
   display: block;
-  padding: 0.35rem 0.5rem;
-  color: #2c3e50;
-  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  color: #334155;
+  border-radius: 8px;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: background 0.2s, color 0.2s;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  transition: background 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
+  flex: 1;
 }
 
+/* Items with collapse buttons */
+.has-children > .toc-item-wrapper > a {
+  padding-left: 0.5rem;
+}
+
+/* Hover */
 .tocbox-nav-unique a:hover {
-  background: #eef6ff;
+  background: linear-gradient(90deg, #e0f2fe 0%, #f0f9ff 100%);
   color: #0a5fa3;
 }
 
-/* Active section */
+/* Focus */
+.tocbox-nav-unique a:focus-visible {
+  outline: 2px solid #0a8fdc;
+  outline-offset: 2px;
+  background: linear-gradient(90deg, #e0f2fe 0%, #f0f9ff 100%);
+}
+
+/* Active link */
 .tocbox-nav-unique a.active {
-  background: #0a8fdc;
+  background: linear-gradient(135deg, #0a8fdc 0%, #0a5fa3 100%);
   color: #fff;
   font-weight: 600;
+}
+
+.tocbox-nav-unique a.active::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: activeIndicator 2s ease-in-out infinite;
+}
+
+@keyframes activeIndicator {
+  0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+  50% { transform: translateY(-50%) scale(1.3); opacity: 0.7; }
 }
 
 /* Nested levels */
 .tocbox-nav-unique li ul {
   margin-left: 1rem;
-  border-left: 2px solid #e0e0e0;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(10, 143, 220, 0.25);
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 899px) {
-  .tocbox-nav-unique {
-    top: 1rem;
-    left: 1rem;
-    max-width: 280px;
-  }
+.tocbox-nav-unique li li a {
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
-/* ================= DESKTOP ================= */
-@media (min-width: 900px) {
-  .tocbox-nav-unique {
-    top: 50%;
-    left: 2rem;
-    transform: translateY(-50%);
-    max-width: 260px;
+.tocbox-nav-unique li li li a {
+  opacity: 0.8;
+  font-size: 0.82rem;
+}
+
+/* ================= PRINT STYLES ================= */
+.tocbox-print-only {
+  display: none;
+}
+
+@media print {
+  /* Hide interactive TOC */
+  .tocbox-nav-unique,
+  .tocbox-overlay {
+    display: none !important;
   }
   
-  /* When collapsed, position below header */
-  .tocbox-nav-unique:not(.expanded) {
-    top: 8rem; /* Adjust this value to position below your header */
-    transform: none;
+  /* Show print version */
+  .tocbox-print-only {
+    display: block;
+    page-break-inside: avoid;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+  }
+  
+  .tocbox-print-only h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 0.5rem;
+  }
+  
+  .tocbox-print-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tocbox-print-list li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+  
+  .tocbox-print-list a {
+    color: #334155;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .tocbox-print-list a::before {
+    content: "→ ";
+    color: #64748b;
+    margin-right: 0.5rem;
+  }
+  
+  .tocbox-print-list ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.25rem;
+  }
+  
+  .tocbox-print-list ul li {
+    margin: 0.35rem 0;
+  }
+  
+  .tocbox-print-list ul a {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  /* Add page numbers after links in print */
+  .tocbox-print-list a::after {
+    content: " ............... " target-counter(attr(href), page);
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+}
+
+/* ================= MOBILE DRAWER & OVERLAY ================= */
+@media (max-width: 768px) {
+  /* Overlay behind drawer */
+  .tocbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 998;
+  }
+
+  .tocbox-nav-unique.expanded + .tocbox-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Drawer container */
+  .tocbox-container-unique {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80vw;
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    border-radius: 0 16px 16px 0;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    padding: 1rem;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .tocbox-nav-unique.expanded .tocbox-container-unique {
+    transform: translateX(0);
+  }
+
+  /* Disable grid animation on mobile */
+  .tocbox-container-unique {
+    grid-template-rows: none !important;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .toc-header {
+    padding: 1rem;
+  }
+}
+
+/* ================= DARK MODE ================= */
+@media (prefers-color-scheme: dark) {
+  .tocbox-nav-unique.expanded {
+    background: rgba(30, 41, 59, 0.96);
+  }
+  
+  .tocbox-container-unique {
+    background: rgba(15, 23, 42, 0.5);
+  }
+  
+  .toc-header {
+    border-bottom-color: rgba(148, 163, 184, 0.2);
+  }
+  
+  .toc-progress-text {
+    color: #7dd3fc;
+  }
+  
+  .tocbox-nav-unique a {
+    color: #e2e8f0;
+  }
+  
+  .tocbox-nav-unique a:hover {
+    background: linear-gradient(90deg, #1e293b 0%, #334155 100%);
+    color: #7dd3fc;
+  }
+  
+  .toc-collapse-btn {
+    background: rgba(148, 163, 184, 0.15);
+    color: #7dd3fc;
+  }
+  
+  .toc-collapse-btn:hover {
+    background: rgba(148, 163, 184, 0.25);
+  }
+  
+  .tocbox-nav-unique li ul {
+    border-left-color: rgba(148, 163, 184, 0.3);
+  }
+}
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
