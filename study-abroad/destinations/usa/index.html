@@ -685,13 +685,11 @@
   <nav class="tocbox-nav-unique" aria-label="Table of Contents">
     <h2 class="tocbox-title-unique">☰ Contents</h2>
     <div class="tocbox-container-unique">
-
-      
       <ul class="tocbox-list-unique"></ul>
-
     </div>
-    
   </nav>
+
+
 
 
 
@@ -720,7 +718,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const title = nav.querySelector(".tocbox-title-unique");
   const tocList = nav.querySelector(".tocbox-list-unique");
-  const content = document.querySelector(".markdown-body");
+  const content = document.querySelector(".markdown-body, .post-content, article, main");
+
+  if (!content) return;
 
   /* ---------------------------
      Click to expand/collapse

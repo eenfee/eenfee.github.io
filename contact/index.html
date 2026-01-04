@@ -703,6 +703,8 @@
 
 
 
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".tocbox-nav-unique");
@@ -710,7 +712,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const title = nav.querySelector(".tocbox-title-unique");
   const tocList = nav.querySelector(".tocbox-list-unique");
-  const content = document.querySelector(".markdown-body");
+  const content = document.querySelector(".markdown-body, .post-content, article, main");
+
+  if (!content) return;
 
   /* ---------------------------
      Click to expand/collapse
