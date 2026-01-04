@@ -5,6 +5,7 @@
   padding: 0.75rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   backdrop-filter: blur(6px);
+  transition: top 0.3s ease, transform 0.3s ease;
 }
 
 /* ================= TITLE ================= */
@@ -82,14 +83,32 @@
   padding-left: 0.5rem;
 }
 
+/* ================= MOBILE ================= */
+@media (max-width: 899px) {
+  .tocbox-nav-unique {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    max-width: 280px;
+    z-index: 1000;
+  }
+}
+
 /* ================= DESKTOP ================= */
 @media (min-width: 900px) {
   .tocbox-nav-unique {
     position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
     max-width: 260px;
     z-index: 1000;
+  }
+  
+  /* When collapsed, move to top-left corner */
+  .tocbox-nav-unique:not(.expanded) {
+    top: 6rem;
+    transform: none;
   }
 }
 
