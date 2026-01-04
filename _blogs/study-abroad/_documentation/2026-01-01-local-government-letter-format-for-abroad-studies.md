@@ -11,6 +11,8 @@ toc: true
 
 # "Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide"
 
+🔗 **[Click Here to View and Download Official Templates](https://www.nepalconsular.gov.np/pages/consular-authentication-9/)**
+
 Planning to study, work, or move abroad? Navigating document authentication in Nepal just got easier. The **Department of Consular Services (DoCS)** has recently introduced standardized formats to streamline the authentication process and ensure your local documents are accepted internationally.
 
 In this guide, we break down the latest official notice and explain how the **Nepal Consular Services** portal works for you.

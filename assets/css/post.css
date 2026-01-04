@@ -1,0 +1,149 @@
+/* =========================
+   POST LAYOUT
+========================= */
+.post-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 900px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   POST CONTENT
+========================= */
+.post-content {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 2.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.markdown-body {
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+/* =========================
+   SHARE SECTION
+========================= */
+.post-share {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.share-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+}
+
+/* =========================
+   SHARE ICONS
+========================= */
+.share-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.share-icons a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f4f4f4;
+  color: #444;
+  font-size: 18px;
+  transition: all 0.25s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Tooltip label */
+.share-icons a::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.share-icons a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* =========================
+   BRAND HOVER COLORS
+========================= */
+
+/* X / Twitter */
+.share-icons a[href*="twitter.com"]:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* LinkedIn */
+.share-icons a[href*="linkedin.com"]:hover {
+  background: #0a66c2;
+  color: #ffffff;
+}
+
+/* Facebook */
+.share-icons a[href*="facebook.com"]:hover {
+  background: #1877f2;
+  color: #ffffff;
+}
+
+/* WhatsApp */
+.share-icons a[href*="wa.me"]:hover {
+  background: #25d366;
+  color: #ffffff;
+}
+
+/* Copy link */
+.share-icons a[aria-label="Copy link"]:hover {
+  background: #6c757d;
+  color: #ffffff;
+}
+
+/* Lift + glow effect */
+.share-icons a:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   MOBILE TWEAKS
+========================= */
+@media (max-width: 600px) {
+  .post-share {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
