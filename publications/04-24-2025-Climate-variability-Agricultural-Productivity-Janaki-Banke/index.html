@@ -682,69 +682,92 @@
       <div class="post-layout">
 
   
+// tutorial-toc.html //
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  // TOC expand/collapse logic
-  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
-    const title = nav.querySelector('.tocbox-title-unique');
-    const tocList = nav.querySelector('.tocbox-list-unique');
-    if (title && tocList) {
-      function setInitialState() {
-        if (window.innerWidth >= 900) {
-          nav.classList.add('expanded');
-        } else {
-          nav.classList.remove('expanded');
-        }
-      }
-      setInitialState();
-      window.addEventListener('resize', setInitialState);
-      title.setAttribute('tabindex', '0');
-      title.setAttribute('role', 'button');
-      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-      title.addEventListener('click', function(e) {
-        nav.classList.toggle('expanded');
-        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-      });
-      title.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          nav.classList.toggle('expanded');
-          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
-        }
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".tocbox-nav-unique");
+  if (!nav) return;
+
+  const title = nav.querySelector(".tocbox-title-unique");
+  const tocList = nav.querySelector(".tocbox-list-unique");
+  const content = document.querySelector(".markdown-body");
+
+  /* ---------------------------
+     Expand / collapse behavior
+  ---------------------------- */
+  const setState = () => {
+    nav.classList.toggle("expanded", window.innerWidth >= 900);
+    title.setAttribute("aria-expanded", nav.classList.contains("expanded"));
+  };
+
+  setState();
+  window.addEventListener("resize", setState);
+
+  title.setAttribute("role", "button");
+  title.setAttribute("tabindex", "0");
+
+  title.addEventListener("click", () => {
+    nav.classList.toggle("expanded");
+    title.setAttribute("aria-expanded", nav.classList.contains("expanded"));
+  });
+
+  title.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      title.click();
     }
   });
 
-  // Build TOC from headings (h1-h4)
-  var tocNav = document.querySelector('.tocbox-nav-unique');
-  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
-  var content = document.querySelector('.markdown-body, .post-content');
-  if (tocList && content) {
-    var headings = content.querySelectorAll('h1, h2, h3, h4');
-    var lastLevel = 1;
-    var parents = [tocList];
-    headings.forEach(function(heading, idx) {
-      if (!heading.id) {
-        heading.id = 'toc-h-' + idx;
+  /* ---------------------------
+     Build TOC (robust nesting)
+  ---------------------------- */
+  const headings = content.querySelectorAll("h1, h2, h3, h4");
+  if (!headings.length) return;
+
+  let currentLevel = 1;
+  let stack = [tocList];
+
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = `toc-${i}`;
+    const level = parseInt(h.tagName[1]);
+
+    while (level > currentLevel) {
+      const ul = document.createElement("ul");
+      stack[stack.length - 1].lastElementChild?.appendChild(ul);
+      stack.push(ul);
+      currentLevel++;
+    }
+
+    while (level < currentLevel) {
+      stack.pop();
+      currentLevel--;
+    }
+
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `#${h.id}`;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    stack[stack.length - 1].appendChild(li);
+  });
+
+  /* ---------------------------
+     Active section highlight
+  ---------------------------- */
+  const links = tocList.querySelectorAll("a");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove("active"));
+        const active = tocList.querySelector(`a[href="#${entry.target.id}"]`);
+        active?.classList.add("active");
       }
-      var level = parseInt(heading.tagName[1]);
-      if (level < 1 || level > 4) return;
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.textContent = heading.textContent;
-      a.href = '#' + heading.id;
-      li.appendChild(a);
-      if (level > lastLevel) {
-        var newUl = document.createElement('ul');
-        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
-        parents.push(newUl);
-      } else if (level < lastLevel) {
-        parents.splice(level - lastLevel);
-      }
-      parents[parents.length-1].appendChild(li);
-      lastLevel = level;
     });
-  }
+  }, { rootMargin: "-40% 0px -55% 0px" });
+
+  headings.forEach(h => observer.observe(h));
 });
 </script>
 

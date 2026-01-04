@@ -1,151 +1,83 @@
-/* UNIQUE TOC Container */
+/* ================= TOC CONTAINER ================= */
 .tocbox-nav-unique {
-  background: #ffffff00;
-  border: 1px solid #ffffff00;
-  border-radius: 1px;
-  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.09);
-  position: relative;
-  transition: box-shadow 0.2s, border 0.2s;
-  overflow: hidden;
-  z-index: 10; /* add this */
+  background: rgba(255,255,255,0.92);
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
 }
 
-.tocbox-container-unique {
-  background: rgb(3, 3, 3);
-}
-/* UNIQUE TOC Title/Button */
+/* ================= TITLE ================= */
 .tocbox-title-unique {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin: 0 0 1.1rem 0;
-  cursor: pointer;
-  user-select: none;
-  background: linear-gradient(90deg, #0a8fdc 60%, #0a5fa3 100%);
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #0a8fdc, #0a5fa3);
   color: #fff;
-  padding: 0.7rem 0.5rem 0.7rem 0.2rem;
-  border-radius: 1px;
-  width: fit-content;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.09);
-  transition: background 0.2s, box-shadow 0.2s;
-  outline: none;
-  gap: 0.1em;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
 }
+
 .tocbox-title-unique::before {
-  content: '\25B6';
-  display: inline-block;
-  font-size: 1.15em;
-  margin-right: 0.6em;
-  transition: transform 0.3s;
+  content: "▸";
+  transition: transform 0.3s ease;
 }
+
 .tocbox-nav-unique.expanded .tocbox-title-unique::before {
   transform: rotate(90deg);
 }
-.tocbox-title-unique:focus,
-.tocbox-title-unique:hover {
-  background: linear-gradient(90deg, #0a5fa3 60%, #0a8fdc 100%);
-  outline: 2px solid #0a5fa3;
-  outline-offset: 2px;
-  box-shadow: 0 3px 12px rgba(0,123,255,0.15);
-}
 
-/* Hide TOC list by default on all screens */
-.tocbox-nav-unique .tocbox-list-unique,
-.tocbox-nav-unique ul {
-  display: none;
-  margin: 0;
-  padding-left: 0;
+/* ================= LIST ================= */
+.tocbox-list-unique,
+.tocbox-list-unique ul {
   list-style: none;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
-  overflow: hidden;
+  padding-left: 0;
+  margin: 0;
 }
 
-/* Show TOC list when expanded */
-.tocbox-nav-unique.expanded .tocbox-list-unique,
-.tocbox-nav-unique.expanded ul {
-  display: block;
-  max-height: 10px;
-  opacity: 1;
-  animation: fadeInTocUnique 0.3s;
-  overflow-y: auto;
-}
-@keyframes fadeInTocUnique {
-  from { opacity: 0; transform: translateY(-12px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-
-/* TOC links */
-.tocbox-nav-unique li {
-  margin-bottom: 0.6em;
-  margin-left: 0.3em;
-}
-.tocbox-nav-unique li li {
-  margin-left: 1.3em;
-  font-size: 0.98em;
-  border-left: 2px solid #e0e0e0;
-  padding-left: 0.8em;
-}
-.tocbox-nav-unique a {
-  color: #f1f5f7;
-  text-decoration: none;
-  border-bottom: 1px dotted #0a8fdc;
-  border-radius: 3px;
-  padding: 2px 3px;
-  background: #000000bd;
-  transition: color 0.2s, border-bottom 0.2s, background 0.2s;
-}
-.tocbox-nav-unique a:focus,
-.tocbox-nav-unique a:hover {
-  color: #0a5fa3;
-  border-bottom: 1px solid #0a5fa3;
-  text-decoration: underline;
-  background: #ffa2a2;
-  outline: 1.5px solid #0a5fa3;
-}
-
-/* Scrollbar for long TOCs */
-.tocbox-nav-unique.expanded .tocbox-list-unique,
-.tocbox-nav-unique.expanded ul {
+.tocbox-nav-unique.expanded .tocbox-list-unique {
+  margin-top: 1rem;
   max-height: 65vh;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #b3d4fc #f8f9fa;
-}
-.tocbox-nav-unique.expanded .tocbox-list-unique::-webkit-scrollbar,
-.tocbox-nav-unique.expanded ul::-webkit-scrollbar {
-  width: 8px;
-  background: #f8f9fa;
-}
-.tocbox-nav-unique.expanded .tocbox-list-unique::-webkit-scrollbar-thumb,
-.tocbox-nav-unique.expanded ul::-webkit-scrollbar-thumb {
-  background: #b3d4fc;
-  border-radius: 5px;
 }
 
-/* Responsive: TOC on right for large screens */
+/* ================= LINKS ================= */
+.tocbox-nav-unique a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: #2c3e50;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tocbox-nav-unique a:hover {
+  background: #eef6ff;
+  color: #0a5fa3;
+}
+
+/* Active section */
+.tocbox-nav-unique a.active {
+  background: #0a8fdc;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Nested levels */
+.tocbox-nav-unique li ul {
+  margin-left: 1rem;
+  border-left: 2px solid #e0e0e0;
+  padding-left: 0.5rem;
+}
+
+/* ================= DESKTOP ================= */
 @media (min-width: 900px) {
-  .tocbox-layout-unique {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0.2rem;
-  }
-  .tocbox-content-unique {
-    flex: 1 1 0;
-    max-width: 100%;
-  }
   .tocbox-nav-unique {
-    width: 100%;
-    max-width: 260px;
-    margin-bottom: 0;
-    margin-left: 0.7rem;
     position: sticky;
-    top: 1.2rem;
-    align-self: flex-start;
+    top: 1.5rem;
+    max-width: 260px;
   }
 }
