@@ -682,9 +682,8 @@
       <div class="post-layout">
 
   
-// tutorial-toc.html //
   <nav class="tocbox-nav-unique" aria-label="Table of Contents">
-    <h2 class="tocbox-title-unique">☰</h2>
+    <h2 class="tocbox-title-unique"></h2>
     <div class="tocbox-container-unique">
 
       
@@ -693,6 +692,12 @@
     </div>
     
   </nav>
+
+
+
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -704,28 +709,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.querySelector(".markdown-body");
 
   /* ---------------------------
-     Expand / collapse behavior
+     Click to expand/collapse
   ---------------------------- */
-  const setState = () => {
-    nav.classList.toggle("expanded", window.innerWidth >= 900);
-    title.setAttribute("aria-expanded", nav.classList.contains("expanded"));
-  };
-
-  setState();
-  window.addEventListener("resize", setState);
-
   title.setAttribute("role", "button");
   title.setAttribute("tabindex", "0");
+  title.setAttribute("aria-expanded", "false");
 
-  title.addEventListener("click", () => {
+  // Toggle on title click
+  title.addEventListener("click", (e) => {
+    e.stopPropagation();
     nav.classList.toggle("expanded");
     title.setAttribute("aria-expanded", nav.classList.contains("expanded"));
   });
 
+  // Keyboard support
   title.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       title.click();
+    }
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && nav.classList.contains("expanded")) {
+      nav.classList.remove("expanded");
+      title.setAttribute("aria-expanded", "false");
     }
   });
 
