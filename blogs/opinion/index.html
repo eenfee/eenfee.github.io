@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opinion & Commentary - EENFEE</title>
+    <title>Past is Future and Future is Past - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -679,169 +679,174 @@
 
     <main class="main-content">
     
-      <h1>Opinion & Commentary </h1>
-<p class="page-description">Personal insights, commentary, and analysis on various topics.</p>
+      <div class="post-layout">
 
-<ul>
   
-    <li>
-      <h2><a href="/blogs/abroad-studies/why-abroad-studies/">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
+
+      
+      <ul class="tocbox-list-unique"></ul>
+
+    </div>
+    
+  </nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
+
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/france/">FR Why Study in France — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
+  <article class="post-content">
+
+    <div class="markdown-body">
+      <h1 id="past-is-future-and-future-is-past">Past is Future and Future is Past</h1>
+
+<p>The idea that the past is the future and the future is the past is not new; it is as old as human imagination, reflection, and self-awareness. From the earliest attempts to understand the world, human beings have sensed that time does not move in a simple straight line but instead unfolds in recurring patterns. Across cultures and philosophies, we have repeatedly discovered that opposites are not isolated or hostile to one another, but intimately connected and, in many cases, reversible.</p>
+
+<p>Ancient thinkers observed that “the way up and the way down are one and the same,” that cold becomes warm and warm becomes cold. Eastern philosophy expresses this unity through the idea that Yin contains Yang and Yang contains Yin, suggesting that every state already carries the seed of its opposite. Growth quietly holds decay within it, just as every ending already contains the possibility of a new beginning. Even sacred texts echo this insight: “What has been will be again, what has been done will be done again.” These reflections point toward a vision of reality in which change is not random but cyclical, and where transformation follows a rhythm rather than a rupture.</p>
+
+<p>Human experience is not exempt from this pattern. Our lives are not neatly divided into separate compartments called past, present, and future; instead, they are deeply interwoven. Memory shapes our choices, expectation directs our actions, and the present becomes meaningful only through its relationship with what has been and what is yet to come. In this sense, we live simultaneously in all three dimensions of time. We are formed by the past, act in the present, and imagine ourselves into the future — often all within the same moment.</p>
+
+<p>We are born into inherited histories, languages, and values; we struggle within conditions shaped long before us; and most of us die still carrying hopes, regrets, and unfinished dreams. Thus, the human condition itself reflects this temporal interdependence. To live is not merely to move forward in time, but to carry time within us — remembering, anticipating, and becoming all at once. In this way, the past is never fully gone, the future is never entirely absent, and the present is less a point than a meeting place where all three continually converge.</p>
+
+    </div>
+
+    <!-- ================= SHARE THIS POST ================= -->
+    <div class="post-share">
+
+      <p class="share-label">Share this post</p>
+
+      <div class="share-icons">
+
+        <!-- X (Twitter) -->
+        <a
+          href="https://twitter.com/intent/tweet?url=https://eenfee.github.io/blogs/opinion/&text=Past+is+Future+and+Future+is+Past"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on X"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <!-- LinkedIn -->
+        <a
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https://eenfee.github.io/blogs/opinion/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on LinkedIn"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <!-- Facebook -->
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=https://eenfee.github.io/blogs/opinion/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on Facebook"
+        >
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/?text=Past+is+Future+and+Future+is+Past%20https://eenfee.github.io/blogs/opinion/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <!-- Copy link -->
+        <a
+          href="https://eenfee.github.io/blogs/opinion/"
+          onclick="navigator.clipboard.writeText(this.href); return false;"
+          aria-label="Copy link"
+        >
+          <i class="fa-solid fa-link"></i>
+        </a>
+
+      </div>
+
+    </div>
+    <!-- ================= END SHARE ================= -->
+
+  </article>
+</div>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/south-korea/">Study in South Korea — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="guide-to-studying-in-south-korea-for-nepalese-students-d-2-visa-requirements-updated-for-september-2025">Guide to Studying in South Korea for Nepalese Students: D-2 Visa Requirements (Updated for September 2025)</h1>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/australia/">Why Study in Australia — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Dreaming of studying in a country with world-class universities, stunning beaches, and a vibrant multicultural vibe? Australia is calling! From the bustling cities of Sydney and Melbourne to the laid-back charm of Perth, Australia offers Nepali students an unmatched blend of academic excellence and lifestyle. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless students from Nepal to achieve their study abroad goals in Australia. This practical, story-driven guide will walk you through why Australia is a top choice and how to make your study journey a reality.</p>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/canada/">Why Study in Canada — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Imagine studying in the vibrant city of Toronto, exploring the breathtaking landscapes of British Columbia, or launching a career in Vancouver’s thriving tech scene. Canada is a top destination for Nepali students, offering world-class education, a welcoming multicultural environment, and excellent post-study work opportunities. With over 600,000 international students, Canada is known for its quality education and pathways to permanent residency. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their Canadian study dreams. This practical, story-driven guide will show you why Canada is the perfect place to study and how to make it happen.</p>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/europe/">Why Study in Europe — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Imagine studying in the historic halls of Paris, coding in the tech hubs of Berlin, or exploring sustainable innovations in Amsterdam—all while building a global career. Europe is a dream destination for Nepali students, offering world-class education, affordable tuition, and a rich cultural experience. With over 4,000 universities across 50 countries, Europe provides endless opportunities to pursue your academic and professional goals. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless Nepali students navigate their journey to Europe. This practical, story-driven guide will show you why Europe is the perfect place to study and how to make it happen.</p>
 
 
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/uk/">Why Study in the UK — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Planning to pursue your higher education in the UK? Imagine strolling through the historic streets of London, studying in world-renowned universities like Oxford or Imperial College, and building a global career—all while sipping tea in a cozy café. The United Kingdom is a top destination for Nepali students, offering cutting-edge academic programs, a multicultural environment, and a gateway to international opportunities. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless students turn their UK study dreams into reality. Here’s a practical, story-driven guide to why you should study in the UK and how to navigate the journey.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/usa/">Why Study in the USA — And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/ept/ielts/">IELTS</a></h2>
-      <h3>IT IS ON</h3>
-      <p>Ielts info loading</p>
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/ept/oellt/">Oxford ELLT Digital: Take Your English Test Online</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/application-writing-services/SOP/">Statement of Purpose</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;" />
-</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/environmental-research/geographic-coordinate/">Understanding Geographic Coordinate Precision and Accuracy</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="understanding-geographic-coordinate-precision-and-accuracy">Understanding Geographic Coordinate Precision and Accuracy</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/">How to improve English with AI</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;" />
-</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/malta/">Why Study in Malta — And How can You</a></h2>
-      <h3>IT IS ON</h3>
-      <h2 id="malta-student-visa-financial-guide-for-south-asian-students-nepal-india-pakistan-bangladesh-bhutan"><strong>Malta Student Visa: Financial Guide for South Asian Students (Nepal, India, Pakistan, Bangladesh, Bhutan)</strong></h2>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/">How to make AI prompts for English Improvement</a></h2>
-      <h3>IT IS ON</h3>
-      <p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;" />
-</p>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/">Understand the UK Undergraduate Degree</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="understanding-uk-undergraduate-degree-structure">Understanding UK Undergraduate Degree Structure</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/destinations/germany/">Why Study in the Germany - And How Can You</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="your-german-study-adventure-a-nepali-students-professional-roadmap">Your German Study Adventure: A Nepali Student’s Professional Roadmap</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/blogs/remote-sensing-its-role-in-hudrology/">Basic Principles of Remote Sensing and Its Role in Hydrology</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="basic-principles-of-remote-sensing-and-its-role-in-hydrology">Basic Principles of Remote Sensing and Its Role in Hydrology</h1>
-
-
-    </li>
-  
-    <li>
-      <h2><a href="/study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies">Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide</a></h2>
-      <h3>IT IS ON</h3>
-      <h1 id="standardized-consular-document-formats-for-nepali-citizens-2026-official-guide">“Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide”</h1>
-
-
-    </li>
-  
-</ul>
       <!-- Main content goes here -->
     </main> 
     
