@@ -3,7 +3,7 @@ layout: post
 title: "Past is Future and Future is Past"
 date: 2026-01-09
 description: "Mini-essay on Past is Future and Future is Past"
-permalink: /blogs/opinion/
+permalink: /blogs/opinion/past-is-future-and-future-is-past/
 toc: true
 category: opinion
 tag: none
