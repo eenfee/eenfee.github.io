@@ -156,7 +156,7 @@ Malta accepts these proofs from South Asian students:
 ---
 
 **Need Help?** Contact Us:  
-- **Eenfee Education**: +977-9843314630  
+- **Eenfee Education**: +977-123  
 
 > 🌟 *"Proper financial planning turns your Maltese dream into a visa stamp!"*  
 
