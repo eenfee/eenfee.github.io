@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - EENFEE</title>
+    <title>Essay Presentation: Literacy before Numeracy - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -679,309 +679,182 @@
 
     <main class="main-content">
     
-      <div class="blog-listing-page">
-    <h1 class="blog-listing__main-heading">All the Blogs</h1>
+      <div class="post-layout">
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Latest Posts</h2>
-        
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable"> 
-                
-                <li class="blog-listing__item blog-listing__item--card"> 
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/research-methods/literature-review-Introduction/" class="blog-listing__item-link">The Complete Guide to Literature Reviews: From Basics to Best Practices</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="guide-to-literature-reviews-from-basics-to-best-practices">Guide to Literature Reviews: From Basics to Best Practices</h1>
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
 
+      
+      <ul class="tocbox-list-unique"></ul>
 
-                    </div>
-                    <a href="/blogs/research-methods/literature-review-Introduction/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+    </div>
+    
+  </nav>
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Other Blog Entries</h2>
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable">
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__item-link">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
 
-
-                    </div>
-                    <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/france/" class="blog-listing__item-link">FR Why Study in France — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/france/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/south-korea/" class="blog-listing__item-link">Study in South Korea — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="guide-to-studying-in-south-korea-for-nepalese-students-d-2-visa-requirements-updated-for-september-2025">Guide to Studying in South Korea for Nepalese Students: D-2 Visa Requirements (Updated for September 2025)</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/south-korea/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/australia/" class="blog-listing__item-link">Why Study in Australia — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Dreaming of studying in a country with world-class universities, stunning beaches, and a vibrant multicultural vibe? Australia is calling! From the bustling cities of Sydney and Melbourne to the laid-back charm of Perth, Australia offers Nepali students an unmatched blend of academic excellence and lifestyle. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless students from Nepal to achieve their study abroad goals in Australia. This practical, story-driven guide will walk you through why Australia is a top choice and how to make your study journey a reality.</p>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/australia/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/canada/" class="blog-listing__item-link">Why Study in Canada — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the vibrant city of Toronto, exploring the breathtaking landscapes of British Columbia, or launching a career in Vancouver’s thriving tech scene. Canada is a top destination for Nepali students, offering world-class education, a welcoming multicultural environment, and excellent post-study work opportunities. With over 600,000 international students, Canada is known for its quality education and pathways to permanent residency. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their Canadian study dreams. This practical, story-driven guide will show you why Canada is the perfect place to study and how to make it happen.</p>
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
 
-                    </div>
-                    <a href="/study-abroad/destinations/canada/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/europe/" class="blog-listing__item-link">Why Study in Europe — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the historic halls of Paris, coding in the tech hubs of Berlin, or exploring sustainable innovations in Amsterdam—all while building a global career. Europe is a dream destination for Nepali students, offering world-class education, affordable tuition, and a rich cultural experience. With over 4,000 universities across 50 countries, Europe provides endless opportunities to pursue your academic and professional goals. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless Nepali students navigate their journey to Europe. This practical, story-driven guide will show you why Europe is the perfect place to study and how to make it happen.</p>
+  <article class="post-content">
+
+    <div class="markdown-body">
+      <h1 id="essay-presentation-literacy-before-numeracy">Essay Presentation: Literacy before Numeracy</h1>
+
+<h2 id="question">Question:</h2>
+<p>Some specialists argue that teaching young children to read and write should be prioritized over teaching mathematics in kindergarten. Discuss the benefits and drawbacks of focusing on literacy before numeracy, and give your own opinion on the issue.</p>
+
+<h2 id="presentation">Presentation:</h2>
+
+<p>I will now begin my presentation.</p>
+
+<p>Today, I would like to talk about whether teaching reading and writing is more important than teaching mathematics to children in kindergarten. This topic is widely debated among educators, as early childhood is a crucial stage for cognitive development. I will discuss both sides of the argument and then share my personal opinion.</p>
+
+<p>On one hand, many experts believe that reading and writing should be taught before mathematics. One major advantage is that literacy forms the foundation for all future learning. Children who can read instructions and express their thoughts in writing are better able to understand other subjects, including math and science. Reading also helps improve vocabulary, communication skills, and imagination. Additionally, early exposure to language supports brain development and helps children perform better academically in later years. From this perspective, focusing on literacy first prepares children for formal education more effectively.</p>
+
+<p>However, there are also disadvantages to prioritizing reading and writing over mathematics. Young children naturally develop numerical understanding through daily activities such as counting toys, sharing food, or recognizing patterns. If math is delayed, children may struggle with basic numeracy skills later on. Mathematics also develops logical thinking, problem-solving abilities, and reasoning skills from an early age. Ignoring math at the kindergarten level may create fear or anxiety toward the subject in the future. Therefore, completely prioritizing literacy over math can limit a child’s balanced development.</p>
+
+<p>In my opinion, neither reading and writing nor mathematics should be treated as more important than the other. Instead, both should be taught together in an integrated and playful way. Kindergarten children learn best through activities, games, and real-life examples. For instance, storytelling can include counting, and writing activities can involve numbers. This balanced approach supports both language and numerical skills without overwhelming children.</p>
+
+<p>To conclude, while reading and writing are essential for communication and learning, mathematics is equally important for developing logical thinking. A well-rounded kindergarten curriculum should focus on both literacy and numeracy to ensure healthy and holistic child development.</p>
+
+<p>Thank you for your attention.</p>
 
 
-                    </div>
-                    <a href="/study-abroad/destinations/europe/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/uk/" class="blog-listing__item-link">Why Study in the UK — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in the UK? Imagine strolling through the historic streets of London, studying in world-renowned universities like Oxford or Imperial College, and building a global career—all while sipping tea in a cozy café. The United Kingdom is a top destination for Nepali students, offering cutting-edge academic programs, a multicultural environment, and a gateway to international opportunities. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless students turn their UK study dreams into reality. Here’s a practical, story-driven guide to why you should study in the UK and how to navigate the journey.</p>
+    </div>
 
+    <!-- ================= SHARE THIS POST ================= -->
+    <div class="post-share">
 
-                    </div>
-                    <a href="/study-abroad/destinations/uk/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/usa/" class="blog-listing__item-link">Why Study in the USA — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
+      <p class="share-label">Share this post</p>
 
+      <div class="share-icons">
 
-                    </div>
-                    <a href="/study-abroad/destinations/usa/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/ielts/" class="blog-listing__item-link">IELTS</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Ielts info loading</p>
+        <!-- X (Twitter) -->
+        <a
+          href="https://twitter.com/intent/tweet?url=https://eenfee.github.io/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/&text=Essay+Presentation%3A+Literacy+before+Numeracy"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on X"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
 
-                    </div>
-                    <a href="/study-abroad/ept/ielts/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/oellt/" class="blog-listing__item-link">Oxford ELLT Digital: Take Your English Test Online</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
+        <!-- LinkedIn -->
+        <a
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https://eenfee.github.io/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on LinkedIn"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
 
+        <!-- Facebook -->
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=https://eenfee.github.io/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on Facebook"
+        >
+          <i class="fa-brands fa-facebook"></i>
+        </a>
 
-                    </div>
-                    <a href="/study-abroad/ept/oellt/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/application-writing-services/SOP/" class="blog-listing__item-link">Statement of Purpose</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;" />
-</p>
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/?text=Essay+Presentation%3A+Literacy+before+Numeracy%20https://eenfee.github.io/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
 
+        <!-- Copy link -->
+        <a
+          href="https://eenfee.github.io/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/"
+          onclick="navigator.clipboard.writeText(this.href); return false;"
+          aria-label="Copy link"
+        >
+          <i class="fa-solid fa-link"></i>
+        </a>
 
-                    </div>
-                    <a href="/application-writing-services/SOP/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__item-link">Understanding Geographic Coordinate Precision and Accuracy</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="understanding-geographic-coordinate-precision-and-accuracy">Understanding Geographic Coordinate Precision and Accuracy</h1>
+      </div>
 
+    </div>
+    <!-- ================= END SHARE ================= -->
 
-                    </div>
-                    <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__item-link">How to improve English with AI</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;" />
-</p>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/malta/" class="blog-listing__item-link">Why Study in Malta — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h2 id="malta-student-visa-financial-guide-for-south-asian-students-nepal-india-pakistan-bangladesh-bhutan"><strong>Malta Student Visa: Financial Guide for South Asian Students (Nepal, India, Pakistan, Bangladesh, Bhutan)</strong></h2>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/malta/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__item-link">How to make AI prompts for English Improvement</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;" />
-</p>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__item-link">Understand the UK Undergraduate Degree</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="understanding-uk-undergraduate-degree-structure">Understanding UK Undergraduate Degree Structure</h1>
-
-
-                    </div>
-                    <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/germany/" class="blog-listing__item-link">Why Study in the Germany - And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="your-german-study-adventure-a-nepali-students-professional-roadmap">Your German Study Adventure: A Nepali Student’s Professional Roadmap</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/germany/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/remote-sensing-its-role-in-hudrology/" class="blog-listing__item-link">Basic Principles of Remote Sensing and Its Role in Hydrology</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="basic-principles-of-remote-sensing-and-its-role-in-hydrology">Basic Principles of Remote Sensing and Its Role in Hydrology</h1>
-
-
-                    </div>
-                    <a href="/blogs/remote-sensing-its-role-in-hudrology/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies" class="blog-listing__item-link">Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="standardized-consular-document-formats-for-nepali-citizens-2026-official-guide">“Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide”</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/opinion/past-is-future-and-future-is-past/" class="blog-listing__item-link">Past is Future and Future is Past</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="past-is-future-and-future-is-past">Past is Future and Future is Past</h1>
-
-
-                    </div>
-                    <a href="/blogs/opinion/past-is-future-and-future-is-past/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/essay-presentation-paying-for-food-waste/" class="blog-listing__item-link">Essay Presentation: Paying for Food Waste</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="essay-presentation-paying-for-food-waste">Essay Presentation: Paying for Food Waste</h1>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/essay-presentation-paying-for-food-waste/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/" class="blog-listing__item-link">Essay Presentation: Literacy before Numeracy</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="essay-presentation-literacy-before-numeracy">Essay Presentation: Literacy before Numeracy</h1>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+  </article>
 </div>
+
+
+
+
+
+
 
 
 
