@@ -5,7 +5,7 @@ date: 2026-01-11
 description: "A large amount of food produced globally is wasted, which harms the environment. Some people believe individuals should be charged for the food they throw away. Discuss the advantages and disadvantages of paying for food waste, and give your own opinion."
 permalink: /blogs/life-skills/language-improvement/essay-presentation-paying-for-food-waste/
 toc: true
-category: life-skills, oellt
+category: [life-skills, oellt]
 tag: [abroad-study-english, english-improvement, English learning, IELTS, TOEFL]
 keywords: "learn English,  English learning,  IELTS,  TOEFL,  AI language learning,  English, "
 

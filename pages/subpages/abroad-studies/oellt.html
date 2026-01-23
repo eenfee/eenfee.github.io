@@ -18,7 +18,7 @@ permalink: /study-abroad/ept/oellt/
     <div class="blog-listing__scroll-wrapper">
       <ul class="blog-listing__list blog-listing__list--scrollable">
 
-        {% assign oellt_blogs = site.blogs | where: "category", "oellt" %}
+        {% assign oellt_blogs = site.blogs | where_exp: "post", "post.categories contains 'oellt'" %}
 
         {% if oellt_blogs.size > 0 %}
           {% for post in oellt_blogs %}

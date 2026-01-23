@@ -5,7 +5,7 @@ date: 2026-01-12
 description: "Some specialists argue that teaching young children to read and write should be prioritized over teaching mathematics in kindergarten. Discuss the benefits and drawbacks of focusing on literacy before numeracy, and give your own opinion on the issue. "
 permalink: /blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/
 toc: true
-category: life-skills, oellt
+category: [life-skills, oellt]
 tag: [abroad-study-english, english-improvement, English learning, IELTS, TOEFL]
 keywords: "learn English,  English learning,  IELTS,  TOEFL,  AI language learning,  English, "
 ---
