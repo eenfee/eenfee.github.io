@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - EENFEE</title>
+    <title>Flooding in Nepal - EENFEE</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -686,321 +686,210 @@
 
     <main class="main-content">
     
-      <div class="blog-listing-page">
-    <h1 class="blog-listing__main-heading">All the Blogs</h1>
+      <div class="post-layout">
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Latest Posts</h2>
-        
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable"> 
-                
-                <li class="blog-listing__item blog-listing__item--card"> 
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/research-methods/literature-review-Introduction/" class="blog-listing__item-link">The Complete Guide to Literature Reviews: From Basics to Best Practices</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="guide-to-literature-reviews-from-basics-to-best-practices">Guide to Literature Reviews: From Basics to Best Practices</h1>
+  
+  <nav class="tocbox-nav-unique" aria-label="Table of Contents">
+    <h2 class="tocbox-title-unique">☰</h2>
+    <div class="tocbox-container-unique">
 
+      
+      <ul class="tocbox-list-unique"></ul>
 
-                    </div>
-                    <a href="/blogs/research-methods/literature-review-Introduction/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+    </div>
+    
+  </nav>
 
-    <section class="blog-listing__section">
-        <h2 class="blog-listing__section-title">Other Blog Entries</h2>
-        <div class="blog-listing__scroll-wrapper">
-            <ul class="blog-listing__list blog-listing__list--scrollable">
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__item-link">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="-why-nepali-students-study-abroad--and-how-it-benefits-everyone">🌏 Why Nepali Students Study Abroad — And How It Benefits Everyone</h1>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // TOC expand/collapse logic
+  document.querySelectorAll('.tocbox-nav-unique').forEach(function(nav) {
+    const title = nav.querySelector('.tocbox-title-unique');
+    const tocList = nav.querySelector('.tocbox-list-unique');
+    if (title && tocList) {
+      function setInitialState() {
+        if (window.innerWidth >= 900) {
+          nav.classList.add('expanded');
+        } else {
+          nav.classList.remove('expanded');
+        }
+      }
+      setInitialState();
+      window.addEventListener('resize', setInitialState);
+      title.setAttribute('tabindex', '0');
+      title.setAttribute('role', 'button');
+      title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      title.addEventListener('click', function(e) {
+        nav.classList.toggle('expanded');
+        title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+      });
+      title.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          nav.classList.toggle('expanded');
+          title.setAttribute('aria-expanded', nav.classList.contains('expanded'));
+        }
+      });
+    }
+  });
 
-
-                    </div>
-                    <a href="/blogs/abroad-studies/why-abroad-studies/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/france/" class="blog-listing__item-link">FR Why Study in France — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in France? You’re about to embark on an adventure that blends world-class learning with unparalleled cultural richness. France has long made research and innovation a national priority, and its universities reflect that commitment—offering excellent academic programs, modest tuition fees, and vibrant student life. Here’s a practical, story-driven guide to help you navigate every step of the journey, from choosing a program to landing that all-important post-study job.</p>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/france/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/south-korea/" class="blog-listing__item-link">Study in South Korea — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="guide-to-studying-in-south-korea-for-nepalese-students-d-2-visa-requirements-updated-for-september-2025">Guide to Studying in South Korea for Nepalese Students: D-2 Visa Requirements (Updated for September 2025)</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/south-korea/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/australia/" class="blog-listing__item-link">Why Study in Australia — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Dreaming of studying in a country with world-class universities, stunning beaches, and a vibrant multicultural vibe? Australia is calling! From the bustling cities of Sydney and Melbourne to the laid-back charm of Perth, Australia offers Nepali students an unmatched blend of academic excellence and lifestyle. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless students from Nepal to achieve their study abroad goals in Australia. This practical, story-driven guide will walk you through why Australia is a top choice and how to make your study journey a reality.</p>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/australia/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/canada/" class="blog-listing__item-link">Why Study in Canada — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the vibrant city of Toronto, exploring the breathtaking landscapes of British Columbia, or launching a career in Vancouver’s thriving tech scene. Canada is a top destination for Nepali students, offering world-class education, a welcoming multicultural environment, and excellent post-study work opportunities. With over 600,000 international students, Canada is known for its quality education and pathways to permanent residency. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their Canadian study dreams. This practical, story-driven guide will show you why Canada is the perfect place to study and how to make it happen.</p>
+  // Build TOC from headings (h1-h4)
+  var tocNav = document.querySelector('.tocbox-nav-unique');
+  var tocList = tocNav ? tocNav.querySelector('.tocbox-list-unique') : null;
+  var content = document.querySelector('.markdown-body, .post-content');
+  if (tocList && content) {
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var lastLevel = 1;
+    var parents = [tocList];
+    headings.forEach(function(heading, idx) {
+      if (!heading.id) {
+        heading.id = 'toc-h-' + idx;
+      }
+      var level = parseInt(heading.tagName[1]);
+      if (level < 1 || level > 4) return;
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.textContent = heading.textContent;
+      a.href = '#' + heading.id;
+      li.appendChild(a);
+      if (level > lastLevel) {
+        var newUl = document.createElement('ul');
+        parents[parents.length-1].lastElementChild && parents[parents.length-1].lastElementChild.appendChild(newUl);
+        parents.push(newUl);
+      } else if (level < lastLevel) {
+        parents.splice(level - lastLevel);
+      }
+      parents[parents.length-1].appendChild(li);
+      lastLevel = level;
+    });
+  }
+});
+</script>
 
 
-                    </div>
-                    <a href="/study-abroad/destinations/canada/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/europe/" class="blog-listing__item-link">Why Study in Europe — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Imagine studying in the historic halls of Paris, coding in the tech hubs of Berlin, or exploring sustainable innovations in Amsterdam—all while building a global career. Europe is a dream destination for Nepali students, offering world-class education, affordable tuition, and a rich cultural experience. With over 4,000 universities across 50 countries, Europe provides endless opportunities to pursue your academic and professional goals. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless Nepali students navigate their journey to Europe. This practical, story-driven guide will show you why Europe is the perfect place to study and how to make it happen.</p>
+  <article class="post-content">
+
+    <div class="markdown-body">
+      <h1 id="flooding-in-nepal-himalayan-vulnerabilities-monsoon-devastation-and-pathways-to-resilience">Flooding in Nepal: Himalayan Vulnerabilities, Monsoon Devastation, and Pathways to Resilience</h1>
+
+<p>Flooding is simply water going where it shouldn’t. Overflowing, ponding/damming or simply irrigation gone wrong. In details, flooding is defined by the World Meteorological Organization (WMO) and UNESCO as (1) an overflowing by water of the normal confines of a watercourse or other body of water; (2) an accumulation of drainage water over areas not normally submerged; or (3) a controlled spreading of water for irrigation (WMO &amp; UNESCO, 2012).</p>
+
+<p>Nepal,have thoudands of rivers with over 6,000 rivers fed by monsoon rains and glacial melt, faces severe risks from fluvial, flash, and glacial lake outburst floods (GLOFs), worsened by climate change, deforestation, urbanization, and poor land-use planning. Monsoon hits hard June-September. Water level dramatically increases in Koshi, Karnali, Narayani and other riversystems. Urban area such as Katmandu suffers because of poor planning, poor drainage and lack of green spaces.</p>
+
+<h3 id="key-flood-types-in-nepal">Key Flood Types in Nepal</h3>
+<ul>
+  <li><strong>Fluvial (riverine)</strong>: Koshi, Narayani, Karnali rivers overflow in Terai during June–September monsoon.</li>
+  <li><strong>Flash floods</strong>: Rapid onset in hills after intense rainfall.</li>
+  <li><strong>GLOFs</strong>: Sudden release from unstable glacial lakes in Himalayas.</li>
+  <li><strong>Ponding/surface water</strong>: Urban drainage failures in Kathmandu Valley.</li>
+</ul>
+
+<h3 id="drivers-and-recent-events">Drivers and Recent Events</h3>
+<p>Heavy monsoon rain, cloudbursts, soil saturation, steep terrain, deforestation, river encroachment, and sand mining amplify risks. Climate change intensifies extremes.</p>
+
+<p>Major recent events:</p>
+<ul>
+  <li>September 2024 Kathmandu floods: Dozens killed, widespread damage from extreme rain and poor planning.</li>
+  <li>2024 Thame Valley GLOF: Destroyed infrastructure in Everest region.</li>
+  <li>Monsoon 2024–2025: Hundreds affected, significant agricultural and infrastructure losses.</li>
+</ul>
+
+<p>Historical toll (2000–2025): Over 4 million people impacted, thousands dead, billions in economic losses.</p>
+
+<h3 id="impacts">Impacts</h3>
+<ul>
+  <li><strong>Human</strong>: Drowning, trauma, displacement; waterborne diseases (cholera, typhoid), respiratory issues, mental health effects.</li>
+  <li><strong>Economic</strong>: Crop loss, damaged roads/bridges/hydropower, transport disruption.</li>
+  <li><strong>Health</strong>: Immediate deaths/injuries; long-term contamination and disease risks.</li>
+</ul>
+
+<p>Why this mess - Heavy rain + bad planning = deaths + chaos.</p>
+
+<p>Chaos of flood is worsinig now because of climate change, deforestation around rivers, sand mining, people building on flood plains.</p>
+
+<h3 id="monitoring-and-risk-management">Monitoring and Risk Management</h3>
+<p>Department of Hydrology and Meteorology (DHM) uses rain gauges, river sensors, radar, satellites, and models. <a href="https://bipadportal.gov.np/">BIPAD portal</a> and community EWS provide alerts.</p>
+
+<p>Risk reduction follows <a href="https://www.preventionweb.net/files/43291_sendaiframeworkfordrren.pdf?startDownload=true">Sendai Framework and Integrated Flood Management (IFM)</a>: nature-based solutions (afforestation, wetlands), lake lowering, resilient codes, avoid floodplain building, early warning drills.</p>
+
+<p>Challenges remain: transboundary rivers, enforcement gaps, urban sprawl, multi-hazard risks (floods + landslides).</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>Floods are Nepal’s top hazard, responsible for significant loss and damages, but enhanced EWS, GLOF projects, and integrated strategies offer pathways to resilience. Prioritize community-focused, nature-based measures and regional cooperation.</p>
+
+<p><em>Sources: WMO/UNESCO, DHM Nepal, UNDRR, recent reports (2024–2025).</em></p>
 
 
-                    </div>
-                    <a href="/study-abroad/destinations/europe/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/uk/" class="blog-listing__item-link">Why Study in the UK — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Planning to pursue your higher education in the UK? Imagine strolling through the historic streets of London, studying in world-renowned universities like Oxford or Imperial College, and building a global career—all while sipping tea in a cozy café. The United Kingdom is a top destination for Nepali students, offering cutting-edge academic programs, a multicultural environment, and a gateway to international opportunities. At Eenfinitee Horizons Pvt. Ltd., we’ve helped countless students turn their UK study dreams into reality. Here’s a practical, story-driven guide to why you should study in the UK and how to navigate the journey.</p>
+    </div>
 
+    <!-- ================= SHARE THIS POST ================= -->
+    <div class="post-share">
 
-                    </div>
-                    <a href="/study-abroad/destinations/uk/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/usa/" class="blog-listing__item-link">Why Study in the USA — And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Picture yourself studying at a prestigious university like Harvard, exploring the vibrant streets of New York City, or launching a career in Silicon Valley. The United States is a top destination for Nepali students, offering world-class education, cutting-edge research opportunities, and a dynamic cultural experience. With over 4,000 colleges and universities, the USA provides unmatched academic diversity and career prospects. At Eenfinitee Horizons Pvt. Ltd., we’ve guided countless Nepali students to achieve their American study dreams. This practical, story-driven guide will show you why the USA is the place to study and how to make it happen.</p>
+      <p class="share-label">Share this post</p>
 
+      <div class="share-icons">
 
-                    </div>
-                    <a href="/study-abroad/destinations/usa/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/ielts/" class="blog-listing__item-link">IELTS</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p>Ielts info loading</p>
+        <!-- X (Twitter) -->
+        <a
+          href="https://twitter.com/intent/tweet?url=https://eenfee.github.io/blogs/opinion/flooding-in-nepal/&text=Flooding+in+Nepal"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on X"
+        >
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
 
-                    </div>
-                    <a href="/study-abroad/ept/ielts/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/ept/oellt/Oxford-ellt-comprehensive-guide/" class="blog-listing__item-link">Oxford ELLT Digital: Take Your English Test Online</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="oxford-ellt-digital--english-level-test-online">Oxford ELLT Digital – English Level Test Online</h1>
+        <!-- LinkedIn -->
+        <a
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https://eenfee.github.io/blogs/opinion/flooding-in-nepal/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on LinkedIn"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
 
+        <!-- Facebook -->
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=https://eenfee.github.io/blogs/opinion/flooding-in-nepal/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on Facebook"
+        >
+          <i class="fa-brands fa-facebook"></i>
+        </a>
 
-                    </div>
-                    <a href="/study-abroad/ept/oellt/Oxford-ellt-comprehensive-guide/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/application-writing-services/SOP/" class="blog-listing__item-link">Statement of Purpose</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="/assets/images/pen-paper-logo.png" alt="EENFEE Pen and Paper" style="max-width:100%;" />
-</p>
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/?text=Flooding+in+Nepal%20https://eenfee.github.io/blogs/opinion/flooding-in-nepal/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
 
+        <!-- Copy link -->
+        <a
+          href="https://eenfee.github.io/blogs/opinion/flooding-in-nepal/"
+          onclick="navigator.clipboard.writeText(this.href); return false;"
+          aria-label="Copy link"
+        >
+          <i class="fa-solid fa-link"></i>
+        </a>
 
-                    </div>
-                    <a href="/application-writing-services/SOP/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__item-link">Understanding Geographic Coordinate Precision and Accuracy</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="understanding-geographic-coordinate-precision-and-accuracy">Understanding Geographic Coordinate Precision and Accuracy</h1>
+      </div>
 
+    </div>
+    <!-- ================= END SHARE ================= -->
 
-                    </div>
-                    <a href="/blogs/environmental-research/geographic-coordinate/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__item-link">How to improve English with AI</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\improve_english_with_AI.png" alt="Improve english with AI" style="max-width:150%;" />
-</p>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/how-to-improve-english-with-AI/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/malta/" class="blog-listing__item-link">Why Study in Malta — And How can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h2 id="malta-student-visa-financial-guide-for-south-asian-students-nepal-india-pakistan-bangladesh-bhutan"><strong>Malta Student Visa: Financial Guide for South Asian Students (Nepal, India, Pakistan, Bangladesh, Bhutan)</strong></h2>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/malta/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__item-link">How to make AI prompts for English Improvement</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <p align="center">
-  <img src="\assets\images\blogs\life-skills\prompt-writing_for_english_learning.png" alt="Prompt for english with AI" style="max-width:100%;" />
-</p>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/prompts-for-ept-preparation/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__item-link">Understand the UK Undergraduate Degree</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="understanding-uk-undergraduate-degree-structure">Understanding UK Undergraduate Degree Structure</h1>
-
-
-                    </div>
-                    <a href="/blogs/abroad-studies/understanding-uk-study-bachelor-degree/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/destinations/germany/" class="blog-listing__item-link">Why Study in the Germany - And How Can You</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="your-german-study-adventure-a-nepali-students-professional-roadmap">Your German Study Adventure: A Nepali Student’s Professional Roadmap</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/destinations/germany/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/remote-sensing-its-role-in-hudrology/" class="blog-listing__item-link">Basic Principles of Remote Sensing and Its Role in Hydrology</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="basic-principles-of-remote-sensing-and-its-role-in-hydrology">Basic Principles of Remote Sensing and Its Role in Hydrology</h1>
-
-
-                    </div>
-                    <a href="/blogs/remote-sensing-its-role-in-hudrology/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies" class="blog-listing__item-link">Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="standardized-consular-document-formats-for-nepali-citizens-2026-official-guide">“Standardized Consular Document Formats for Nepali Citizens: 2026 Official Guide”</h1>
-
-
-                    </div>
-                    <a href="/study-abroad/documentation/government-documents/local-government-letter-format-for-abroad-studies" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/opinion/past-is-future-and-future-is-past/" class="blog-listing__item-link">Past is Future and Future is Past</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="past-is-future-and-future-is-past">Past is Future and Future is Past</h1>
-
-
-                    </div>
-                    <a href="/blogs/opinion/past-is-future-and-future-is-past/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/essay-presentation-paying-for-food-waste/" class="blog-listing__item-link">Essay Presentation: Paying for Food Waste</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="essay-presentation-paying-for-food-waste">Essay Presentation: Paying for Food Waste</h1>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/essay-presentation-paying-for-food-waste/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/" class="blog-listing__item-link">Essay Presentation: Literacy before Numeracy</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="essay-presentation-literacy-before-numeracy">Essay Presentation: Literacy before Numeracy</h1>
-
-
-                    </div>
-                    <a href="/blogs/life-skills/language-improvement/essay-presentation-literacy-before-numeracy/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-                <li class="blog-listing__item blog-listing__item--card">
-                    <h3 class="blog-listing__item-title">
-                        <a href="/blogs/opinion/flooding-in-nepal/" class="blog-listing__item-link">Flooding in Nepal</a>
-                    </h3>
-                    <div class="blog-listing__item-excerpt">
-                        <h1 id="flooding-in-nepal-himalayan-vulnerabilities-monsoon-devastation-and-pathways-to-resilience">Flooding in Nepal: Himalayan Vulnerabilities, Monsoon Devastation, and Pathways to Resilience</h1>
-
-
-                    </div>
-                    <a href="/blogs/opinion/flooding-in-nepal/" class="blog-listing__read-more-link">Read More &rarr;</a>
-                </li>
-                
-            </ul>
-        </div>
-    </section>
+  </article>
 </div>
+
+
+
+
+
+
 
 
 
