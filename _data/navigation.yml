@@ -53,6 +53,8 @@
     - name: Documentation & Resources
       link: /study-abroad/documentation/
       dropdown:
+        - name: planning
+          link: /study-abroad/documentation/planning/
         - name: government-documents
           link: /study-abroad/documentation/government-documents/
         - name: university-documents
