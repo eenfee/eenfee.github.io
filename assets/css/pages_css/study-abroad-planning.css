@@ -1,9 +1,87 @@
-body { font-family: Arial, sans-serif; margin: 20px; }
-.tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
-.tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; }
-.tab button:hover { background-color: #ddd; }
-.tab button.active { background-color: #ccc; }
-.tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-th { background-color: #f2f2f2; }
+/* ===== Study Abroad Workbook ===== */
+
+.tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab button {
+  background: #f3f4f6;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.25s ease;
+}
+
+.tab button:hover {
+  background: #e5e7eb;
+}
+
+.tab button.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Tab content */
+.tabcontent {
+  display: none;
+  padding: 20px 0;
+  animation: fadeEffect 0.3s ease-in-out;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Headings */
+.tabcontent h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #111827;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  vertical-align: top;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+  text-align: left;
+}
+
+tr:nth-child(even) td {
+  background: #fcfcfd;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  .tab {
+    flex-direction: column;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
